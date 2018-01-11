@@ -5,15 +5,15 @@ public class Knight extends Character {
         super();
         this.setClassType("Knight");
         this.setInitiative(5);
-        this.setHp();hp = 9;
-        attack = 6;
-        agility = 4;
-        coin = 0;
-        coinBag = 0;
-        goldJewelry = 0;
-        gemstone = 0;
-        treasureBox = 0;
-        */
+        this.setHp(9);
+        this.setAttack(6);
+        this.setAgility(4);
+        this.setCoin(0);
+        this.setCoinBag(0);
+        this.setGoldJewelry(0);
+        this.setGemstone(0);
+        this.setTreasureBox(0);
+
     }
     //The Knights character special attack.
     public void ShieldBlock(){
