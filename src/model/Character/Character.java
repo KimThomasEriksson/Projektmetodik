@@ -14,6 +14,8 @@ public class Character {
 
     //Character constructor and all get and setters.
 
+
+
     public Character(String classType, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {
         this.classType = classType;
         this.initiative = initiative;
@@ -24,6 +26,30 @@ public class Character {
         this.coinBag = coinBag;
         this.goldJewelry = goldJewelry;
         this.gemstone = gemstone;
+        this.treasureBox = treasureBox;
+    }
+
+    public Character() {
+
+    }
+
+    public void setCoin(int coin) {
+        this.coin = coin;
+    }
+
+    public void setCoinBag(int coinBag) {
+        this.coinBag = coinBag;
+    }
+
+    public void setGoldJewelry(int goldJewelry) {
+        this.goldJewelry = goldJewelry;
+    }
+
+    public void setGemstone(int gemstone) {
+        this.gemstone = gemstone;
+    }
+
+    public void setTreasureBox(int treasureBox) {
         this.treasureBox = treasureBox;
     }
 
