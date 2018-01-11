@@ -1,9 +1,11 @@
 package model.Monster;
 
-public class Skelett extends Monster {
-    public Skelett (){
+// inheritance of  main MonsterCharacter Attributes For Skeleton.
+
+public class Skeleton extends Monster {
+    public Skeleton(){
         super();
-        this.setClassType("Skelett");
+        this.setClassType("Skeleton");
         this.setInitiative(4);
         this.setHp(2);
         this.setAttack(3);

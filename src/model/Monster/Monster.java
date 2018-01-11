@@ -1,5 +1,7 @@
 package model.Monster;
 
+// Declaration of main MonsterCharacter Attributes.
+
 public class Monster {
     private String classType;
     private int initiative;
@@ -17,10 +19,12 @@ public class Monster {
         this.agility = agility;
         this.commonality = commonality;
 
+        //Calls Main Monster class method.
     }
     public Monster() {
     }
 
+        ////
     public void setClassType(String classType) {
         this.classType = classType;
     }
@@ -68,6 +72,7 @@ public class Monster {
     public float getCommonality() {
         return commonality;
     }
+
 
     @Override
     public String toString() {

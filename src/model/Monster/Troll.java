@@ -1,5 +1,7 @@
 package model.Monster;
 
+// inheritance of main MonsterCharacter Attributes for Troll.
+
 public class Troll extends Monster {
     public Troll (){
         super();

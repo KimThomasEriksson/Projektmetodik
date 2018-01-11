@@ -1,9 +1,11 @@
 package model.Monster;
 
-public class Jättespindel extends Monster {
-    public Jättespindel (){
+// inheritance of  main MonsterCharacter Attributes For GiantSpider.
+
+public class GiantSpider extends Monster {
+    public GiantSpider(){
         super();
-        this.setClassType("Jättespindel");
+        this.setClassType("GiantSpider");
         this.setInitiative(7);
         this.setHp(1);
         this.setAttack(2);
