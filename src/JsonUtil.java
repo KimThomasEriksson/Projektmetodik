@@ -1,4 +1,4 @@
-import com.google.gson.Gson;
+
 import model.Character.Thief;
 
 import java.io.*;
@@ -11,9 +11,7 @@ public class JsonUtil {
         Thief char1 = new Thief();
         Thief char2 = new Thief();
 
-        Gson gson = new Gson();
-        String json = gson.toJson(char1);
-        String json2 = gson.toJson(char2);
+
         /*try(FileWriter file = new FileWriter("file1.txt")){
             file.write(json);
             file.write(json2);
@@ -34,8 +32,7 @@ public class JsonUtil {
         }
         System.out.println(fileContent);
 
-        Character char3 = new Gson().fromJson(fileContent,Character.class);
 
-        System.out.println(char3);
+
     }
 }
