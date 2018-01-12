@@ -15,7 +15,7 @@ public class Knight extends Character {
         this.setTreasureBox(0);
 
     }
-    //The Knights character special attack.
+    ///The Knights character special attack.
     public void ShieldBlock(){
         //Always blocks the first attack per fight
     }
