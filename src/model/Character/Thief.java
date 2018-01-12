@@ -1,7 +1,7 @@
 package model.Character;
 
-public class Theif extends Character{
-    public Theif() {
+public class Thief extends Character{
+    public Thief() {
         super();
         this.setClassType("Thief");
         this.setInitiative(7);
@@ -14,6 +14,11 @@ public class Theif extends Character{
         this.setGemstone(0);
         this.setTreasureBox(0);
     }
+    //This constructor is used when we load in a character from save file.
+    public Thief(String classType, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {
+        super(classType, initiative, hp, attack, agility, coin, coinBag, goldJewelry, gemstone, treasureBox);
+    }
+
     //The Thiefs character special attack.
     public int criticalHit(){
         int attack = getAttack();
