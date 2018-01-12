@@ -2,6 +2,7 @@ package model.Character;
 
 public class Character {
     private String classType;
+    private String name;
     private int initiative;
     private int hp;
     private int attack;
@@ -16,8 +17,9 @@ public class Character {
 
 
 
-    public Character(String classType, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {
+    public Character(String classType,String name, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {
         this.classType = classType;
+        this.name =name;
         this.initiative = initiative;
         this.hp = hp;
         this.attack = attack;
@@ -31,6 +33,14 @@ public class Character {
 
     public Character() {
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setCoin(int coin) {

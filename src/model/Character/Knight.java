@@ -15,8 +15,8 @@ public class Knight extends Character {
         this.setTreasureBox(0);
     }
     //This constructor is used when we load in a character from save file.
-    public Knight(String classType, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {
-        super(classType, initiative, hp, attack, agility, coin, coinBag, goldJewelry, gemstone, treasureBox);
+    public Knight(String classType, String name, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {
+        super(classType, name, initiative, hp, attack, agility, coin, coinBag, goldJewelry, gemstone, treasureBox);
     }
 
     //The Knights character special attack.
