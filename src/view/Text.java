@@ -5,7 +5,7 @@ import java.util.Scanner;
 public  class Text {
 
 
-    public static void intro() throws InterruptedException, IOException {
+    public void intro() throws InterruptedException, IOException {
 
         boolean state =true;
         int time=0;
@@ -33,7 +33,6 @@ public  class Text {
 
 
     }
-
 
 
     public static void pressToContinue(){

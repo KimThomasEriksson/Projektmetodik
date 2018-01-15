@@ -23,4 +23,20 @@ public class Knight extends Character {
     public void ShieldBlock(){
         //Always blocks the first attack per fight
     }
+
+    // UI representation of the class with logo and attributes
+    public String previewLogoKnight(){
+        return "\t\t\t\t              /\n" +
+                "KNIGHT:\t\t\t\t       ,~~   /\n" +
+                "\t\t\t\t   _  <=)  _/_\n" +
+                "\t\t\t\t  /I\\.=\"==.{>\n" +
+                "Initiative= " + this.getInitiative() + "\t\t\t  \\I/-\\T/-'\n" +
+                "HP= " + this.getHp() + "\t\t\t\t      /_\\\n" +
+                "Attack= " + this.getAttack() + "\t\t\t     // \\\\_\n" +
+                "Agility= " + this.getAgility() + "\t\t\t    _I    /\n\n" +
+                "Special attack:\n" +
+                "Always blocks the first attack per fight.";
+    }
+
+
 }

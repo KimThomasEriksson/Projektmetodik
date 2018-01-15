@@ -23,4 +23,21 @@ public class Wizard extends Character {
     public void starLight(){
         //Make monsters blind and have a 80% chance to run away
     }
+
+    // UI representation of the class with logo and attributes
+    public String previewLogoWizard(){
+        return "\n" +
+                "\t\t\t\t         ,/   *\n" +
+                "WIZARD:\t\t\t\t      _,'/_   |\n" +
+                "\t\t\t\t      `(\")' ,'/\n" +
+                "\t\t\t\t   _ _,-H-./ /\n" +
+                "Initiative= " + this.getInitiative() + "\t\t\t   \\_\\_\\.   /\n" +
+                "HP= " + this.getHp() + "\t\t\t\t     )\" |  (\n" +
+                "Attack= " + this.getAttack() + "\t\t\t  __/   H   \\__\n" +
+                "Agility= " + this.getAgility() + "\t\t\t  \\    /|\\    /\n" +
+                "\t\t\t\t   `--'|||`--'\n" +
+                "\t\t\t\t      ==^==\n\n" +
+                "Special attack:\n" +
+                "Make monsters blind and have a 80% chance to run away.";
+    }
 }
