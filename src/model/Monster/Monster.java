@@ -73,8 +73,12 @@ public class Monster {
         return commonality;
     }
 
+    public void takeDamage(){
+        this.hp = this.hp - 1;
+    }
 
-    @Override
+
+
     public String toString() {
         return "Monster{" +
                 "classType='" + classType + '\'' +

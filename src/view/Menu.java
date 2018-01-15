@@ -1,10 +1,17 @@
 package view;
 
+import model.Adventure;
+import model.Character.Character;
+import model.Character.Knight;
+import model.Character.Thief;
+import model.Character.Wizard;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
 
-    /* Concept for terminal view were we use variables like booleans to control phases
+    /*  Concept for terminal view were we use variables like booleans to control phases
      *  and object references to try method involved in each phase route or functionality.
      *  Inputs and outputs, while loops with switch cases for robust interaction for user
      *  were we also consider the way movement gets impacted.
@@ -16,29 +23,59 @@ public class Menu {
     private boolean menuThirdPhase;
     private Scanner scanner;
 
+    // Model attributes reserved for interaction by method/function calling
+    private Character myCharacter;
+    private Knight myKnight;
+    private Wizard myWizard;
+    private Thief myThief;
+
+    private Adventure myAdventure;
+
     public Menu() {
 
         this.scanner = new Scanner(System.in);
         this.menuFirstPhase = true;
         this.menuSecondPhase = false;
+        this.myKnight = new Knight();
+        this.myWizard = new Wizard();
+        this.myThief = new Thief();
+        this.myCharacter = new Character();
 
+    }
+
+    // Graphical representation of classes with their attributes and values
+    public void classShowCase(){
+
+        System.out.println("\t\t\t[" + myKnight.getClassType() + "]\t[" + myWizard.getClassType() + "]\t[" + myThief.getClassType()
+                + "]\n\nHealth:\t\t\t" + myKnight.getHp() + "\t\t\t" + myWizard.getHp() + "\t\t\t" + myThief.getHp()
+                + "\nAttack:\t\t\t" + myKnight.getAttack() + "\t\t\t" + myWizard.getAttack() + "\t\t\t" + myThief.getAttack()
+                + "\nAgility\t\t\t" + myKnight.getAgility() + "\t\t\t" + myWizard.getAgility() + "\t\t\t" + myThief.getAgility()
+                + "\nInitiative:\t\t" + myKnight.getInitiative() + "\t\t\t" + myWizard.getInitiative() + "\t\t\t" + myThief.getInitiative()
+                + "\n\n\n\t\t\t\t\t\t\t" +
+                "Enter to continue...");
+
+        scanner.nextLine();
     }
 
     // UI initiation starts here
 
-    public void runMainMenu() {
+    public void runMainMenu() throws IOException, InterruptedException {
 
 
         while (menuFirstPhase) {
 
-            System.out.println("_____________________________________" +
-                    "\n|\t\t\t\t\t\t\t\t\t|" +
-                    "\n|\t\t\tDungeon Run\t\t\t\t|" +
-                    "\n|\t\t\t\t\t\t\t\t\t|" +
-                    "\n|\t\t\t[1]Create Character\t\t|" +
-                    "\n|\t\t\t[2]Load Character\t\t|" +
-                    "\n|\t\t\t[0]Exit\t\t\t\t\t|" +
-                    "\n_____________________________________");
+            System.out.println("_________________________________________________" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n|\t\t\tMenu\t\t\t|" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n_________________________________________________" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t[1]Create Character" +
+                    "\n\t\t[2]Load Character" +
+                    "\n\t\t[0]Exit" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t");
 
 
             String inputForFirstPhase = scanner.nextLine().toUpperCase();
@@ -94,41 +131,42 @@ public class Menu {
         }
 
 
-        /* Second phase menu dynamic according to follow up choice
+        /*  Second phase menu dynamic according to follow up choice
          *  were checking of object concludes to avoid duplicate
          *  creation, if loading initiated try object methods for
          *  file reading and potentially writing... */
 
     }
 
-    public void secondMenuCreation() {
+    public void secondMenuCreation() throws IOException, InterruptedException {
 
         String nameToCheck = "Empty";
         String first = "1";
         String second = "2";
         String third = "3";
+        String classPreviewString = "";
 
         while (menuSecondPhase) {
 
             Scanner scanner = new Scanner(System.in);
 
-
-            System.out.println("_____________________________________" +
-                    "\n|\t\t\t\t\t\t\t\t\t|" +
-                    "\n|\t\t\tCreate Character\t\t|" +
-                    "\n|\t\t\t\t\t\t\t\t\t|" +
-                    "\n_____________________________________" +
-
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\tName: " + nameToCheck + "\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\t[" + first + "]Knight\t\t\t\t" +
-                    "\n\t\t\t[" + second + "]Wizard\t\t\t\t" +
-                    "\n\t\t\t[" + third + "]Thief\t\t\t\t" +
-                    "\n\t\t\t[0]Return\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\t\t\t\t[X]SUBMIT\t" +
-                    "\n_____________________________________");
+            System.out.println("_________________________________________________" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n|\t\tCreate Character\t\t|" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n_________________________________________________" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\tName: " + nameToCheck +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t[" + first + "]Knight" +
+                    "\n\t\t[" + second + "]Wizard" +
+                    "\n\t\t[" + third + "]Thief" +
+                    "\n" +
+                    "\n" + classPreviewString +
+                    "\n\t\t\t\t\t\t" +
+                    "\n[0]RETURN\t\t\t\t[X]SUBMIT\t" +
+                    "\n\t\t\t\t\t\t");
 
 
             String secondPhaseInput = scanner.nextLine().toUpperCase();
@@ -145,18 +183,21 @@ public class Menu {
                     first = "X";
                     second = "2";
                     third = "3";
+                    classPreviewString = myKnight.previewLogoKnight();
                     clearWindow();
                     break;
                 case "2":
                     first = "1";
                     second = "X";
                     third = "3";
+                    classPreviewString = myWizard.previewLogoWizard();
                     clearWindow();
                     break;
                 case "3":
                     first = "1";
                     second = "2";
                     third = "X";
+                    classPreviewString = myThief.previewLogoThief();
                     clearWindow();
                     break;
 
@@ -166,12 +207,36 @@ public class Menu {
                 case "X":
                     menuFirstPhase = true;
                     menuSecondPhase = false;
+                    if (first.equals("X")) {
+                        myKnight.setName(nameToCheck);
+                        myCharacter = myKnight;
+                    }
+                    if (second.equals("X")) {
+                        myWizard.setName(nameToCheck);
+                        myCharacter = myWizard;
+                    }
+                    if (third.equals("X")) {
+                        myThief.setName(nameToCheck);
+                        myCharacter = myThief;
+                    }
                     clearWindow();
                     runMainMenu();
                     break;
                 case "SUBMIT":
                     menuFirstPhase = true;
                     menuSecondPhase = false;
+                    if (first.equals("X")) {
+                        myKnight.setName(nameToCheck);
+                        myCharacter = myKnight;
+                    }
+                    if (second.equals("X")) {
+                        myWizard.setName(nameToCheck);
+                        myCharacter = myWizard;
+                    }
+                    if (third.equals("X")) {
+                        myThief.setName(nameToCheck);
+                        myCharacter = myThief;
+                    }
                     clearWindow();
                     runMainMenu();
                     break;
@@ -202,48 +267,55 @@ public class Menu {
         }
     }
 
-    public void secondMenuLoading() {
+    public void secondMenuLoading() throws IOException, InterruptedException {
 
         String nameToCheck = "Empty";
         while (menuSecondPhase) {
 
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("_____________________________________" +
-                    "\n|\t\t\t\t\t\t\t\t\t|" +
-                    "\n|\t\t\tLoad Character\t\t\t|" +
-                    "\n|\t\t\t\t\t\t\t\t\t|" +
-                    "\n_____________________________________" +
-
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\tName: " + nameToCheck + "\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\t[0]Return\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\t\t\t\t[X]SUBMIT\t" +
-                    "\n_____________________________________");
+            System.out.println("_________________________________________________" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n|\t\tLoad Character\t\t\t|" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n_________________________________________________" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\tName: " + nameToCheck +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n[0]RETURN\t\t\t\t[X]SUBMIT\t" +
+                    "\n\t\t\t\t\t\t");
 
 
             String choice = scanner.nextLine().toUpperCase();
-            if (!choice.equals("")) {
+            if (!choice.equals("") && !choice.equals("X")) {
                 nameToCheck = choice;
             }
             switch (choice) {
 
                 // Submit cases to try the given name to check object and break loop
                 case "X":
-                    menuFirstPhase = false;
-                    menuSecondPhase = false;
-                    menuThirdPhase = true;
+                    myCharacter.loadCharacterFromStorage(nameToCheck);
+                    if (myCharacter.getName().equals(nameToCheck)){
+                        menuFirstPhase = false;
+                        menuSecondPhase = false;
+                        menuThirdPhase = true;
+                        clearWindow();
+                        thirdMenuGameLoader();
+                    }
                     clearWindow();
-                    thirdMenuGameLoader();
                     break;
                 case "SUBMIT":
-                    menuFirstPhase = false;
-                    menuSecondPhase = false;
-                    menuThirdPhase = true;
+                    myCharacter.loadCharacterFromStorage(nameToCheck);
+                    if (myCharacter.getName().equals(nameToCheck)){
+                        menuFirstPhase = false;
+                        menuSecondPhase = false;
+                        menuThirdPhase = true;
+                        clearWindow();
+                        thirdMenuGameLoader();
+                    }
                     clearWindow();
-                    thirdMenuGameLoader();
                     break;
 
                 case "0":
@@ -267,15 +339,15 @@ public class Menu {
         }
     }
 
-    public void thirdMenuGameLoader() {
+    public void thirdMenuGameLoader() throws IOException, InterruptedException {
 
         String first = "1";
         String second = "2";
         String third = "3";
-        String tR = "A";
-        String tL = "B";
-        String bR = "C";
-        String bL = "D";
+        String tL = "A";
+        String tR = "B";
+        String bL = "C";
+        String bR = "D";
 
         int submitDifficulty = 0;
         int startingCorner = 0;
@@ -285,33 +357,32 @@ public class Menu {
             Scanner scanner = new Scanner(System.in);
 
 
-            System.out.println("_____________________________________" +
-                    "\n|\t\t\t\t\t\t\t\t\t|" +
-                    "\n|\t\t\tStart Game!\t\t\t\t|" +
-                    "\n|\t\t\t\t\t\t\t\t\t|" +
-                    "\n_____________________________________" +
-
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\t[" + first + "]Easy\t\t\t\t" +
-                    "\n\t\t\t[" + second + "]Medium\t\t\t\t" +
-                    "\n\t\t\t[" + third + "]Hard\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-
-                    "\n\t\t\tSPAWN\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\t[" + tL + "]Top L\t\t\t\t" +
-                    "\n\t\t\t[" + tR + "]Top R\t\t\t\t" +
-                    "\n\t\t\t[" + bR + "]Bottom R\t\t\t\t" +
-                    "\n\t\t\t[" + bL + "]Bottom L\t\t\t\t" +
-
-                    "\n\t\t\t[0]Return\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-                    "\n\t\t\t\t\t\t\t\t\t" +
-
-
-                    "\n\t\t\t\t\t\t[X]SUBMIT\t" +
-                    "\n_____________________________________");
+            System.out.println("_________________________________________________" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n|\t\tStart Game!\t\t\t|" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n_________________________________________________" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\tDIFFICULTY" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t[" + first + "]Easy" +
+                    "\n\t\t[" + second + "]Medium" +
+                    "\n\t\t[" + third + "]Hard" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\tSPAWN\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t[" + tL + "]Top L" +
+                    "\n\t\t[" + tR + "]Top R" +
+                    "\n\t\t[" + bL + "]Bottom L" +
+                    "\n\t\t[" + bR + "]Bottom R" +
+                    "\n\t\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t\t" +
+                    "\n[0]RETURN\t\t\t\t[X]SUBMIT\t" +
+                    "\n\t\t\t\t\t\t\t");
 
 
             String thirdPhaseInput = scanner.nextLine().toUpperCase();
@@ -340,31 +411,31 @@ public class Menu {
                     clearWindow();
                     break;
                 case "A":
-                    tR = "B";
                     tL = "X";
-                    bR = "D";
+                    tR = "B";
                     bL = "C";
+                    bR = "D";
                     clearWindow();
                     break;
                 case "B":
-                    tR = "X";
                     tL = "A";
-                    bR = "D";
+                    tR = "X";
                     bL = "C";
+                    bR = "D";
                     clearWindow();
                     break;
                 case "C":
-                    tR = "B";
                     tL = "A";
-                    bR = "D";
+                    tR = "B";
                     bL = "X";
+                    bR = "D";
                     clearWindow();
                     break;
                 case "D":
-                    tR = "B";
                     tL = "A";
-                    bR = "X";
+                    tR = "B";
                     bL = "C";
+                    bR = "X";
                     clearWindow();
                     break;
 
@@ -474,17 +545,7 @@ public class Menu {
     }
 
     // Erases all text in terminal based on system and environment
-    private void clearWindow() {
-        try {
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows")) {
-                Runtime.getRuntime().exec("cls");
-            } else {
-                Runtime.getRuntime().exec("clear");
-            }
-        } catch (final Exception e) {
-            for (int i = 0; i < 50; ++i) System.out.println();
-        }
+    private void clearWindow() throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 }
