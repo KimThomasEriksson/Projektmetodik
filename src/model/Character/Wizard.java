@@ -4,6 +4,7 @@ public class Wizard extends Character {
     public Wizard() {
         super();
         this.setClassType("Wizard");
+        this.setName("");
         this.setInitiative(6);
         this.setHp(4);
         this.setAttack(9);

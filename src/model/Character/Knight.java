@@ -4,6 +4,7 @@ public class Knight extends Character {
     public Knight() {
         super();
         this.setClassType("Knight");
+        this.setName("");
         this.setInitiative(5);
         this.setHp(9);
         this.setAttack(6);

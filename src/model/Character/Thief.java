@@ -4,6 +4,7 @@ public class Thief extends Character{
     public Thief() {
         super();
         this.setClassType("Thief");
+        this.setName("");
         this.setInitiative(7);
         this.setHp(5);
         this.setAttack(5);

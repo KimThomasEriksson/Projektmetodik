@@ -1,6 +1,7 @@
 package view;
 
 import model.Adventure;
+import model.Character.Character;
 import model.Character.Knight;
 import model.Character.Thief;
 import model.Character.Wizard;
@@ -38,6 +39,7 @@ public class Menu {
         this.myKnight = new Knight();
         this.myWizard = new Wizard();
         this.myThief = new Thief();
+        this.myCharacter = new Character();
 
     }
 
@@ -163,7 +165,7 @@ public class Menu {
                     "\n" +
                     "\n" + classPreviewString +
                     "\n\t\t\t\t\t\t" +
-                    "\n[0]Return\t\t\t\t[X]SUBMIT\t" +
+                    "\n[0]RETURN\t\t\t\t[X]SUBMIT\t" +
                     "\n\t\t\t\t\t\t");
 
 
@@ -206,27 +208,35 @@ public class Menu {
                     menuFirstPhase = true;
                     menuSecondPhase = false;
                     if (first.equals("X")) {
-//                        myCharacter =  myKnight;
+                        myKnight.setName(nameToCheck);
+                        myCharacter = myKnight;
                     }
                     if (second.equals("X")) {
-//                        submitDifficulty = 2;
+                        myWizard.setName(nameToCheck);
+                        myCharacter = myWizard;
                     }
                     if (third.equals("X")) {
-//                        submitDifficulty = 3;
+                        myThief.setName(nameToCheck);
+                        myCharacter = myThief;
                     }
-
-
-
                     clearWindow();
                     runMainMenu();
                     break;
                 case "SUBMIT":
                     menuFirstPhase = true;
                     menuSecondPhase = false;
-
-
-
-
+                    if (first.equals("X")) {
+                        myKnight.setName(nameToCheck);
+                        myCharacter = myKnight;
+                    }
+                    if (second.equals("X")) {
+                        myWizard.setName(nameToCheck);
+                        myCharacter = myWizard;
+                    }
+                    if (third.equals("X")) {
+                        myThief.setName(nameToCheck);
+                        myCharacter = myThief;
+                    }
                     clearWindow();
                     runMainMenu();
                     break;
@@ -274,30 +284,38 @@ public class Menu {
                     "\n\t\tName: " + nameToCheck +
                     "\n\t\t\t\t\t\t" +
                     "\n\t\t\t\t\t\t" +
-                    "\n[0]Return\t\t\t\t[X]SUBMIT\t" +
+                    "\n[0]RETURN\t\t\t\t[X]SUBMIT\t" +
                     "\n\t\t\t\t\t\t");
 
 
             String choice = scanner.nextLine().toUpperCase();
-            if (!choice.equals("")) {
+            if (!choice.equals("") && !choice.equals("X")) {
                 nameToCheck = choice;
             }
             switch (choice) {
 
                 // Submit cases to try the given name to check object and break loop
                 case "X":
-                    menuFirstPhase = false;
-                    menuSecondPhase = false;
-                    menuThirdPhase = true;
+                    myCharacter.loadCharacterFromStorage(nameToCheck);
+                    if (myCharacter.getName().equals(nameToCheck)){
+                        menuFirstPhase = false;
+                        menuSecondPhase = false;
+                        menuThirdPhase = true;
+                        clearWindow();
+                        thirdMenuGameLoader();
+                    }
                     clearWindow();
-                    thirdMenuGameLoader();
                     break;
                 case "SUBMIT":
-                    menuFirstPhase = false;
-                    menuSecondPhase = false;
-                    menuThirdPhase = true;
+                    myCharacter.loadCharacterFromStorage(nameToCheck);
+                    if (myCharacter.getName().equals(nameToCheck)){
+                        menuFirstPhase = false;
+                        menuSecondPhase = false;
+                        menuThirdPhase = true;
+                        clearWindow();
+                        thirdMenuGameLoader();
+                    }
                     clearWindow();
-                    thirdMenuGameLoader();
                     break;
 
                 case "0":
@@ -363,7 +381,7 @@ public class Menu {
                     "\n\t\t\t\t\t\t" +
                     "\n\t\t\t\t\t\t\t" +
                     "\n\t\t\t\t\t\t\t" +
-                    "\n[0]Return\t\t\t\t[X]SUBMIT\t" +
+                    "\n[0]RETURN\t\t\t\t[X]SUBMIT\t" +
                     "\n\t\t\t\t\t\t\t");
 
 

@@ -40,7 +40,27 @@ public class Character {
     }
 
     public Character() {
+        this.classType = "";
+        this.name = "";
+        this.initiative = 0;
+        this.hp = 0;
+        this.attack = 0;
+        this.agility = 0;
+        this.coin = 0;
+        this.coinBag = 0;
+        this.goldJewelry = 0;
+        this.gemstone = 0;
+        this.treasureBox = 0;
+    }
 
+    // used from view, searches and loads saved character
+    public Character loadCharacterFromStorage(String name){
+
+        Character myCharacter;
+
+        // search storage for match and return the right object with given name
+
+        return null;
     }
 
     public String getName() {
