@@ -20,14 +20,17 @@ public class Adventure {
 
     }
 
+    public Room getRooms() {
+        return rooms;
+    }
 
     /*This function sets the starting position of the character based on what level(1,2,3) you choose and which startPosition(1,2,3,4) you selected
-    Example: if constructor gets 1,2 you will get this layout of rooms and you will spawn where the 2 is located
-        3XX4
-        XXXX
-        1XX2
+        Example: if constructor gets 1,2 you will get this layout of rooms and you will spawn where the 2 is located
+            3XX4
+            XXXX
+            1XX2
 
-     */
+         */
     public void getStartingPositions(){
 
         //level 1= 4x4 rooms

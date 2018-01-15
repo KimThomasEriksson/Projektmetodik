@@ -10,7 +10,7 @@ public  class Text {
         boolean state =true;
         int time=0;
 
-        while(time!=10) {
+        while(time!=2) {
 
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             System.out.println(Text.introOverHeadCenter());
