@@ -1,5 +1,10 @@
 
 
+import model.Character.Character;
+import model.Character.Knight;
+import model.Monster.Monster;
+import model.Monster.Skeleton;
+import view.Combat;
 import view.Menu;
 import view.Text;
 
@@ -15,6 +20,12 @@ public class Main {
         mainMenu.runMainMenu();
 
         System.out.println("SPELET STARTAS!");
+
+        Monster skeleton = new Skeleton();
+        Character testChar = new Knight();
+
+        Combat combat = new Combat();
+        combat.combatStart(skeleton,testChar);
 
     }
 }
