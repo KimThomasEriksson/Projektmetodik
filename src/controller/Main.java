@@ -1,6 +1,8 @@
 package controller;
 
 import java.lang.*;
+import java.util.Scanner;
+
 import model.Character.Knight;
 import model.Character.Thief;
 import model.Monster.Skeleton;
@@ -14,13 +16,25 @@ public class Main {
         //testGame.runMainMenu();
         Thief testChar = new Thief("Thief","Kalle", 5, 9,6, 4, 0, 0, 0, 0, 0);
         Skeleton testSkel = new Skeleton();
+        Scanner scan = new Scanner(System.in);
         try {
             while (true) {
                 if(testChar.getHp() == 0){
                     System.out.println("You died!");
                     break;
                 }
-                testChar.attackMonster(testSkel);
+                System.out.println("(A)tk eller (F)ly");
+                String val = scan.nextLine().toUpperCase();
+                if(val.equals("A")) {
+                    testChar.attackMonster(testSkel);
+                }
+                else if(val.equals("F")){
+                    boolean flee = testChar.flee();
+
+                    if (flee){
+                        break;
+                    }
+                }
                 Thread.sleep(1000);
                 if(testSkel.getHp() == 0){
                     System.out.println(testSkel.getClassType() + " Died!");

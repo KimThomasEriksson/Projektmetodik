@@ -1,6 +1,7 @@
 package model.Character;
 
 import model.Monster.Monster;
+import java.util.Random;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -17,6 +18,7 @@ public class Character {
     private int gemstone;
     private int treasureBox;
     private boolean firstHit = true;
+
 
     //Character constructor and all get and setters.
 
@@ -195,8 +197,6 @@ public class Character {
         for (int i = 1; i <= this.agility; i++){
             playerAgility  = ThreadLocalRandom.current().nextInt(1, 6 + 1) + playerAgility;
         }
-        System.out.println("Monster attack: " + monsterAttackDamage);
-        System.out.println("Your agility: " + playerAgility);
         System.out.println(" ");
         if(monsterAttackDamage<playerAgility){
             System.out.println(monster.getClassType() + "s attack missed!");
@@ -210,6 +210,16 @@ public class Character {
                 System.out.println(monster.getClassType() + "s hit!");
                 this.hp = this.hp - 1;
             }
+        }
+    }
+    //Returnar true om spelaren kan fly och false om inte
+    public boolean flee(){
+        Random rand = new Random();
+        if(rand.nextInt(100)<(this.agility*10)){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
