@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 public class DBConnector {
 
@@ -8,3 +8,4 @@ public class DBConnector {
 //    }
 
 }
+*/

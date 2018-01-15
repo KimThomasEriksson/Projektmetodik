@@ -1,6 +1,6 @@
 package model.Monster;
 
-// inheritance of  main MonsterCharacter Attributes For Orc.
+// inheritance of main MonsterCharacter Attributes For Orc.
 
 public class Orc extends Monster {
     public Orc (){

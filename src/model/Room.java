@@ -27,12 +27,7 @@ public class Room {
                 System.out.print(rooms[rows][columns] + "\t" );}
             System.out.println();}
 
-
-
     }
-
-
-
 
     public void fillRoom(){
 
@@ -46,13 +41,16 @@ public class Room {
 
         this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
 
-
-
     }
 
     /*
      *This function creates rooms based of level and sets player position to one of the rooms
      */
+
+    public int getLevel() {
+        return level;
+    }
+
     public void createGame(){
 
         if(level==1){
