@@ -4,9 +4,12 @@
 package controller;
 import model.Room;
 import java.util.Random;
+import java.util.logging.Level;
 
 
 public class RandGenerator extends Room {
+
+    //int level = (Level);
 
     private boolean additionalMonster = false;
     //private boolean additionalItems = false;
@@ -17,6 +20,11 @@ public class RandGenerator extends Room {
     private int counter = 1;
     int level = getLevel();
 
+    public RandGenerator(int playerPositionX, int playerPositionY, int level) {
+        super(playerPositionX, playerPositionY, level);
+        this.getLevel();
+
+    }
     public static void main(String args[]) {
 
     }
