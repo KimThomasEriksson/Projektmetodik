@@ -1,8 +1,8 @@
 package model.Character;
 
 import model.Monster.Monster;
-import java.util.Random;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Character {
@@ -17,9 +17,6 @@ public class Character {
     private int goldJewelry;
     private int gemstone;
     private int treasureBox;
-    private boolean firstHit = true;
-    private boolean starLightActive = false;
-
 
     //Character constructor and all get and setters.
 
@@ -179,18 +176,25 @@ public class Character {
     public void attackMonster(Monster monster){
         int attackDamage = 0;
         int monsterAgility = 0;
+
+        //Rullar varje tärning och adderar det till attackdamage variablen
         for (int i = 1; i <= this.attack; i++){
             attackDamage = ThreadLocalRandom.current().nextInt(1, 6 + 1) + attackDamage;
         }
+
+        //variabel för att spara monstrets agilitiy roll
         for (int i = 1; i <= monster.getAgility(); i++){
             monsterAgility = ThreadLocalRandom.current().nextInt(1, 6 + 1) + monsterAgility ;
         }
+
         //bara development syfte för att se rollsen
         System.out.println("Your attack: " + attackDamage);
         System.out.println("Monster agility: " + monsterAgility);
         System.out.println(" ");
 
+        //kollar om spelarens attack är högre än monstrets agility, applicerar thiefs passive om spelaren är en
         if (attackDamage>monsterAgility){
+
             if(this.classType.equals("Thief")){
                 int critChance = ThreadLocalRandom.current().nextInt(1,4);
                 if(critChance == 1){
@@ -201,6 +205,7 @@ public class Character {
             else {
                 monster.takeDamage();
                 System.out.println("You attack the " + monster.getClassType());
+                monster.takeDamage();
             }
         }
         else if (attackDamage < monsterAgility){
@@ -209,18 +214,24 @@ public class Character {
     }
     //Tar in ett monster objekt och använder dens attribut och funktioner
     public void defendAttack(Monster monster){
+
         //Variabler för att komma ihåg spelarens smidighets roll och monstrets attack roll
         int monsterAttackDamage = 0;
         int playerAgility = 0;
-        //Rollar varje tärning och adderar det till den totala monster skadan
+
+
+        //rolls för spelarens skada och monstrets agilitiy
         for (int i = 1; i <=monster.getAttack(); i++){
             monsterAttackDamage = ThreadLocalRandom.current().nextInt(1, 6 + 1) + monsterAttackDamage;
         }
+
+
         for (int i = 1; i <= this.agility; i++){
             playerAgility  = ThreadLocalRandom.current().nextInt(1, 6 + 1) + playerAgility;
         }
         System.out.println(" ");
 
+        //Kollar om monstrets attack träffar eller inte, om den träffar kollar den om spelaren är en knight och om detta är första slaget
         if(monsterAttackDamage<playerAgility){
             System.out.println(monster.getClassType() + "s attack missed!");
         }
@@ -238,7 +249,7 @@ public class Character {
     //Returnar true om spelaren kan fly och false om inte
     public boolean flee(){
         Random rand = new Random();
-
+        //wizards passiva ger 80% till att fly
         if (this.classType.equals("Wizard")){
             if (rand.nextInt(100)<80){
                 return true;

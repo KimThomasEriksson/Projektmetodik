@@ -24,7 +24,7 @@ public class Monster {
     public Monster() {
     }
 
-        ////
+    ////
     public void setClassType(String classType) {
         this.classType = classType;
     }
@@ -90,4 +90,3 @@ public class Monster {
                 '}';
     }
 }
-
