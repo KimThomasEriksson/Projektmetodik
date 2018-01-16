@@ -1,5 +1,6 @@
 
 
+import model.Adventure;
 import model.Character.Character;
 import model.Character.Knight;
 import model.Monster.Monster;
@@ -16,8 +17,13 @@ public class Main {
         // Testing execution flow from this point
 //        Text intro = new Text();
 //        intro.intro();
-        Menu mainMenu = new Menu();
-        mainMenu.runMainMenu();
+//
+//      Menu mainMenu = new Menu();
+        //mainMenu.runMainMenu();
+
+        Adventure newadventure =new Adventure(1,1);
+        newadventure.getRooms().printRoom();
+        newadventure.getRooms().checkAvalibleMovements();
 
         System.out.println("SPELET STARTAS!");
 

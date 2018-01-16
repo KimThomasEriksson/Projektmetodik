@@ -1,9 +1,10 @@
 package model;
+import model.Character.Character;
 
 public class Adventure {
 
     private int level;
-
+    private Character myCharacter;
     private int startPosition;
     private int startPositionX;
     private int startPositionY;
@@ -20,15 +21,25 @@ public class Adventure {
 
     }
 
+    public Character getMyCharacter() {
+        return myCharacter;
+    }
+
+
+    public void setMyCharacter(Character myCharacter) {
+        this.myCharacter =new Character();
+        this.myCharacter = myCharacter;
+    }
+
     public Room getRooms() {
         return rooms;
     }
 
     /*This function sets the starting position of the character based on what level(1,2,3) you choose and which startPosition(1,2,3,4) you selected
         Example: if constructor gets 1,2 you will get this layout of rooms and you will spawn where the 2 is located
-            3XX4
-            XXXX
             1XX2
+            XXXX
+            3XX4
 
          */
     public void getStartingPositions(){

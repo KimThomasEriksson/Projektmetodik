@@ -5,6 +5,7 @@ package controller;
 import model.Room;
 import java.util.Random;
 
+
 public class RandGenerator extends Room {
 
     private boolean additionalMonster = false;
@@ -14,6 +15,7 @@ public class RandGenerator extends Room {
     private int level3MonsterLimit = 2;
     //private int levelItemsLimit = 2;
     private int counter = 1;
+    int level = getLevel();
 
     public static void main(String args[]) {
 
@@ -21,7 +23,7 @@ public class RandGenerator extends Room {
 
     public void generateMonsters() {
 
-        this.level = 1;
+
 
         boolean spawnSpider = spawnMonster(20);
 
@@ -54,7 +56,7 @@ public class RandGenerator extends Room {
 
             if (randomInt <= chance) {
 
-                if (this.level == 1) {
+                if (level == 1) {
                     if (this.firstMonster) {
                         this.firstMonster = false;
                         return true;

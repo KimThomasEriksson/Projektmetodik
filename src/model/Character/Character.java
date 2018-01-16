@@ -199,6 +199,7 @@ public class Character {
                 }
             }
             else {
+                monster.takeDamage();
                 System.out.println("You attack the " + monster.getClassType());
             }
         }
