@@ -60,31 +60,80 @@ public class Room {
     }
 
 
-    public void moveUp(){
-        this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
-        this.playerPositionX++;
-        this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+    public void moveDown(){
+        int oldPlayerPositionX=this.playerPositionX;
+        int oldPlayerPositionY=this.playerPositionY;
+        try{
 
+            this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
+            this.playerPositionX++;
+            this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+
+        }catch (ArrayIndexOutOfBoundsException e){
+            this.playerPositionX=oldPlayerPositionX;
+            this.playerPositionY=oldPlayerPositionY;
+            System.out.println("You can't walk that way");
+            this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+
+        }
     }
 
-    public void moveDown(){
-        this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
-        this.playerPositionX--;
-        this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+    public void moveUp(){
+        int oldPlayerPositionX=this.playerPositionX;
+        int oldPlayerPositionY=this.playerPositionY;
+        try{
+
+            this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
+            this.playerPositionX--;
+            this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+
+        }catch (ArrayIndexOutOfBoundsException e){
+            this.playerPositionX=oldPlayerPositionX;
+            this.playerPositionY=oldPlayerPositionY;
+            System.out.println("You can't walk that way");
+            this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+
+        }
+
+
 
     }
 
     public void moveLeft(){
-        this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
-        this.playerPositionY--;
-        this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+        int oldPlayerPositionX=this.playerPositionX;
+        int oldPlayerPositionY=this.playerPositionY;
+        try{
+
+            this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
+            this.playerPositionY--;
+            this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+
+        }catch (ArrayIndexOutOfBoundsException e){
+            this.playerPositionX=oldPlayerPositionX;
+            this.playerPositionY=oldPlayerPositionY;
+            System.out.println("You can't walk that way");
+            this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+
+        }
 
     }
 
     public void moveRight(){
-        this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
-        this.playerPositionY++;
-        this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+        int oldPlayerPositionX=this.playerPositionX;
+        int oldPlayerPositionY=this.playerPositionY;
+        try{
+
+            this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
+            this.playerPositionY++;
+            this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+
+        }catch (ArrayIndexOutOfBoundsException e){
+            this.playerPositionX=oldPlayerPositionX;
+            this.playerPositionY=oldPlayerPositionY;
+            System.out.println("You can't walk that way");
+            this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+
+        }
 
     }
 

@@ -24,6 +24,19 @@ public class Main {
         Adventure newadventure =new Adventure(1,1);
         newadventure.getRooms().printRoom();
         newadventure.getRooms().checkAvalibleMovements();
+        newadventure.getRooms().moveRight();
+        newadventure.getRooms().moveRight();
+        newadventure.getRooms().moveRight();
+        newadventure.getRooms().moveRight();
+        newadventure.getRooms().moveRight();
+        newadventure.getRooms().moveDown();
+        newadventure.getRooms().moveDown();
+        newadventure.getRooms().moveLeft();
+        newadventure.getRooms().moveLeft();
+        System.out.println();
+        System.out.println();
+        newadventure.getRooms().printRoom();
+
 
         System.out.println("SPELET STARTAS!");
 
