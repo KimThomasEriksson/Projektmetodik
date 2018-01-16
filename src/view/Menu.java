@@ -1,4 +1,4 @@
-/*package view;
+package view;
 
 import model.Adventure;
 import model.Character.Character;
@@ -17,7 +17,7 @@ public class Menu {
      *  were we also consider the way movement gets impacted.
      *  Graphical design concludes and will be developed as we go.*/
 
-/*
+
     private boolean menuFirstPhase;
     private boolean menuSecondPhase;
     private boolean menuThirdPhase;
@@ -135,7 +135,7 @@ public class Menu {
          *  were checking of object concludes to avoid duplicate
          *  creation, if loading initiated try object methods for
          *  file reading and potentially writing... */
-/*
+
     }
 
     public void secondMenuCreation() throws IOException, InterruptedException {
@@ -549,4 +549,3 @@ public class Menu {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 }
-*/
