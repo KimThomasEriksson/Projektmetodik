@@ -35,6 +35,7 @@ public class Main {
         newadventure.getRooms().moveLeft();
         System.out.println();
         System.out.println();
+        System.out.println();
         newadventure.getRooms().printRoom();
 
 

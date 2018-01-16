@@ -39,7 +39,7 @@ public class Room {
 
 
     }
-
+//
 
     public void checkAvalibleMovements(){
         String moveUp="";
