@@ -13,11 +13,11 @@ public class RandGenerator {
 
     //int level = (Level);
 
-    private boolean additionalMonster = false;
-    private boolean firstMonster = true;
-    private int level3MonsterLimit = 3;
+    private static boolean additionalMonster = false;
+    private static boolean firstMonster = true;
+    private static int level3MonsterLimit = 3;
 
-    private int counter = 1;
+    private static int counter = 1;
 
 
     public RandGenerator(){}
@@ -37,7 +37,7 @@ public class RandGenerator {
     }
 
 
-    public ArrayList<Monster> rollTheDice(int level){
+    public static ArrayList<Monster> rollTheDice(int level){
         ArrayList<Monster> listOfMonsters = new ArrayList<Monster>();
 
         boolean spawnSpider = spawnMonster(level,20);
@@ -74,24 +74,24 @@ public class RandGenerator {
     }
 
 
-    private boolean spawnMonster(int level, int chance) {
-        if (this.firstMonster || this.additionalMonster) {
+    private static boolean spawnMonster(int level, int chance) {
+        if (firstMonster || additionalMonster) {
             Random rand = new Random();
             int randomInt = rand.nextInt(5);
 
             if (randomInt <= chance) {
 
                 if (level == 1) {
-                    if (this.firstMonster) {
-                        this.firstMonster = false;
+                    if (firstMonster) {
+                        firstMonster = false;
                         return true;
                     }
                     else{return false; }
                 }
                 if (level == 2) {
-                    if (this.firstMonster) {
-                        this.firstMonster = false;
-                        this.additionalMonster = true;
+                    if (firstMonster) {
+                        firstMonster = false;
+                        additionalMonster = true;
 
                         return true;
                     }
@@ -100,7 +100,7 @@ public class RandGenerator {
 
                     if (randomInt <= 50 && additionalMonster == true) {
                         //spawna ett monster
-                        this.additionalMonster = false;
+                        additionalMonster = false;
                         return true;
                     } else if (randomInt <= 50 && additionalMonster == false) {
                         //spawna inte ett monster
@@ -109,8 +109,8 @@ public class RandGenerator {
                 }
 
                 if (level == 3) {
-                    if(this.counter <= this.level3MonsterLimit){
-                        this.counter += 1;
+                    if(counter <= level3MonsterLimit){
+                        counter += 1;
                         //spawna monster
                         return true;
                     }
