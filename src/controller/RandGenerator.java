@@ -98,7 +98,7 @@ public class RandGenerator {
                         return true;
                     }
 
-                    randomInt = rand.nextInt(100);
+                    randomInt = rand.nextInt(50);
 
                     if (randomInt <= 50 && additionalMonster == true) {
                         //spawna ett monster
