@@ -88,7 +88,9 @@ public class RandGenerator {
                     }
                     else{return false; }
                 }
+
                 if (level == 2) {
+
                     if (firstMonster) {
                         firstMonster = false;
                         additionalMonster = true;
@@ -96,19 +98,22 @@ public class RandGenerator {
                         return true;
                     }
 
-                    randomInt = rand.nextInt(50);
+                    randomInt = rand.nextInt(100);
 
                     if (randomInt <= 50 && additionalMonster == true) {
                         //spawna ett monster
                         additionalMonster = false;
                         return true;
-                    } else if (randomInt <= 50 && additionalMonster == false) {
+                    }
+
+                    else if (randomInt <= 50 && additionalMonster == false) {
                         //spawna inte ett monster
                         return false;
                     }
                 }
 
                 if (level == 3) {
+
                     if(counter <= level3MonsterLimit){
                         counter += 1;
                         //spawna monster
