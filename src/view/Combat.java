@@ -42,14 +42,14 @@ public class Combat {
         while(true){
 
             //kollar om spelaren dog den förra rundan
-            if (character.getHp() == 0){
+            if (character.getHp() <= 0){
                 System.out.println("You died!");
                 //sätt in våran death animation/funktion
                 break;
             }
 
             //kollar om monstret dog förra rundan
-            if (monster.getHp() == 0){
+            if (monster.getHp() <= 0){
                 System.out.println(monster.getClassType() + " died!");
                 break;
             }
