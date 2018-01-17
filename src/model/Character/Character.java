@@ -17,6 +17,7 @@ public class Character {
     private int goldJewelry;
     private int gemstone;
     private int treasureBox;
+    private boolean firstHit = true;
 
     //Character constructor and all get and setters.
 
@@ -34,6 +35,7 @@ public class Character {
         this.goldJewelry = goldJewelry;
         this.gemstone = gemstone;
         this.treasureBox = treasureBox;
+
     }
 
     public Character() {
@@ -203,7 +205,7 @@ public class Character {
                 }
             }
             else {
-                monster.takeDamage();
+
                 System.out.println("You attack the " + monster.getClassType());
                 monster.takeDamage();
             }
