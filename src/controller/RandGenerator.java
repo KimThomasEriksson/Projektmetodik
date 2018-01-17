@@ -6,10 +6,9 @@ import model.Room;
 import java.util.Random;
 import java.util.logging.Level;
 
+public class RandGenerator{
 
-public class RandGenerator extends Room {
-
-    //int level = (Level);
+    //int level = getLevel();
 
     private boolean additionalMonster = false;
     //private boolean additionalItems = false;
@@ -20,18 +19,12 @@ public class RandGenerator extends Room {
     private int counter = 1;
     int level = getLevel();
 
-    public RandGenerator(int playerPositionX, int playerPositionY, int level) {
-        super(playerPositionX, playerPositionY, level);
-        this.getLevel();
 
-    }
+
     public static void main(String args[]) {
 
     }
-
     public void generateMonsters() {
-
-
 
         boolean spawnSpider = spawnMonster(20);
 
@@ -71,7 +64,7 @@ public class RandGenerator extends Room {
                     }
                     else{return false; }
                 }
-                if (this.level == 2) {
+                if (level == 2) {
                     if (this.firstMonster) {
                         this.firstMonster = false;
                         this.additionalMonster = true;
@@ -92,7 +85,7 @@ public class RandGenerator extends Room {
                     }
                 }
 
-                if (this.level == 3) {
+                if (level == 3) {
                     if(this.counter <= this.level3MonsterLimit){
                         this.counter += 1;
                         //spawna monster
@@ -159,6 +152,11 @@ public class RandGenerator extends Room {
         }
 
         return treasureTotalWorth;
+    }
+
+    public int getLevel() {
+
+        return level;
     }
 }
 
