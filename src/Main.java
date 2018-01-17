@@ -3,6 +3,7 @@
 import model.Adventure;
 import model.Character.Character;
 import model.Character.Knight;
+import model.Character.Thief;
 import model.Monster.Monster;
 import model.Monster.Skeleton;
 import view.Combat;
@@ -21,23 +22,16 @@ public class Main {
 //      Menu mainMenu = new Menu();
         //mainMenu.runMainMenu();
 
-        Adventure newadventure =new Adventure(1,1);
-        newadventure.getRooms().printRoom();
-        newadventure.getRooms().checkAvalibleMovements();
-        newadventure.getRooms().moveRight();
-        newadventure.getRooms().moveRight();
-        newadventure.getRooms().moveRight();
-        newadventure.getRooms().moveRight();
-        newadventure.getRooms().moveRight();
-        newadventure.getRooms().moveDown();
-        newadventure.getRooms().moveDown();
-        newadventure.getRooms().moveLeft();
-        newadventure.getRooms().moveLeft();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        newadventure.getRooms().printRoom();
+        Thief thief= new Thief();
 
+
+        Adventure newadventure =new Adventure(1,1);
+        newadventure.setMyCharacter(thief);
+
+        newadventure.getRooms().printRoom();
+        newadventure.makeAMove("S");
+        newadventure.getRooms().printRoom();
+        newadventure.makeAMove("D");
 
         System.out.println("SPELET STARTAS!");
 

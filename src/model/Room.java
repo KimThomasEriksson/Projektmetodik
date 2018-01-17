@@ -1,5 +1,7 @@
 package model;
 
+import model.Monster.Monster;
+
 import java.util.ArrayList;
 
 public class Room {
@@ -7,7 +9,8 @@ public class Room {
     private int playerPositionY;
     private String playerPosition="[P]";
     private int level;
-    String[][] rooms;
+    private String[][] rooms;
+    private ArrayList<Monster> monstersToFight;
 
 
 
@@ -41,57 +44,72 @@ public class Room {
     }
 //
 
-    public void checkAvalibleMovements(){
-        String moveUp="";
-        String moveDown="";
-        String moveLeft="";
-        String moveRight="";
-
-        if(this.level==1){
-            if(this.playerPositionX==0){
-                moveDown="S";
-
-            }
-
-        }
 
 
 
-    }
 
-
-    public void moveDown(){
+    public boolean moveDown(){
+        ArrayList<Monster> listToReturn = new ArrayList<>();
         int oldPlayerPositionX=this.playerPositionX;
         int oldPlayerPositionY=this.playerPositionY;
+        String Roomcondition;
         try{
 
             this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
             this.playerPositionX++;
+            Roomcondition=this.rooms[this.playerPositionX][this.playerPositionY];
             this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+
+            if (Roomcondition.equals("[X]")){
+                this.monstersToFight=controller.RandGenerator.rollTheDice(this.level);
+
+                return true;
+
+            }else{
+                System.out.println("You have been here before");
+                return false;
+            }
+
 
         }catch (ArrayIndexOutOfBoundsException e){
             this.playerPositionX=oldPlayerPositionX;
             this.playerPositionY=oldPlayerPositionY;
             System.out.println("You can't walk that way");
             this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+            return false;
+
 
         }
     }
 
-    public void moveUp(){
+    public boolean moveUp(){
+        ArrayList<Monster> listToReturn = new ArrayList<>();
         int oldPlayerPositionX=this.playerPositionX;
         int oldPlayerPositionY=this.playerPositionY;
+        String Roomcondition;
         try{
 
             this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
             this.playerPositionX--;
+            Roomcondition=this.rooms[this.playerPositionX][this.playerPositionY];
             this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+
+
+            if (Roomcondition.equals("[X]")){
+                this.monstersToFight=controller.RandGenerator.rollTheDice(this.level);
+                return true;
+
+            }else{
+                System.out.println("You have been here before");
+                return false;
+            }
 
         }catch (ArrayIndexOutOfBoundsException e){
             this.playerPositionX=oldPlayerPositionX;
             this.playerPositionY=oldPlayerPositionY;
             System.out.println("You can't walk that way");
             this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+            return false;
 
         }
 
@@ -99,39 +117,64 @@ public class Room {
 
     }
 
-    public void moveLeft(){
+    public boolean moveLeft(){
+        ArrayList<Monster> listToReturn = new ArrayList<>();
         int oldPlayerPositionX=this.playerPositionX;
         int oldPlayerPositionY=this.playerPositionY;
+        String Roomcondition;
         try{
 
             this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
             this.playerPositionY--;
+            Roomcondition=this.rooms[this.playerPositionX][this.playerPositionY];
             this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+
+            if (Roomcondition.equals("[X]")){
+                this.monstersToFight=controller.RandGenerator.rollTheDice(this.level);
+                return true;
+
+            }else{
+                System.out.println("You have been here before");
+                return false;
+            }
 
         }catch (ArrayIndexOutOfBoundsException e){
             this.playerPositionX=oldPlayerPositionX;
             this.playerPositionY=oldPlayerPositionY;
             System.out.println("You can't walk that way");
             this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+            return false;
 
         }
 
     }
 
-    public void moveRight(){
+    public boolean moveRight(){
         int oldPlayerPositionX=this.playerPositionX;
         int oldPlayerPositionY=this.playerPositionY;
+        String Roomcondition;
         try{
 
             this.rooms[this.playerPositionX][this.playerPositionY] ="[ ]";
             this.playerPositionY++;
+            Roomcondition=this.rooms[this.playerPositionX][this.playerPositionY];
             this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
+
+            if (Roomcondition.equals("[X]")){
+                this.monstersToFight=controller.RandGenerator.rollTheDice(this.level);
+                return true;
+
+            }else{
+                System.out.println("You have been here before");
+                return false;
+            }
 
         }catch (ArrayIndexOutOfBoundsException e){
             this.playerPositionX=oldPlayerPositionX;
             this.playerPositionY=oldPlayerPositionY;
             System.out.println("You can't walk that way");
             this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+            return false;
 
         }
 
@@ -183,4 +226,7 @@ public class Room {
 
     }
 
+    public ArrayList<Monster> getMonstersToFight() {
+        return monstersToFight;
+    }
 }

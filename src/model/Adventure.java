@@ -1,5 +1,9 @@
 package model;
 import model.Character.Character;
+import model.Monster.Monster;
+import view.Combat;
+
+import java.util.ArrayList;
 
 public class Adventure {
 
@@ -8,6 +12,7 @@ public class Adventure {
     private int startPosition;
     private int startPositionX;
     private int startPositionY;
+    ArrayList<Monster> monsterToFight;
     private Room rooms;
 
     public Adventure(int level,int startPosition) {
@@ -19,6 +24,68 @@ public class Adventure {
 
         this.rooms = new Room(startPositionX,startPositionY,level);
 
+    }
+
+    public void startFight(){
+
+        this.monsterToFight=this.rooms.getMonstersToFight();
+        Combat combat = new Combat();
+        for (int i = 0; i < this.monsterToFight.size(); i++){
+
+            combat.combatStart(this.monsterToFight.get(i),this.myCharacter);
+
+
+        }
+
+
+    }
+
+    public void makeAMove(String direction){
+        Boolean fight=false;
+
+
+        if(direction.equals("W")){
+            fight=this.rooms.moveUp();
+
+            if(fight=true){
+                startFight();
+            }
+
+
+        }
+
+        if(direction.equals("S")){
+
+            fight=this.rooms.moveDown();
+
+            if(fight=true){
+                startFight();
+            }
+
+
+        }
+
+        if(direction.equals("A")){
+
+            fight=this.rooms.moveLeft();
+
+            if(fight=true){
+                startFight();
+            }
+
+
+        }
+
+        if(direction.equals("D")){
+
+            fight=this.rooms.moveRight();
+
+            if(fight=true){
+                startFight();
+            }
+
+
+        }
     }
 
     public Character getMyCharacter() {
