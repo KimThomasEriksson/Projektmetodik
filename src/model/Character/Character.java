@@ -198,7 +198,7 @@ public class Character {
         if (attackDamage>monsterAgility){
 
             if(this.classType.equals("Thief")){
-                int critChance = ThreadLocalRandom.current().nextInt(1,4);
+                int critChance = ThreadLocalRandom.current().nextInt(1,4 + 1);
                 if(critChance == 1){
                     System.out.println("You crit the " + monster.getClassType());
                     monster.setHp(monster.getHp()- 2);
@@ -222,7 +222,7 @@ public class Character {
         int playerAgility = 0;
 
 
-        //rolls för spelarens skada och monstrets agilitiy
+        //rolls för monstrets skada och spelarens agilitiy
         for (int i = 1; i <=monster.getAttack(); i++){
             monsterAttackDamage = ThreadLocalRandom.current().nextInt(1, 6 + 1) + monsterAttackDamage;
         }
@@ -235,7 +235,7 @@ public class Character {
 
         //Kollar om monstrets attack träffar eller inte, om den träffar kollar den om spelaren är en knight och om detta är första slaget
         if(monsterAttackDamage<playerAgility){
-            System.out.println(monster.getClassType() + "s attack missed!");
+            System.out.println(monster.getClassType() + "s attack missed!" + "\n");
         }
         else if(monsterAttackDamage>playerAgility){
             if(firstHit && this.classType.equals("Knight")){
