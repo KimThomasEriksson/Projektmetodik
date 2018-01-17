@@ -44,6 +44,7 @@ public class Combat {
             //kollar om spelaren dog den förra rundan
             if (character.getHp() == 0){
                 System.out.println("You died!");
+                //sätt in våran death animation/funktion
                 break;
             }
 

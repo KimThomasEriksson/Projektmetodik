@@ -14,11 +14,9 @@ public class RandGenerator {
     //int level = (Level);
 
     private boolean additionalMonster = false;
-    //private boolean additionalItems = false;
     private boolean firstMonster = true;
-    //private boolean firstItems =true;
     private int level3MonsterLimit = 3;
-    //private int levelItemsLimit = 2;
+
     private int counter = 1;
 
 
@@ -79,7 +77,7 @@ public class RandGenerator {
     private boolean spawnMonster(int level, int chance) {
         if (this.firstMonster || this.additionalMonster) {
             Random rand = new Random();
-            int randomInt = rand.nextInt(100);
+            int randomInt = rand.nextInt(5);
 
             if (randomInt <= chance) {
 
@@ -117,23 +115,12 @@ public class RandGenerator {
                         return true;
                     }
                     else{
-                        randomInt = rand.nextInt(100);
-
-                        if (randomInt <= 50) {
-                            //spawna ett monster
-
-                            return true;
-                        }
-                        else{
                             return false;
                         }
                     }
                 }
             }
-
-
-        }
-        return false;
+            return false;
     }
 
     private int itemsTest(){
