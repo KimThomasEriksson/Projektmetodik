@@ -11,33 +11,33 @@ import java.util.Random;
 
 public class RandGenerator {
 
-    //int level = (Level);
 
-    private static boolean additionalMonster = false;
-    private static boolean firstMonster = true;
-    private static int level3MonsterLimit = 3;
-
-    private static int counter = 1;
+    //Deklaration av attributer.
+    private boolean additionalMonster = false;
+    private boolean firstMonster = true;
+    private int level3MonsterLimit = 3;
+    private int counter = 1;
 
 
     public RandGenerator(){}
 
+    //method som skapar / genererar Monsters
     public void generateMonsters() {
 
-        int points = itemsTest();
+        int points = ItemGenerator();
 
         System.out.println(points);
 
     }
 
-
+    //Metod som återställer antall generation Monsterfor samtliga rum.
     public void resetVariables(){
         this.additionalMonster = false;
         this.firstMonster = true;
     }
 
-
-    public static ArrayList<Monster> rollTheDice(int level){
+    //En lista skapas på samtliga monster som kan generaras samt sanolikhet att den spawnas för varje nivå.
+    public ArrayList<Monster> rollTheDice(int level){
         ArrayList<Monster> listOfMonsters = new ArrayList<Monster>();
 
         boolean spawnSpider = spawnMonster(level,20);
@@ -47,6 +47,7 @@ public class RandGenerator {
         boolean spawnOrc = spawnMonster(level, 10);
 
         boolean spawnTroll = spawnMonster(level, 5);
+
 
         if(spawnSpider){
             Monster giantSpider = new GiantSpider();
@@ -73,62 +74,76 @@ public class RandGenerator {
 
     }
 
-
-    private static boolean spawnMonster(int level, int chance) {
-        if (firstMonster || additionalMonster) {
+    //genererar/spawn slumpmässiga monster mellan 0- 100 i boundery.
+    private boolean spawnMonster(int level, int chance) {
+        if (this.firstMonster || this.additionalMonster) {
             Random rand = new Random();
-            int randomInt = rand.nextInt(5);
+            int randomInt = rand.nextInt(100);
 
+            //Verifierar ifall om det redan finns ett på Level 1 om inte genererar det en monster enligt chance nivå
             if (randomInt <= chance) {
 
                 if (level == 1) {
-                    if (firstMonster) {
-                        firstMonster = false;
+                    if (this.firstMonster) {
+                        this.firstMonster = false;
                         return true;
                     }
                     else{return false; }
                 }
 
+                //Verifierar ifall om det redan finns ett monster på Level 2 oavsätt so lägger den till ett till monster.
                 if (level == 2) {
-
-                    if (firstMonster) {
-                        firstMonster = false;
-                        additionalMonster = true;
+                    if (this.firstMonster) {
+                        this.firstMonster = false;
+                        this.additionalMonster = true;
 
                         return true;
                     }
 
-                    randomInt = rand.nextInt(100);
+                    //Verifierar ifall om det redan finns ett monster.
+                    //om det fins så lägger den till ett till monster om randomInt är större än 50.
+
+                    randomInt = rand.nextInt(50);
 
                     if (randomInt <= 50 && additionalMonster == true) {
                         //spawna ett monster
-                        additionalMonster = false;
+                        this.additionalMonster = false;
                         return true;
-                    }
-
-                    else if (randomInt <= 50 && additionalMonster == false) {
+                    } else if (randomInt <= 50 && additionalMonster == false) {
                         //spawna inte ett monster
                         return false;
                     }
                 }
 
+                //Genererar Monster oavsätt om det redan finns eller ej.
                 if (level == 3) {
-
-                    if(counter <= level3MonsterLimit){
-                        counter += 1;
+                    if(this.counter <= this.level3MonsterLimit){
+                        this.counter += 1;
                         //spawna monster
                         return true;
                     }
                     else{
+                        randomInt = rand.nextInt(100);
+
+                        if (randomInt <= 50) {
+                            //spawna ett monster
+
+                            return true;
+                        }
+                        else{
                             return false;
                         }
                     }
                 }
             }
-            return false;
+
+
+        }
+        return false;
     }
 
-    private int itemsTest(){
+    // Metod som genererar Items / Treasure.
+    private int ItemGenerator(){
         Random rand = new Random();
         int randomInt = rand.nextInt(100);
         int treasureTotalWorth = 0;
@@ -180,45 +195,3 @@ public class RandGenerator {
         return treasureTotalWorth;
     }
 }
-
-/*
-        }
-
-            //value = 0 + (int) ( Math.random() * 10 );
-            //output += value + "\n";
-
-
-
-            //value += randomThingGenerator.nextInt(100);
-            // 1 + rand.nextInt(100);
-
-            //System.out.println(value+ aryString[i]);
-
-            if ( i % 5 == 0 )
-                output += "\n"; //+aryString[i]+"\n";
-
-            //System.out.println(output+"\n"+("printed from the Arraylist;" +aryString[i]));
-        }
-
-            System.out.println(output+"\n");
-               // ("printed from the Arraylist;" +aryString[i]));
-        JOptionPane.showMessageDialog( null, output +"\n",
-                "lenght of arrylist Random Numbers from 1 to 9",
-                JOptionPane.INFORMATION_MESSAGE );
-        System.exit( 0 );
-    }
-
-    public Randnumber() {
-        this.randomRoomGenerator.nextInt(3);
-
-    }
-
-    public int getRandomThingGenerator() {
-        return randomThingGenerator.nextInt(10);
-    }
-
-    public void setRandomThingGenerator(Random randomThingGenerator) {
-        this.randomThingGenerator = randomThingGenerator;
-    }
-}
-*/
