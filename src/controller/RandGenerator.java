@@ -4,6 +4,7 @@
 package controller;
 import model.Monster.*;
 import model.Room;
+import model.Character.Character;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -24,9 +25,9 @@ public class RandGenerator {
     //method som skapar / genererar Monsters
     public void generateMonsters() {
 
-        int points = ItemGenerator();
 
-        System.out.println(points);
+
+
 
     }
 
@@ -103,7 +104,7 @@ public class RandGenerator {
                     //Verifierar ifall om det redan finns ett monster.
                     //om det fins så lägger den till ett till monster om randomInt är större än 50.
 
-                    randomInt = rand.nextInt(50);
+                    randomInt = rand.nextInt(100);
 
                     if (randomInt <= 50 && additionalMonster == true) {
                         //spawna ett monster
@@ -143,7 +144,7 @@ public class RandGenerator {
     }
 
     // Metod som genererar Items / Treasure.
-    private int ItemGenerator(){
+    private int ItemGenerator(Character character){
         Random rand = new Random();
         int randomInt = rand.nextInt(100);
         int treasureTotalWorth = 0;
@@ -151,6 +152,7 @@ public class RandGenerator {
         try {
             if (randomInt <= 40) {
                 System.out.println("Du hittade lösa slantar ");
+                character.raiseCoin();
                 Thread.sleep(500);
                 treasureTotalWorth += 2;
             }
@@ -159,6 +161,7 @@ public class RandGenerator {
 
             if (randomInt <= 20) {
                 System.out.println("Du hittade en pengapung ");
+                character.raiseCoinBag();
                 Thread.sleep(500);
                 treasureTotalWorth += 6;
             }
@@ -167,6 +170,7 @@ public class RandGenerator {
 
             if (randomInt <= 15) {
                 System.out.println("Du hittade guldsmycken");
+                character.raiseGoldJewelry();
                 Thread.sleep(500);
                 treasureTotalWorth += 10;
             }
@@ -175,6 +179,7 @@ public class RandGenerator {
 
             if (randomInt <= 10) {
                 System.out.println("Du hittade en ädelsten");
+                character.raiseGemstone();
                 Thread.sleep(500);
                 treasureTotalWorth += 14;
             }
@@ -184,6 +189,7 @@ public class RandGenerator {
 
             if (randomInt <= 5) {
                 System.out.println("Du hittade en liten skattkista !");
+                character.raiseTreasureBox();
                 Thread.sleep(500);
                 treasureTotalWorth += 20;
             }
