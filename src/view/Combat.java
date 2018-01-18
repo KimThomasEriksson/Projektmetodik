@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Combat {
 
     private int currentTurn;
-    private int counter = 0;
+
 
     public void combatStart(Monster monster, Character character, Room rooms) {
         boolean cont = false;
@@ -80,21 +80,6 @@ public class Combat {
 
             //Combat startas
             while (true) {
-
-                if (counter == 2){
-                    try {
-                        Thread.sleep(2000);
-                        clearWindow();
-                        rooms.printRoom();
-                        counter = 0;
-                    }
-                    catch(InterruptedException e){
-                        e.printStackTrace();
-                    }
-                    catch(IOException e1){
-                        e1.printStackTrace();
-                    }
-                }
                 //kollar om spelaren dog den förra rundan
                 if (character.getHp() <= 0) {
                     System.out.println("You died!");
@@ -144,7 +129,7 @@ public class Combat {
                     character.defendAttack(monster);
                     this.currentTurn = 1;
                 }
-                this.counter++;
+
             }
 
         }
