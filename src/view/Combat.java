@@ -5,6 +5,7 @@ import model.Monster.Monster;
 import model.Character.Character;
 import model.Room;
 
+import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -12,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Combat {
 
     private int currentTurn;
-
+    private int counter = 0;
 
     public void combatStart(Monster monster, Character character, Room rooms) {
         boolean cont = false;
@@ -79,6 +80,18 @@ public class Combat {
             //Combat startas
             while (true) {
 
+                if (counter == 2){
+                    try {
+                        clearWindow();
+                        counter = 1;
+                    }
+                    catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
+                    catch(IOException e1){
+                        e1.printStackTrace();
+                    }
+                }
                 //kollar om spelaren dog den förra rundan
                 if (character.getHp() <= 0) {
                     System.out.println("You died!");
@@ -128,11 +141,14 @@ public class Combat {
                     character.defendAttack(monster);
                     this.currentTurn = 1;
                 }
+                this.counter++;
             }
 
         }
     }
-
+    public void clearWindow() throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
 
     public int getCurrentTurn() {
         return currentTurn;
