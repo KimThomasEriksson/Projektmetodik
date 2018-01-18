@@ -5,6 +5,7 @@ import model.Monster.Monster;
 import model.Character.Character;
 import model.Room;
 
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -93,4 +94,25 @@ public class Combat {
 
     }
 
+    public int getCurrentTurn() {
+        return currentTurn;
+    }
+
+    public void setCurrentTurn(int currentTurn) {
+        this.currentTurn = currentTurn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Combat)) return false;
+        Combat combat = (Combat) o;
+        return getCurrentTurn() == combat.getCurrentTurn();
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getCurrentTurn());
+    }
 }

@@ -1,10 +1,8 @@
 package view;
 
 import model.Adventure;
+import model.Character.*;
 import model.Character.Character;
-import model.Character.Knight;
-import model.Character.Thief;
-import model.Character.Wizard;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -28,7 +26,9 @@ public class Menu {
     private Knight myKnight;
     private Wizard myWizard;
     private Thief myThief;
+    private boolean validName;
 
+    private CollectionOfCharacters myCharacterData;
     private Adventure myAdventure;
 
     public Menu() {
@@ -39,12 +39,15 @@ public class Menu {
         this.myKnight = new Knight();
         this.myWizard = new Wizard();
         this.myThief = new Thief();
-        this.myCharacter = new Character();
+        this.myCharacter = null;
+        this.myCharacterData = new CollectionOfCharacters();
+        myCharacterData.openFunc("characterData");
+        this.validName = false;
 
     }
 
     // Graphical representation of classes with their attributes and values
-    public void classShowCase(){
+    public void classShowCase() {
 
         System.out.println("\t\t\t[" + myKnight.getClassType() + "]\t[" + myWizard.getClassType() + "]\t[" + myThief.getClassType()
                 + "]\n\nHealth:\t\t\t" + myKnight.getHp() + "\t\t\t" + myWizard.getHp() + "\t\t\t" + myThief.getHp()
@@ -117,9 +120,17 @@ public class Menu {
                 // Last exit option for total system shutdown
 
                 case "0":
+                    myCharacterData.saveFunc("characterData");
+                    clearWindow();
+                    System.out.println("Saving and exiting...");
+                    Thread.sleep(2000);
                     System.exit(0);
                     break;
                 case "EXIT":
+                    myCharacterData.saveFunc("characterData");
+                    clearWindow();
+                    System.out.println("Saving and exiting...");
+                    Thread.sleep(2000);
                     System.exit(0);
                     break;
 
@@ -145,6 +156,7 @@ public class Menu {
         String second = "2";
         String third = "3";
         String classPreviewString = "";
+        validName = false;
 
         while (menuSecondPhase) {
 
@@ -183,21 +195,21 @@ public class Menu {
                     first = "X";
                     second = "2";
                     third = "3";
-                    classPreviewString = myKnight.previewLogoKnight();
+                    classPreviewString = myKnight.previewLogo();
                     clearWindow();
                     break;
                 case "2":
                     first = "1";
                     second = "X";
                     third = "3";
-                    classPreviewString = myWizard.previewLogoWizard();
+                    classPreviewString = myWizard.previewLogo();
                     clearWindow();
                     break;
                 case "3":
                     first = "1";
                     second = "2";
                     third = "X";
-                    classPreviewString = myThief.previewLogoThief();
+                    classPreviewString = myThief.previewLogo();
                     clearWindow();
                     break;
 
@@ -205,40 +217,104 @@ public class Menu {
 
                 // Object validation
                 case "X":
-                    menuFirstPhase = true;
-                    menuSecondPhase = false;
+
                     if (first.equals("X")) {
                         myKnight.setName(nameToCheck);
-                        myCharacter = myKnight;
+                        boolean myBool = myCharacterData.addChar(myKnight);
+                        if (myBool) {
+                            System.out.println("\nSAVED!");
+                            Thread.sleep(3000);
+                            menuFirstPhase = true;
+                            menuSecondPhase = false;
+                            runMainMenu();
+                        } else {
+                            System.out.println("\nNAME TAKEN!!");
+                            Thread.sleep(3000);
+                        }
+                        break;
                     }
                     if (second.equals("X")) {
                         myWizard.setName(nameToCheck);
-                        myCharacter = myWizard;
+                        boolean myBool = myCharacterData.addChar(myWizard);
+                        if (myBool) {
+                            System.out.println("\nSAVED!!");
+                            Thread.sleep(3000);
+                            menuFirstPhase = true;
+                            menuSecondPhase = false;
+                            runMainMenu();
+                        } else {
+                            System.out.println("\nNAME TAKEN!!");
+                            Thread.sleep(2000);
+                        }
+                        break;
                     }
                     if (third.equals("X")) {
                         myThief.setName(nameToCheck);
-                        myCharacter = myThief;
+                        boolean myBool = myCharacterData.addChar(myThief);
+                        if (myBool) {
+                            System.out.println("\nSAVED!");
+                            Thread.sleep(3000);
+                            menuFirstPhase = true;
+                            menuSecondPhase = false;
+                            runMainMenu();
+                        } else {
+                            System.out.println("\nNAME TAKEN!");
+                            Thread.sleep(3000);
+                        }
+                        break;
+                    } else {
+                        System.out.println("\nCHOOSE CLASS!");
+                        Thread.sleep(3000);
                     }
                     clearWindow();
-                    runMainMenu();
                     break;
                 case "SUBMIT":
-                    menuFirstPhase = true;
-                    menuSecondPhase = false;
+
                     if (first.equals("X")) {
                         myKnight.setName(nameToCheck);
-                        myCharacter = myKnight;
+                        boolean myBool = myCharacterData.addChar(myKnight);
+                        if (myBool) {
+                            System.out.println("\nSAVED!");
+                            Thread.sleep(3000);
+                            menuFirstPhase = true;
+                            menuSecondPhase = false;
+                        } else {
+                            System.out.println("\nNAME TAKEN!");
+                        }
+
+                        break;
                     }
                     if (second.equals("X")) {
                         myWizard.setName(nameToCheck);
-                        myCharacter = myWizard;
+                        boolean myBool = myCharacterData.addChar(myWizard);
+                        if (myBool) {
+                            System.out.println("\nSAVED!");
+                            Thread.sleep(3000);
+                            menuFirstPhase = true;
+                            menuSecondPhase = false;
+                        } else {
+                            System.out.println("\nNAME TAKEN!");
+                        }
+                        break;
                     }
                     if (third.equals("X")) {
                         myThief.setName(nameToCheck);
-                        myCharacter = myThief;
+                        boolean myBool = myCharacterData.addChar(myThief);
+                        if (myBool) {
+                            System.out.println("\nSAVED!");
+                            Thread.sleep(3000);
+                            menuFirstPhase = true;
+                            menuSecondPhase = false;
+                        } else {
+                            System.out.println("\nNAME TAKEN!");
+                        }
+                        break;
+                    } else {
+                        clearWindow();
+                        System.out.println("\nCHOOSE CLASS!");
+                        Thread.sleep(3000);
                     }
                     clearWindow();
-                    runMainMenu();
                     break;
                 // Object validation
 
@@ -296,24 +372,38 @@ public class Menu {
 
                 // Submit cases to try the given name to check object and break loop
                 case "X":
-                    myCharacter.loadCharacterFromStorage(nameToCheck);
-                    if (myCharacter.getName().equals(nameToCheck)){
+                    myCharacter = myCharacterData.searchCharacter(nameToCheck);
+                    if (myCharacter != null) {
+                        clearWindow();
+                        System.out.println(myCharacter.previewLogo());
+                        System.out.println("\nPress any key to continue...");
+                        scanner.nextLine();
                         menuFirstPhase = false;
                         menuSecondPhase = false;
                         menuThirdPhase = true;
                         clearWindow();
                         thirdMenuGameLoader();
+                    } else {
+                        System.out.println("\nCharacter doesn't exist!");
+                        Thread.sleep(3000);
                     }
                     clearWindow();
                     break;
                 case "SUBMIT":
-                    myCharacter.loadCharacterFromStorage(nameToCheck);
-                    if (myCharacter.getName().equals(nameToCheck)){
+                    myCharacter = myCharacterData.searchCharacter(nameToCheck);
+                    if (myCharacter != null) {
+                        clearWindow();
+                        System.out.println(myCharacter.previewLogo());
+                        System.out.println("\nPress any key to continue...");
+                        scanner.nextLine();
                         menuFirstPhase = false;
                         menuSecondPhase = false;
                         menuThirdPhase = true;
                         clearWindow();
                         thirdMenuGameLoader();
+                    } else {
+                        System.out.println("\nCharacter doesn't exist!");
+                        Thread.sleep(3000);
                     }
                     clearWindow();
                     break;
@@ -386,8 +476,6 @@ public class Menu {
 
 
             String thirdPhaseInput = scanner.nextLine().toUpperCase();
-            if (!thirdPhaseInput.equals("")) {
-            }
 
             switch (thirdPhaseInput) {
 
@@ -547,5 +635,77 @@ public class Menu {
     // Erases all text in terminal based on system and environment
     private void clearWindow() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
+
+    public boolean isMenuFirstPhase() {
+        return menuFirstPhase;
+    }
+
+    public void setMenuFirstPhase(boolean menuFirstPhase) {
+        this.menuFirstPhase = menuFirstPhase;
+    }
+
+    public boolean isMenuSecondPhase() {
+        return menuSecondPhase;
+    }
+
+    public void setMenuSecondPhase(boolean menuSecondPhase) {
+        this.menuSecondPhase = menuSecondPhase;
+    }
+
+    public boolean isMenuThirdPhase() {
+        return menuThirdPhase;
+    }
+
+    public void setMenuThirdPhase(boolean menuThirdPhase) {
+        this.menuThirdPhase = menuThirdPhase;
+    }
+
+    public Character getMyCharacter() {
+        return myCharacter;
+    }
+
+    public void setMyCharacter(Character myCharacter) {
+        this.myCharacter = myCharacter;
+    }
+
+    public Knight getMyKnight() {
+        return myKnight;
+    }
+
+    public void setMyKnight(Knight myKnight) {
+        this.myKnight = myKnight;
+    }
+
+    public Wizard getMyWizard() {
+        return myWizard;
+    }
+
+    public void setMyWizard(Wizard myWizard) {
+        this.myWizard = myWizard;
+    }
+
+    public Thief getMyThief() {
+        return myThief;
+    }
+
+    public void setMyThief(Thief myThief) {
+        this.myThief = myThief;
+    }
+
+    public CollectionOfCharacters getMyCharacterData() {
+        return myCharacterData;
+    }
+
+    public void setMyCharacterData(CollectionOfCharacters myCharacterData) {
+        this.myCharacterData = myCharacterData;
+    }
+
+    public Adventure getMyAdventure() {
+        return myAdventure;
+    }
+
+    public void setMyAdventure(Adventure myAdventure) {
+        this.myAdventure = myAdventure;
     }
 }

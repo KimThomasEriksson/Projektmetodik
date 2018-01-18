@@ -194,4 +194,37 @@ public class RandGenerator {
 
         return treasureTotalWorth;
     }
+
+    public static boolean isAdditionalMonster() {
+        return additionalMonster;
+    }
+
+    public static void setAdditionalMonster(boolean additionalMonster) {
+        RandGenerator.additionalMonster = additionalMonster;
+    }
+
+    public static boolean isFirstMonster() {
+        return firstMonster;
+    }
+
+    public static void setFirstMonster(boolean firstMonster) {
+        RandGenerator.firstMonster = firstMonster;
+    }
+
+    public static int getLevel3MonsterLimit() {
+        return level3MonsterLimit;
+    }
+
+    public static void setLevel3MonsterLimit(int level3MonsterLimit) {
+        RandGenerator.level3MonsterLimit = level3MonsterLimit;
+    }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public static void setCounter(int counter) {
+        RandGenerator.counter = counter;
+    }
+
 }

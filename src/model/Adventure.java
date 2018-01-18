@@ -1,9 +1,11 @@
 package model;
+
 import model.Character.Character;
 import model.Monster.Monster;
 import view.Combat;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Adventure {
 
@@ -15,32 +17,32 @@ public class Adventure {
     ArrayList<Monster> monsterToFight;
     private Room rooms;
 
-    public Adventure(int level,int startPosition) {
+    public Adventure(int level, int startPosition) {
 
         this.level = level;
-        this.startPosition=startPosition;
+        this.startPosition = startPosition;
         getStartingPositions();
 
 
-        this.rooms = new Room(startPositionX,startPositionY,level);
+        this.rooms = new Room(startPositionX, startPositionY, level);
 
     }
 
-    public void flee(){
+    public void flee() {
         String[][] room;
-        room=rooms.getRooms();
-        room[rooms.getOldPlayerPositionX()][rooms.getOldPlayerPositionY()]=rooms.getPlayerPosition();
+        room = rooms.getRooms();
+        room[rooms.getOldPlayerPositionX()][rooms.getOldPlayerPositionY()] = rooms.getPlayerPosition();
 
         rooms.setRooms(room);
     }
 
-    public void startFight(){
+    public void startFight() {
 
-        this.monsterToFight=this.rooms.getMonstersToFight();
+        this.monsterToFight = this.rooms.getMonstersToFight();
         Combat combat = new Combat();
-        for (int i = 0; i < this.monsterToFight.size(); i++){
+        for (int i = 0; i < this.monsterToFight.size(); i++) {
 
-            combat.combatStart(this.monsterToFight.get(i),this.myCharacter,this.rooms);
+            combat.combatStart(this.monsterToFight.get(i), this.myCharacter, this.rooms);
 
 
         }
@@ -48,47 +50,47 @@ public class Adventure {
 
     }
 
-    public void makeAMove(String direction){
-        Boolean fight=false;
+    public void makeAMove(String direction) {
+        Boolean fight = false;
 
 
-        if(direction.equals("W")){
-            fight=this.rooms.moveUp();
+        if (direction.equals("W")) {
+            fight = this.rooms.moveUp();
 
-            if(fight=true){
+            if (fight = true) {
                 startFight();
             }
 
 
         }
 
-        if(direction.equals("S")){
+        if (direction.equals("S")) {
 
-            fight=this.rooms.moveDown();
+            fight = this.rooms.moveDown();
 
-            if(fight=true){
+            if (fight = true) {
                 startFight();
             }
 
 
         }
 
-        if(direction.equals("A")){
+        if (direction.equals("A")) {
 
-            fight=this.rooms.moveLeft();
+            fight = this.rooms.moveLeft();
 
-            if(fight=true){
+            if (fight = true) {
                 startFight();
             }
 
 
         }
 
-        if(direction.equals("D")){
+        if (direction.equals("D")) {
 
-            fight=this.rooms.moveRight();
+            fight = this.rooms.moveRight();
 
-            if(fight=true){
+            if (fight = true) {
                 startFight();
             }
 
@@ -102,7 +104,7 @@ public class Adventure {
 
 
     public void setMyCharacter(Character myCharacter) {
-        this.myCharacter =new Character();
+        this.myCharacter = new Character();
         this.myCharacter = myCharacter;
     }
 
@@ -117,10 +119,10 @@ public class Adventure {
             3XX4
 
          */
-    public void getStartingPositions(){
+    public void getStartingPositions() {
 
         //level 1= 4x4 rooms
-        if(this.level==1) {
+        if (this.level == 1) {
             if (this.startPosition == 1) {
                 this.startPositionX = 0;
                 this.startPositionY = 0;
@@ -143,58 +145,118 @@ public class Adventure {
 
             }
         }
-            //level 2= 5x5 rooms
-        if(this.level==2){
-            if(this.startPosition==1){
-                this.startPositionX=0;
-                this.startPositionY=0;
+        //level 2= 5x5 rooms
+        if (this.level == 2) {
+            if (this.startPosition == 1) {
+                this.startPositionX = 0;
+                this.startPositionY = 0;
 
 
             }
-            if(this.startPosition==2){
-                this.startPositionX=0;
-                this.startPositionY=4;
+            if (this.startPosition == 2) {
+                this.startPositionX = 0;
+                this.startPositionY = 4;
 
             }
-            if(this.startPosition==3){
-                this.startPositionX=4;
-                this.startPositionY=0;
+            if (this.startPosition == 3) {
+                this.startPositionX = 4;
+                this.startPositionY = 0;
 
             }
-            if(this.startPosition==4){
-                this.startPositionX=4;
-                this.startPositionY=4;
+            if (this.startPosition == 4) {
+                this.startPositionX = 4;
+                this.startPositionY = 4;
 
             }
         }
 
         //level 3= 8x8 rooms
-        if(this.level==3){
-            if(this.startPosition==1){
-                this.startPositionX=0;
-                this.startPositionY=0;
+        if (this.level == 3) {
+            if (this.startPosition == 1) {
+                this.startPositionX = 0;
+                this.startPositionY = 0;
 
 
             }
-            if(this.startPosition==2){
-                this.startPositionX=0;
-                this.startPositionY=7;
+            if (this.startPosition == 2) {
+                this.startPositionX = 0;
+                this.startPositionY = 7;
 
             }
-            if(this.startPosition==3){
-                this.startPositionX=7;
-                this.startPositionY=0;
+            if (this.startPosition == 3) {
+                this.startPositionX = 7;
+                this.startPositionY = 0;
 
             }
-            if(this.startPosition==4){
-                this.startPositionX=7;
-                this.startPositionY=7;
+            if (this.startPosition == 4) {
+                this.startPositionX = 7;
+                this.startPositionY = 7;
 
             }
         }
-
-
     }
 
+    public int getLevel() {
+        return level;
+    }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getStartPosition() {
+        return startPosition;
+    }
+
+    public void setStartPosition(int startPosition) {
+        this.startPosition = startPosition;
+    }
+
+    public int getStartPositionX() {
+        return startPositionX;
+    }
+
+    public void setStartPositionX(int startPositionX) {
+        this.startPositionX = startPositionX;
+    }
+
+    public int getStartPositionY() {
+        return startPositionY;
+    }
+
+    public void setStartPositionY(int startPositionY) {
+        this.startPositionY = startPositionY;
+    }
+
+    public ArrayList<Monster> getMonsterToFight() {
+        return monsterToFight;
+    }
+
+    public void setMonsterToFight(ArrayList<Monster> monsterToFight) {
+        this.monsterToFight = monsterToFight;
+    }
+
+    public void setRooms(Room rooms) {
+        this.rooms = rooms;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Adventure)) return false;
+        Adventure adventure = (Adventure) o;
+        return getLevel() == adventure.getLevel() &&
+                getStartPosition() == adventure.getStartPosition() &&
+                getStartPositionX() == adventure.getStartPositionX() &&
+                getStartPositionY() == adventure.getStartPositionY() &&
+                Objects.equals(getMyCharacter(), adventure.getMyCharacter()) &&
+                Objects.equals(getMonsterToFight(), adventure.getMonsterToFight()) &&
+                Objects.equals(getRooms(), adventure.getRooms());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getLevel(), getMyCharacter(), getStartPosition(), getStartPositionX(), getStartPositionY(), getMonsterToFight(), getRooms());
+    }
 }

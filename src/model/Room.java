@@ -15,8 +15,6 @@ public class Room {
     private int oldPlayerPositionY;
 
 
-
-
     public Room(int playerPositionX, int playerPositionY, int level) {
         this.playerPositionX = playerPositionX;
         this.playerPositionY = playerPositionY;

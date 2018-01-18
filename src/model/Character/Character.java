@@ -2,10 +2,12 @@ package model.Character;
 
 import model.Monster.Monster;
 
+import java.io.Serializable;
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Character {
+public class Character implements Serializable,CharacterInterface{
     private String classType;
     private String name;
     private int initiative;
@@ -39,17 +41,6 @@ public class Character {
     }
 
     public Character() {
-        this.classType = "";
-        this.name = "";
-        this.initiative = 0;
-        this.hp = 0;
-        this.attack = 0;
-        this.agility = 0;
-        this.coin = 0;
-        this.coinBag = 0;
-        this.goldJewelry = 0;
-        this.gemstone = 0;
-        this.treasureBox = 0;
     }
 
     // used from view, searches and loads saved character
@@ -59,6 +50,124 @@ public class Character {
 
         // search storage for match and return the right object with given name
 
+        return null;
+    }
+
+    public void attackMonster(Monster monster){
+        int attackDamage = 0;
+        int monsterAgility = 0;
+
+        //Rullar varje tärning och adderar det till attackdamage variablen
+        for (int i = 1; i <= this.attack; i++){
+            attackDamage = ThreadLocalRandom.current().nextInt(1, 6 + 1) + attackDamage;
+        }
+
+        //variabel för att spara monstrets agilitiy roll
+        for (int i = 1; i <= monster.getAgility(); i++){
+            monsterAgility = ThreadLocalRandom.current().nextInt(1, 6 + 1) + monsterAgility ;
+        }
+
+        //bara development syfte för att se rollsen
+        System.out.println("Your attack: " + attackDamage);
+        System.out.println("Monster agility: " + monsterAgility);
+        System.out.println(" ");
+
+        //kollar om spelarens attack är högre än monstrets agility, applicerar thiefs passive om spelaren är en
+        if (attackDamage>monsterAgility){
+
+            if(this.classType.equals("Thief")){
+                int critChance = ThreadLocalRandom.current().nextInt(1,4 + 1);
+                if(critChance == 1){
+                    System.out.println("You crit the " + monster.getClassType());
+                    monster.setHp(monster.getHp()- 2);
+                }
+            }
+            else {
+
+                System.out.println("You attack the " + monster.getClassType());
+                monster.takeDamage();
+            }
+        }
+        else if (attackDamage < monsterAgility){
+            System.out.println("Your attack missed! ");
+        }
+    }
+    //Tar in ett monster objekt och använder dens attribut och funktioner
+    public void defendAttack(Monster monster){
+
+        //Variabler för att komma ihåg spelarens smidighets roll och monstrets attack roll
+        int monsterAttackDamage = 0;
+        int playerAgility = 0;
+
+
+        //rolls för monstrets skada och spelarens agilitiy
+        for (int i = 1; i <=monster.getAttack(); i++){
+            monsterAttackDamage = ThreadLocalRandom.current().nextInt(1, 6 + 1) + monsterAttackDamage;
+        }
+
+
+        for (int i = 1; i <= this.agility; i++){
+            playerAgility  = ThreadLocalRandom.current().nextInt(1, 6 + 1) + playerAgility;
+        }
+        System.out.println(" ");
+
+        //Kollar om monstrets attack träffar eller inte, om den träffar kollar den om spelaren är en knight och om detta är första slaget
+        if(monsterAttackDamage<playerAgility){
+            System.out.println(monster.getClassType() + "s attack missed!" + "\n");
+        }
+        else if(monsterAttackDamage>playerAgility){
+            if(firstHit && this.classType.equals("Knight")){
+                System.out.println("You block " + monster.getClassType() + " attack");
+                firstHit = false;
+            }
+            else {
+                System.out.println(monster.getClassType() + "s hit!");
+                this.hp = this.hp - 1;
+            }
+        }
+    }
+    //Returnar true om spelaren kan fly och false om inte
+    public boolean flee(){
+        Random rand = new Random();
+        //wizards passiva ger 80% till att fly
+        if (this.classType.equals("Wizard")){
+            if (rand.nextInt(100)<80){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else {
+            if (rand.nextInt(100) < (this.agility * 10)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "classType='" + classType + '\'' +
+                ", name='" + name + '\'' +
+                ", initiative=" + initiative +
+                ", hp=" + hp +
+                ", attack=" + attack +
+                ", agility=" + agility +
+                ", coin=" + coin +
+                ", coinBag=" + coinBag +
+                ", goldJewelry=" + goldJewelry +
+                ", gemstone=" + gemstone +
+                ", treasureBox=" + treasureBox +
+                ", firstHit=" + firstHit +
+                '}';
+    }
+
+
+    @Override
+    public String previewLogo() {
         return null;
     }
 
@@ -175,97 +284,32 @@ public class Character {
         this.classType = classType;
     }
 
-    public void attackMonster(Monster monster){
-        int attackDamage = 0;
-        int monsterAgility = 0;
-
-        //Rullar varje tärning och adderar det till attackdamage variablen
-        for (int i = 1; i <= this.attack; i++){
-            attackDamage = ThreadLocalRandom.current().nextInt(1, 6 + 1) + attackDamage;
-        }
-
-        //variabel för att spara monstrets agilitiy roll
-        for (int i = 1; i <= monster.getAgility(); i++){
-            monsterAgility = ThreadLocalRandom.current().nextInt(1, 6 + 1) + monsterAgility ;
-        }
-
-        //bara development syfte för att se rollsen
-        System.out.println("Your attack: " + attackDamage);
-        System.out.println("Monster agility: " + monsterAgility);
-        System.out.println(" ");
-
-        //kollar om spelarens attack är högre än monstrets agility, applicerar thiefs passive om spelaren är en
-        if (attackDamage>monsterAgility){
-
-            if(this.classType.equals("Thief")){
-                int critChance = ThreadLocalRandom.current().nextInt(1,4 + 1);
-                if(critChance == 1){
-                    System.out.println("You crit the " + monster.getClassType());
-                    monster.setHp(monster.getHp()- 2);
-                }
-            }
-            else {
-
-                System.out.println("You attack the " + monster.getClassType());
-                monster.takeDamage();
-            }
-        }
-        else if (attackDamage < monsterAgility){
-            System.out.println("Your attack missed! ");
-        }
+    public boolean isFirstHit() {
+        return firstHit;
     }
-    //Tar in ett monster objekt och använder dens attribut och funktioner
-    public void defendAttack(Monster monster){
 
-        //Variabler för att komma ihåg spelarens smidighets roll och monstrets attack roll
-        int monsterAttackDamage = 0;
-        int playerAgility = 0;
-
-
-        //rolls för monstrets skada och spelarens agilitiy
-        for (int i = 1; i <=monster.getAttack(); i++){
-            monsterAttackDamage = ThreadLocalRandom.current().nextInt(1, 6 + 1) + monsterAttackDamage;
-        }
-
-
-        for (int i = 1; i <= this.agility; i++){
-            playerAgility  = ThreadLocalRandom.current().nextInt(1, 6 + 1) + playerAgility;
-        }
-        System.out.println(" ");
-
-        //Kollar om monstrets attack träffar eller inte, om den träffar kollar den om spelaren är en knight och om detta är första slaget
-        if(monsterAttackDamage<playerAgility){
-            System.out.println(monster.getClassType() + "s attack missed!" + "\n");
-        }
-        else if(monsterAttackDamage>playerAgility){
-            if(firstHit && this.classType.equals("Knight")){
-                System.out.println("You block " + monster.getClassType() + " attack");
-                firstHit = false;
-            }
-            else {
-                System.out.println(monster.getClassType() + "s hit!");
-                this.hp = this.hp - 1;
-            }
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Character)) return false;
+        Character character = (Character) o;
+        return getInitiative() == character.getInitiative() &&
+                getHp() == character.getHp() &&
+                getAttack() == character.getAttack() &&
+                getAgility() == character.getAgility() &&
+                getCoin() == character.getCoin() &&
+                getCoinBag() == character.getCoinBag() &&
+                getGoldJewelry() == character.getGoldJewelry() &&
+                getGemstone() == character.getGemstone() &&
+                getTreasureBox() == character.getTreasureBox() &&
+                isFirstHit() == character.isFirstHit() &&
+                Objects.equals(getClassType(), character.getClassType()) &&
+                Objects.equals(getName(), character.getName());
     }
-    //Returnar true om spelaren kan fly och false om inte
-    public boolean flee(){
-        Random rand = new Random();
-        //wizards passiva ger 80% till att fly
-        if (this.classType.equals("Wizard")){
-            if (rand.nextInt(100)<80){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        else {
-            if (rand.nextInt(100) < (this.agility * 10)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getClassType(), getName(), getInitiative(), getHp(), getAttack(), getAgility(), getCoin(), getCoinBag(), getGoldJewelry(), getGemstone(), getTreasureBox(), isFirstHit());
     }
 }
