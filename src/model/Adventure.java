@@ -91,6 +91,7 @@ public class Adventure {
         String[][] room;
         room=rooms.getRooms();
         room[rooms.getOldPlayerPositionX()][rooms.getOldPlayerPositionY()]=rooms.getPlayerPosition();
+        rooms.flee();
 
         rooms.setRooms(room);
     }
@@ -101,7 +102,7 @@ public class Adventure {
         Combat combat = new Combat();
         for (int i = 0; i < this.monsterToFight.size(); i++){
 
-            combat.combatStart(this.monsterToFight.get(i),this.menu.getMyCharacter(),rooms);
+            combat.combatStart(this.monsterToFight.get(i),this.menu.getMyCharacter(),this.rooms);
 
 
         }

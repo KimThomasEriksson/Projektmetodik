@@ -89,6 +89,12 @@ public class Combat {
                 //kollar om monstret dog förra rundan
                 if (monster.getHp() <= 0) {
                     System.out.println(monster.getClassType() + " died!");
+                    try {
+                        Thread.sleep(1500);
+                    }
+                    catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
                     break;
                 }
 
