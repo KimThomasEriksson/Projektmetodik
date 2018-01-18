@@ -15,12 +15,15 @@ public class Combat {
     private int currentTurn;
     private int counter = 0;
 
-    public void combatStart(Monster monster, Character character, Room rooms) {
+    public void combatStart(Monster monster, Character character, Room rooms) throws IOException, InterruptedException {
         boolean cont = false;
         boolean loop = true;
         Scanner scan = new Scanner(System.in);
         int playerInitiativeRoll = 0;
         int monsterInitiativeRoll = 0;
+        clearWindow();
+        rooms.printRoom();
+
         System.out.println("a " + monster.getClassType() + " has appeared!");
 
 
@@ -84,16 +87,12 @@ public class Combat {
                 if (counter == 2){
                     try {
                         Thread.sleep(2000);
-                        clearWindow();
-                        rooms.printRoom();
                         counter = 0;
                     }
                     catch(InterruptedException e){
                         e.printStackTrace();
                     }
-                    catch(IOException e1){
-                        e1.printStackTrace();
-                    }
+
                 }
                 //kollar om spelaren dog den förra rundan
                 if (character.getHp() <= 0) {
@@ -106,7 +105,7 @@ public class Combat {
                 if (monster.getHp() <= 0) {
                     System.out.println(monster.getClassType() + " died!");
                     try {
-                        Thread.sleep(1500);
+                        Thread.sleep(2500);
                     }
                     catch(InterruptedException e){
                         e.printStackTrace();

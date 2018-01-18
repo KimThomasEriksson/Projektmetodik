@@ -238,7 +238,7 @@ public class Menu {
                         boolean myBool = myCharacterData.addChar(myKnight);
                         if (myBool) {
                             System.out.println("\n\nSAVED!");
-                            Thread.sleep(3000);
+                            Thread.sleep(2000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                             runMainMenu();
@@ -253,7 +253,7 @@ public class Menu {
                         boolean myBool = myCharacterData.addChar(myWizard);
                         if (myBool) {
                             System.out.println("\n\nSAVED!!");
-                            Thread.sleep(3000);
+                            Thread.sleep(2000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                             runMainMenu();
@@ -268,7 +268,7 @@ public class Menu {
                         boolean myBool = myCharacterData.addChar(myThief);
                         if (myBool) {
                             System.out.println("\n\nSAVED!");
-                            Thread.sleep(3000);
+                            Thread.sleep(2000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                             runMainMenu();
@@ -289,7 +289,7 @@ public class Menu {
                         boolean myBool = myCharacterData.addChar(myKnight);
                         if (myBool) {
                             System.out.println("\n\nSAVED!");
-                            Thread.sleep(3000);
+                            Thread.sleep(2000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                         } else {
@@ -304,7 +304,7 @@ public class Menu {
                         boolean myBool = myCharacterData.addChar(myWizard);
                         if (myBool) {
                             System.out.println("\n\nSAVED!");
-                            Thread.sleep(3000);
+                            Thread.sleep(2000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                         } else {
@@ -318,7 +318,7 @@ public class Menu {
                         boolean myBool = myCharacterData.addChar(myThief);
                         if (myBool) {
                             System.out.println("\n\nSAVED!");
-                            Thread.sleep(3000);
+                            Thread.sleep(2000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                         } else {

@@ -96,7 +96,7 @@ public class Adventure {
         rooms.setRooms(room);
     }
 
-    public void startFight(){
+    public void startFight() throws IOException, InterruptedException {
 
         this.monsterToFight=this.rooms.getMonstersToFight();
         Combat combat = new Combat();
@@ -110,7 +110,7 @@ public class Adventure {
 
     }
 
-    public void makeAMove(String direction){
+    public void makeAMove(String direction) throws IOException, InterruptedException {
         Boolean fight=false;
 
 
