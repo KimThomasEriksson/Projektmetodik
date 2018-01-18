@@ -30,6 +30,7 @@ public class Combat {
             tryToFlee = character.flee();
             if (tryToFlee) {
                 System.out.println("You fled from " + monster.getClassType());
+                rooms.flee();
                 cont = false;
             } else {
                 System.out.println("You've failed your escape ");
@@ -96,7 +97,7 @@ public class Combat {
 
                         if (flee) {
                             System.out.println("You fled! ");
-
+                            rooms.flee();
                             break;
                         } else {
                             System.out.println("You've failed your escape. ");
