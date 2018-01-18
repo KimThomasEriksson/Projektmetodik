@@ -59,10 +59,11 @@ public class Combat {
             for (int i = 1; i <= character.getInitiative(); i++) {
                 playerInitiativeRoll = ThreadLocalRandom.current().nextInt(1, 6 + 1) + playerInitiativeRoll;
             }
-
+            System.out.println("------------------------------");
             System.out.println("You rolled... " + playerInitiativeRoll);
             System.out.println(monster.getClassType() + " rolled... " + monsterInitiativeRoll);
-
+            System.out.println("------------------------------");
+            System.out.println("");
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
