@@ -52,22 +52,18 @@ public class RandGenerator {
 
         if(spawnSpider){
             Monster giantSpider = new GiantSpider();
-            System.out.println("Spider ska spawna");
             listOfMonsters.add(giantSpider);
         }
         if(spawnSkeleton){
             Monster skeleton = new Skeleton();
-            System.out.println("Skelett ska spawna");
             listOfMonsters.add(skeleton);
         }
         if(spawnOrc){
             Monster orc = new Orc();
-            System.out.println("Orc ska spawna");
             listOfMonsters.add(orc);
         }
         if(spawnTroll){
             Monster troll = new Troll();
-            System.out.println("Troll ska spawna");
             listOfMonsters.add(troll);
         }
 
@@ -75,7 +71,7 @@ public class RandGenerator {
 
     }
 
-    //genererar/spawn slumpmässiga monster mellan 0- 100 i boundery.
+    //genererar/spawn slumpmässiga monster mellan 0 - 100 i boundery.
     private static boolean spawnMonster(int level, int chance) {
         if (firstMonster || additionalMonster) {
             Random rand = new Random();
@@ -195,7 +191,7 @@ public class RandGenerator {
             }
         }
         catch(InterruptedException e){
-            System.out.println("tråd interruptad");
+            e.printStackTrace();
         }
 
         return treasureTotalWorth;

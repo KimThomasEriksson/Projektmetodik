@@ -81,6 +81,10 @@ public class Character implements Serializable,CharacterInterface{
                     System.out.println("You crit the " + monster.getClassType());
                     monster.setHp(monster.getHp()- 2);
                 }
+                else{
+                    System.out.println("You attack the " + monster.getClassType());
+                    monster.takeDamage();
+                }
             }
             else {
 
