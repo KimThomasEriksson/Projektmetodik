@@ -18,6 +18,8 @@ public class Combat {
         int playerInitiativeRoll = 0;
         int monsterInitiativeRoll = 0;
 
+        character.setFirstHit(true);
+
         //rollar initiative för att se om monstret eller spelaren ska börja
         for (int i = 1; i <=monster.getInitiative(); i++){
             monsterInitiativeRoll = ThreadLocalRandom.current().nextInt(1, 6 + 1) + monsterInitiativeRoll;
@@ -35,7 +37,6 @@ public class Combat {
             System.out.println("You go first! ");
             this.currentTurn = 1;
         }
-
         else {
             System.out.println(monster.getClassType() + " goes first! ");
             this.currentTurn = 0;
