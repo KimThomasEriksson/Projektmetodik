@@ -32,8 +32,8 @@ public class Menu {
     private CollectionOfCharacters myCharacterData;
     private Adventure myAdventure;
 
-    public Menu() {
-
+    public Menu() throws IOException, InterruptedException {
+        clearWindow();
         this.scanner = new Scanner(System.in);
         this.menuFirstPhase = true;
         this.menuSecondPhase = false;

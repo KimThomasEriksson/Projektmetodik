@@ -30,7 +30,7 @@ public  class Text {
             time++;
 
         }
-
+        clearScreen();
 
     }
 
