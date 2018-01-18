@@ -16,25 +16,34 @@ public class Combat {
 
     public void combatStart(Monster monster, Character character, Room rooms) {
         boolean cont = false;
+        boolean loop = true;
         Scanner scan = new Scanner(System.in);
         int playerInitiativeRoll = 0;
         int monsterInitiativeRoll = 0;
         System.out.println("a " + monster.getClassType() + " has appeared!");
 
         System.out.println("Do you want to (A)ttack it or try to (F)lee ?  ");
-        String choice = scan.nextLine();
-        if (choice.equals("A")) {
-            cont = true;
-        } else if (choice.equals("F")) {
-            boolean tryToFlee;
-            tryToFlee = character.flee();
-            if (tryToFlee) {
-                System.out.println("You fled from " + monster.getClassType());
-                rooms.flee();
-                cont = false;
-            } else {
-                System.out.println("You've failed your escape ");
+        String choice = scan.nextLine().toUpperCase();
+        while(loop) {
+            if (choice.equals("A")) {
                 cont = true;
+                loop = false;
+            } else if (choice.equals("F")) {
+                boolean tryToFlee;
+                tryToFlee = character.flee();
+                if (tryToFlee) {
+                    System.out.println("You fled from " + monster.getClassType());
+                    rooms.flee();
+                    cont = false;
+                    loop = false;
+                } else {
+                    System.out.println("You've failed your escape ");
+                    cont = true;
+                    loop = false;
+                }
+            }
+            else {
+                System.out.println("You need to choose between (A)ttack or (F)lee ");
             }
         }
         if (cont) {
