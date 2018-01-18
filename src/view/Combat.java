@@ -22,9 +22,10 @@ public class Combat {
         int monsterInitiativeRoll = 0;
         System.out.println("a " + monster.getClassType() + " has appeared!");
 
-        System.out.println("Do you want to (A)ttack it or try to (F)lee ?  ");
-        String choice = scan.nextLine().toUpperCase();
+
         while(loop) {
+            System.out.println("Do you want to (A)ttack it or try to (F)lee ?  ");
+            String choice = scan.nextLine().toUpperCase();
             if (choice.equals("A")) {
                 cont = true;
                 loop = false;

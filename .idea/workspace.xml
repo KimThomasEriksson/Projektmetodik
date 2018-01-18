@@ -4,9 +4,7 @@
     <list default="true" id="a3110a38-6cd7-452f-9df5-be4dca78e472" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/controller/RandGenerator.java" afterPath="$PROJECT_DIR$/src/controller/RandGenerator.java" />
       <change beforePath="$PROJECT_DIR$/src/model/Adventure.java" afterPath="$PROJECT_DIR$/src/model/Adventure.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Character/Character.java" afterPath="$PROJECT_DIR$/src/model/Character/Character.java" />
       <change beforePath="$PROJECT_DIR$/src/view/Combat.java" afterPath="$PROJECT_DIR$/src/view/Combat.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -116,14 +114,14 @@
       <file leaf-file-name="Combat.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/Combat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            <state relative-caret-position="226">
+              <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4264#4265#0" expanded="true" />
-                <element signature="e#4298#4299#0" expanded="true" />
-                <element signature="e#4349#4350#0" expanded="true" />
-                <element signature="e#4395#4396#0" expanded="true" />
+                <element signature="e#4692#4693#0" expanded="true" />
+                <element signature="e#4726#4727#0" expanded="true" />
+                <element signature="e#4777#4778#0" expanded="true" />
+                <element signature="e#4823#4824#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1361,11 +1359,32 @@
       <option name="project" value="LOCAL" />
       <updated>1516276489609</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="itemGenerator tar nu in ett character objekt">
+      <created>1516280535875</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1516280535875</updated>
+    </task>
+    <task id="LOCAL-00014" summary="itemGenerator tar nu in ett character objekt">
+      <created>1516280699616</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1516280699616</updated>
+    </task>
+    <task id="LOCAL-00015" summary="itemGenerator tar nu in ett character objekt">
+      <created>1516280883111</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1516280883111</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4022000" />
+    <option name="totallyTimeSpent" value="4627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1956,14 +1975,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Combat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="226">
+          <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4264#4265#0" expanded="true" />
-            <element signature="e#4298#4299#0" expanded="true" />
-            <element signature="e#4349#4350#0" expanded="true" />
-            <element signature="e#4395#4396#0" expanded="true" />
+            <element signature="e#4692#4693#0" expanded="true" />
+            <element signature="e#4726#4727#0" expanded="true" />
+            <element signature="e#4777#4778#0" expanded="true" />
+            <element signature="e#4823#4824#0" expanded="true" />
           </folding>
         </state>
       </provider>
