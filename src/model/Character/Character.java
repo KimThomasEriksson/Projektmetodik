@@ -20,6 +20,10 @@ public class Character implements Serializable,CharacterInterface{
     private int gemstone;
     private int treasureBox;
     private boolean firstHit = true;
+    private int giantSpidersSlain;
+    private int skeletonsSlain;
+    private int orcSlain;
+    private int trollSlain;
 
     //Character constructor and all get and setters.
 
@@ -205,6 +209,12 @@ public class Character implements Serializable,CharacterInterface{
 
     public int getCoin() {
         return coin;
+    }
+    public void raiseSpidersSlain() {
+        this.giantSpidersSlain+=1;
+        }
+    public void raiseSkeletonsSlain(){
+        this.skeletonsSlain+=1;
     }
 
     public void raiseCoin() {
