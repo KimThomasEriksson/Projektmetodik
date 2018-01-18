@@ -5,6 +5,7 @@ import view.Combat;
 import view.Menu;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Adventure {
 
@@ -13,19 +14,72 @@ public class Adventure {
     private int startPosition;
     private int startPositionX;
     private int startPositionY;
-    ArrayList<Monster> monsterToFight;
+    private ArrayList<Monster> monsterToFight;
     private Room rooms;
-    Menu menu;
+    private Menu menu;
+    private Scanner scanner;
 
-    public Adventure(int level, int startPosition, Menu menu) {
+
+    public Adventure(Menu menu) {
         this.menu=menu;
-        this.level = level;
-        this.startPosition=startPosition;
-        getStartingPositions();
         this.menu.setMyAdventure(this);
+        this.startPosition = this.menu.getStartingCorner();
+        this.level = this.menu.getSubmitDifficulty();
+        scanner = new Scanner(System.in);
+    }
 
-
+    public void startNewRoom(){
+        getStartingPositions();
         this.rooms = new Room(startPositionX,startPositionY,level);
+        gameRound();
+
+    }
+
+    public void gameRound(){
+
+        String w = "W";
+        String a = "A";
+        String d = "D";
+        String s = "S";
+
+        while(true){
+
+            rooms.printRoom();
+            System.out.println("Which direction do u want to go?\n\n" +
+                            "[W]Go Up\n" +
+                            "[A]Go Left\n" +
+                            "[D]Go Right\n" +
+                            "[S]Go Down\n");
+
+            String gameRoundInput = scanner.nextLine().toUpperCase();
+
+
+            switch (gameRoundInput){
+
+                case "W":
+                    makeAMove("W");
+                    break;
+                case "A":
+                    makeAMove("A");
+                    break;
+                case "D":
+                    makeAMove("D");
+                    break;
+                case "S":
+                    makeAMove("S");
+                    break;
+
+
+
+
+
+
+            }
+
+
+
+
+        }
 
     }
 
@@ -43,7 +97,7 @@ public class Adventure {
         Combat combat = new Combat();
         for (int i = 0; i < this.monsterToFight.size(); i++){
 
-            combat.combatStart(this.monsterToFight.get(i),this.myCharacter,this.rooms);
+            combat.combatStart(this.monsterToFight.get(i),this.menu.getMyCharacter(),rooms);
 
 
         }
@@ -58,7 +112,7 @@ public class Adventure {
         if(direction.equals("W")){
             fight=this.rooms.moveUp();
 
-            if(fight=true){
+            if(fight){
                 startFight();
             }
 
@@ -69,7 +123,7 @@ public class Adventure {
 
             fight=this.rooms.moveDown();
 
-            if(fight=true){
+            if(fight){
                 startFight();
             }
 
@@ -80,7 +134,7 @@ public class Adventure {
 
             fight=this.rooms.moveLeft();
 
-            if(fight=true){
+            if(fight){
                 startFight();
             }
 
@@ -91,7 +145,7 @@ public class Adventure {
 
             fight=this.rooms.moveRight();
 
-            if(fight=true){
+            if(fight){
                 startFight();
             }
 

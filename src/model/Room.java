@@ -54,7 +54,6 @@ public class Room {
 
 
     public boolean moveDown(){
-        ArrayList<Monster> listToReturn = new ArrayList<>();
         this.oldPlayerPositionX=this.playerPositionX;
         this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
@@ -88,7 +87,6 @@ public class Room {
     }
 
     public boolean moveUp(){
-        ArrayList<Monster> listToReturn = new ArrayList<>();
         this.oldPlayerPositionX=this.playerPositionX;
         this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
@@ -123,7 +121,6 @@ public class Room {
     }
 
     public boolean moveLeft(){
-        ArrayList<Monster> listToReturn = new ArrayList<>();
         this.oldPlayerPositionX=this.playerPositionX;
         this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;

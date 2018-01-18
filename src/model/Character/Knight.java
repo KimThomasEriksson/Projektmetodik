@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Knight extends Character implements Serializable {
     public Knight() {
-        super("Knight","",5,9,6,4,0,0,0,0,0);
+        super("Knight", "", 5, 9, 6, 4, 0, 0, 0, 0, 0);
 //        this.setClassType("Knight");
 //        this.setName("");
 //        this.setInitiative(5);
@@ -17,20 +17,21 @@ public class Knight extends Character implements Serializable {
 //        this.setGemstone(0);
 //        this.setTreasureBox(0);
     }
+
     //This constructor is used when we load in a character from save file.
     public Knight(String classType, String name, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {
         super(classType, name, initiative, hp, attack, agility, coin, coinBag, goldJewelry, gemstone, treasureBox);
     }
 
     //The Knights character special attack.
-    public void ShieldBlock(){
+    public void ShieldBlock() {
         //Always blocks the first attack per fight
     }
 
     // UI representation of the class with logo and attributes
 
-    public String previewLogo(){
-        return  "NAME: " + this.getName() +"\n"+
+    public String previewLogo() {
+        return "NAME: " + this.getName() + "\n" +
                 "\t\t\t\t              /\n" +
                 "KNIGHT:\t\t\t\t       ,~~   /\n" +
                 "\t\t\t\t   _  <=)  _/_\n" +
@@ -45,7 +46,6 @@ public class Knight extends Character implements Serializable {
                 "Coin: " + getCoin() + "\tCoinBag: " + getCoinBag() + "\n" +
                 "GoldJewelry: " + getGoldJewelry() + "\tGemstone: " + getGemstone();
     }
-
 
 
 }

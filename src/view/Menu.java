@@ -14,7 +14,8 @@ public class Menu {
      *  Inputs and outputs, while loops with switch cases for robust interaction for user
      *  were we also consider the way movement gets impacted.
      *  Graphical design concludes and will be developed as we go.*/
-
+    private int submitDifficulty = 0;
+    private int startingCorner = 0;
 
     private boolean menuFirstPhase;
     private boolean menuSecondPhase;
@@ -439,8 +440,7 @@ public class Menu {
         String bL = "C";
         String bR = "D";
 
-        int submitDifficulty = 0;
-        int startingCorner = 0;
+
 
         while (menuThirdPhase) {
 
@@ -707,5 +707,21 @@ public class Menu {
 
     public void setMyAdventure(Adventure myAdventure) {
         this.myAdventure = myAdventure;
+    }
+
+    public int getSubmitDifficulty() {
+        return submitDifficulty;
+    }
+
+    public void setSubmitDifficulty(int submitDifficulty) {
+        this.submitDifficulty = submitDifficulty;
+    }
+
+    public int getStartingCorner() {
+        return startingCorner;
+    }
+
+    public void setStartingCorner(int startingCorner) {
+        this.startingCorner = startingCorner;
     }
 }
