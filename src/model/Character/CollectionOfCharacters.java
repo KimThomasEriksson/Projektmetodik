@@ -69,6 +69,7 @@ public class CollectionOfCharacters implements Serializable {
         oos.writeObject(characterArrayList);
         oos.flush();
         oos.close();
+        f.close();
     }
 
     public ArrayList<Character> getCharacterArrayList() {

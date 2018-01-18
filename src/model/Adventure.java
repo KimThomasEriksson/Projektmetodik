@@ -4,6 +4,7 @@ import model.Monster.Monster;
 import view.Combat;
 import view.Menu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,14 +29,14 @@ public class Adventure {
         scanner = new Scanner(System.in);
     }
 
-    public void startNewRoom(){
+    public void startNewRoom() throws IOException, InterruptedException {
         getStartingPositions();
         this.rooms = new Room(startPositionX,startPositionY,level);
         gameRound();
 
     }
 
-    public void gameRound(){
+    public void gameRound() throws IOException, InterruptedException {
 
         String w = "W";
         String a = "A";
@@ -44,12 +45,14 @@ public class Adventure {
 
         while(true){
 
+            menu.clearWindow();
             rooms.printRoom();
             System.out.println("Which direction do u want to go?\n\n" +
                             "[W]Go Up\n" +
                             "[A]Go Left\n" +
                             "[D]Go Right\n" +
-                            "[S]Go Down\n");
+                            "[S]Go Down\n\n\n" +
+                            "\t\t\t\t[0]EXIT");
 
             String gameRoundInput = scanner.nextLine().toUpperCase();
 
@@ -69,10 +72,11 @@ public class Adventure {
                     makeAMove("S");
                     break;
 
+                case "0":
+                    menu.setMenuThirdPhase(true);
+                    menu.thirdMenuGameLoader();
 
-
-
-
+                    break;
 
             }
 

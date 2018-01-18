@@ -44,6 +44,7 @@ public class Menu {
         this.myCharacterData = new CollectionOfCharacters();
         myCharacterData.openFunc("characterData");
         this.validName = false;
+        this.myAdventure = null;
 
     }
 
@@ -65,7 +66,7 @@ public class Menu {
 
     public void runMainMenu() throws IOException, InterruptedException {
 
-
+        clearWindow();
         while (menuFirstPhase) {
 
             System.out.println("_________________________________________________" +
@@ -123,21 +124,33 @@ public class Menu {
                 case "0":
                     myCharacterData.saveFunc("characterData");
                     clearWindow();
-                    System.out.println("Saving and exiting...");
-                    Thread.sleep(2000);
+                    System.out.println("\n\nSaving and exiting.");
+                    Thread.sleep(1000);
+                    clearWindow();
+                    System.out.println("\n\nSaving and exiting..");
+                    Thread.sleep(1000);
+                    clearWindow();
+                    System.out.println("\n\nSaving and exiting...");
+                    Thread.sleep(1000);
                     System.exit(0);
                     break;
                 case "EXIT":
                     myCharacterData.saveFunc("characterData");
                     clearWindow();
-                    System.out.println("Saving and exiting...");
-                    Thread.sleep(2000);
+                    System.out.println("\n\nSaving and exiting.");
+                    Thread.sleep(1000);
+                    clearWindow();
+                    System.out.println("\n\nSaving and exiting..");
+                    Thread.sleep(1000);
+                    clearWindow();
+                    System.out.println("\n\nSaving and exiting...");
+                    Thread.sleep(1000);
                     System.exit(0);
                     break;
 
                 default:
                     clearWindow();
-                    System.out.println("Try again!");
+                    System.out.println("\n\nTry again!");
 
             }
         }
@@ -152,6 +165,7 @@ public class Menu {
 
     public void secondMenuCreation() throws IOException, InterruptedException {
 
+        clearWindow();
         String nameToCheck = "Empty";
         String first = "1";
         String second = "2";
@@ -223,14 +237,14 @@ public class Menu {
                         myKnight.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myKnight);
                         if (myBool) {
-                            System.out.println("\nSAVED!");
+                            System.out.println("\n\nSAVED!");
                             Thread.sleep(3000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                             runMainMenu();
                         } else {
-                            System.out.println("\nNAME TAKEN!!");
-                            Thread.sleep(3000);
+                            clearWindow();
+                            System.out.println("\n\nNAME TAKEN!");
                         }
                         break;
                     }
@@ -238,14 +252,14 @@ public class Menu {
                         myWizard.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myWizard);
                         if (myBool) {
-                            System.out.println("\nSAVED!!");
+                            System.out.println("\n\nSAVED!!");
                             Thread.sleep(3000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                             runMainMenu();
                         } else {
-                            System.out.println("\nNAME TAKEN!!");
-                            Thread.sleep(2000);
+                            clearWindow();
+                            System.out.println("\n\nNAME TAKEN!");
                         }
                         break;
                     }
@@ -253,21 +267,20 @@ public class Menu {
                         myThief.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myThief);
                         if (myBool) {
-                            System.out.println("\nSAVED!");
+                            System.out.println("\n\nSAVED!");
                             Thread.sleep(3000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                             runMainMenu();
                         } else {
-                            System.out.println("\nNAME TAKEN!");
-                            Thread.sleep(3000);
+                            clearWindow();
+                            System.out.println("\n\nNAME TAKEN!");
                         }
                         break;
                     } else {
-                        System.out.println("\nCHOOSE CLASS!");
-                        Thread.sleep(3000);
+                        clearWindow();
+                        System.out.println("\n\nCHOOSE CLASS!");
                     }
-                    clearWindow();
                     break;
                 case "SUBMIT":
 
@@ -275,12 +288,13 @@ public class Menu {
                         myKnight.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myKnight);
                         if (myBool) {
-                            System.out.println("\nSAVED!");
+                            System.out.println("\n\nSAVED!");
                             Thread.sleep(3000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                         } else {
-                            System.out.println("\nNAME TAKEN!");
+                            clearWindow();
+                            System.out.println("\n\nNAME TAKEN!");
                         }
 
                         break;
@@ -289,12 +303,13 @@ public class Menu {
                         myWizard.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myWizard);
                         if (myBool) {
-                            System.out.println("\nSAVED!");
+                            System.out.println("\n\nSAVED!");
                             Thread.sleep(3000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                         } else {
-                            System.out.println("\nNAME TAKEN!");
+                            clearWindow();
+                            System.out.println("\n\nNAME TAKEN!");
                         }
                         break;
                     }
@@ -302,20 +317,19 @@ public class Menu {
                         myThief.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myThief);
                         if (myBool) {
-                            System.out.println("\nSAVED!");
+                            System.out.println("\n\nSAVED!");
                             Thread.sleep(3000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
                         } else {
-                            System.out.println("\nNAME TAKEN!");
+                            clearWindow();
+                            System.out.println("\n\nNAME TAKEN!");
                         }
                         break;
                     } else {
                         clearWindow();
                         System.out.println("\nCHOOSE CLASS!");
-                        Thread.sleep(3000);
                     }
-                    clearWindow();
                     break;
                 // Object validation
 
@@ -338,7 +352,7 @@ public class Menu {
                 default:
 
                     clearWindow();
-                    System.out.println("Submit to confirm!");
+                    System.out.println("\n\nSubmit to confirm!");
 
             }
         }
@@ -346,6 +360,7 @@ public class Menu {
 
     public void secondMenuLoading() throws IOException, InterruptedException {
 
+        clearWindow();
         String nameToCheck = "Empty";
         while (menuSecondPhase) {
 
@@ -377,7 +392,7 @@ public class Menu {
                     if (myCharacter != null) {
                         clearWindow();
                         System.out.println(myCharacter.previewLogo());
-                        System.out.println("\nPress any key to continue...");
+                        System.out.println("\n\nPress any key to continue...");
                         scanner.nextLine();
                         menuFirstPhase = false;
                         menuSecondPhase = false;
@@ -385,17 +400,16 @@ public class Menu {
                         clearWindow();
                         thirdMenuGameLoader();
                     } else {
-                        System.out.println("\nCharacter doesn't exist!");
-                        Thread.sleep(3000);
+                        clearWindow();
+                        System.out.println("\n\nCharacter doesn't exist!");
                     }
-                    clearWindow();
                     break;
                 case "SUBMIT":
                     myCharacter = myCharacterData.searchCharacter(nameToCheck);
                     if (myCharacter != null) {
                         clearWindow();
                         System.out.println(myCharacter.previewLogo());
-                        System.out.println("\nPress any key to continue...");
+                        System.out.println("\n\nPress any key to continue...");
                         scanner.nextLine();
                         menuFirstPhase = false;
                         menuSecondPhase = false;
@@ -403,10 +417,9 @@ public class Menu {
                         clearWindow();
                         thirdMenuGameLoader();
                     } else {
-                        System.out.println("\nCharacter doesn't exist!");
-                        Thread.sleep(3000);
+                        clearWindow();
+                        System.out.println("\n\nCharacter doesn't exist!");
                     }
-                    clearWindow();
                     break;
 
                 case "0":
@@ -425,13 +438,14 @@ public class Menu {
                 default:
 
                     clearWindow();
-                    System.out.println("Submit to confirm!");
+                    System.out.println("\n\nSubmit to confirm!");
             }
         }
     }
 
     public void thirdMenuGameLoader() throws IOException, InterruptedException {
 
+        clearWindow();
         String first = "1";
         String second = "2";
         String third = "3";
@@ -633,7 +647,7 @@ public class Menu {
     }
 
     // Erases all text in terminal based on system and environment
-    private void clearWindow() throws IOException, InterruptedException {
+    public void clearWindow() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
