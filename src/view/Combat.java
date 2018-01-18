@@ -83,8 +83,10 @@ public class Combat {
 
                 if (counter == 2){
                     try {
+                        Thread.sleep(2000);
                         clearWindow();
-                        counter = 1;
+                        rooms.printRoom();
+                        counter = 0;
                     }
                     catch(InterruptedException e){
                         e.printStackTrace();
