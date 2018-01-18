@@ -73,9 +73,7 @@ public class Adventure {
                     break;
 
                 case "0":
-                    menu.setMenuThirdPhase(true);
-                    menu.thirdMenuGameLoader();
-
+                    System.exit(9);
                     break;
 
             }
