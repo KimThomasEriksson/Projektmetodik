@@ -6,11 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3110a38-6cd7-452f-9df5-be4dca78e472" name="Default" comment="">
+    <list default="true" id="a3110a38-6cd7-452f-9df5-be4dca78e472" name="Default" comment="READY FOR DEMO!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/Adventure.java" afterPath="$PROJECT_DIR$/src/model/Adventure.java" />
       <change beforePath="$PROJECT_DIR$/src/view/Combat.java" afterPath="$PROJECT_DIR$/src/view/Combat.java" />
-      <change beforePath="$PROJECT_DIR$/src/view/Menu.java" afterPath="$PROJECT_DIR$/src/view/Menu.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -53,8 +51,8 @@
           <file leaf-file-name="Combat.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/view/Combat.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
-                  <caret line="112" column="26" lean-forward="true" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
+                <state relative-caret-position="232">
+                  <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#5705#5706#0" expanded="true" />
@@ -352,13 +350,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controller/RandGenerator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Adventure.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Character/Character.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Character/CollectionOfCharacters.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/view/Combat.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/view/Menu.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -717,7 +709,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516272065373</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="READY FOR DEMO!">
+      <created>1516284450329</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1516284450329</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -843,7 +842,8 @@
     <MESSAGE value="Preview of classes, terminal view fix, objects added for further save and load functionality. fixed faulty merge" />
     <MESSAGE value="Data Saving/Loading working, strengthen object oriented details, menu more robust and working with json properly, TODO connect rest of the demo expectations." />
     <MESSAGE value="Restructuring Main for testing, preparing demo." />
-    <option name="LAST_COMMIT_MESSAGE" value="Restructuring Main for testing, preparing demo." />
+    <MESSAGE value="READY FOR DEMO!" />
+    <option name="LAST_COMMIT_MESSAGE" value="READY FOR DEMO!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1208,8 +1208,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Combat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="112" column="26" lean-forward="true" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
+        <state relative-caret-position="232">
+          <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5705#5706#0" expanded="true" />

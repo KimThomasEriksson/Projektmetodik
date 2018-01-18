@@ -15,7 +15,7 @@ public class Combat {
     private int currentTurn;
     private int counter = 0;
 
-    public void combatStart(Monster monster, Character character, Room rooms) {
+    public void combatStart(Monster monster, Character character, Room rooms) throws IOException, InterruptedException {
         boolean cont = false;
         boolean loop = true;
         Scanner scan = new Scanner(System.in);
