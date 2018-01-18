@@ -1,7 +1,9 @@
 package view;
 
+import model.Adventure;
 import model.Monster.Monster;
 import model.Character.Character;
+import model.Room;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -10,7 +12,7 @@ public class Combat {
 
     private int currentTurn;
 
-    public void combatStart(Monster monster, Character character){
+    public void combatStart(Monster monster, Character character, Room room){
         Scanner scan = new Scanner(System.in);
         int playerInitiativeRoll = 0;
         int monsterInitiativeRoll = 0;
@@ -71,6 +73,7 @@ public class Combat {
 
                     if (flee){
                         System.out.println("You fled! ");
+                        room.flee();
                         break;
                     }
 

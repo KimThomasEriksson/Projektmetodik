@@ -26,13 +26,21 @@ public class Adventure {
 
     }
 
+    public void flee(){
+        String[][] room;
+        room=rooms.getRooms();
+        room[rooms.getOldPlayerPositionX()][rooms.getOldPlayerPositionY()]=rooms.getPlayerPosition();
+
+        rooms.setRooms(room);
+    }
+
     public void startFight(){
 
         this.monsterToFight=this.rooms.getMonstersToFight();
         Combat combat = new Combat();
         for (int i = 0; i < this.monsterToFight.size(); i++){
 
-            combat.combatStart(this.monsterToFight.get(i),this.myCharacter);
+            combat.combatStart(this.monsterToFight.get(i),this.myCharacter,this.rooms);
 
 
         }

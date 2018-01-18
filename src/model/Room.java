@@ -11,6 +11,8 @@ public class Room {
     private int level;
     private String[][] rooms;
     private ArrayList<Monster> monstersToFight;
+    private int oldPlayerPositionX;
+    private int oldPlayerPositionY;
 
 
 
@@ -44,14 +46,19 @@ public class Room {
     }
 //
 
-
+    public void flee(){
+        this.rooms[this.playerPositionX][this.playerPositionY]="[X]";
+        this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
+        this.playerPositionX=oldPlayerPositionX;
+        this.playerPositionY=oldPlayerPositionY;
+    }
 
 
 
     public boolean moveDown(){
         ArrayList<Monster> listToReturn = new ArrayList<>();
-        int oldPlayerPositionX=this.playerPositionX;
-        int oldPlayerPositionY=this.playerPositionY;
+        this.oldPlayerPositionX=this.playerPositionX;
+        this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
         try{
 
@@ -84,8 +91,8 @@ public class Room {
 
     public boolean moveUp(){
         ArrayList<Monster> listToReturn = new ArrayList<>();
-        int oldPlayerPositionX=this.playerPositionX;
-        int oldPlayerPositionY=this.playerPositionY;
+        this.oldPlayerPositionX=this.playerPositionX;
+        this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
         try{
 
@@ -119,8 +126,8 @@ public class Room {
 
     public boolean moveLeft(){
         ArrayList<Monster> listToReturn = new ArrayList<>();
-        int oldPlayerPositionX=this.playerPositionX;
-        int oldPlayerPositionY=this.playerPositionY;
+        this.oldPlayerPositionX=this.playerPositionX;
+        this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
         try{
 
@@ -150,8 +157,8 @@ public class Room {
     }
 
     public boolean moveRight(){
-        int oldPlayerPositionX=this.playerPositionX;
-        int oldPlayerPositionY=this.playerPositionY;
+        this.oldPlayerPositionX=this.playerPositionX;
+        this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
         try{
 
@@ -228,5 +235,25 @@ public class Room {
 
     public ArrayList<Monster> getMonstersToFight() {
         return monstersToFight;
+    }
+
+    public String[][] getRooms() {
+        return rooms;
+    }
+
+    public String getPlayerPosition() {
+        return playerPosition;
+    }
+
+    public int getOldPlayerPositionX() {
+        return oldPlayerPositionX;
+    }
+
+    public int getOldPlayerPositionY() {
+        return oldPlayerPositionY;
+    }
+
+    public void setRooms(String[][] rooms) {
+        this.rooms = rooms;
     }
 }

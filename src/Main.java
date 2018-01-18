@@ -35,11 +35,6 @@ public class Main {
 
         System.out.println("SPELET STARTAS!");
 
-        Monster skeleton = new Skeleton();
-        Character testChar = new Knight();
-
-        Combat combat = new Combat();
-        combat.combatStart(skeleton,testChar);
 
     }
 }
