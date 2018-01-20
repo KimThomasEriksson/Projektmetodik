@@ -42,7 +42,8 @@ public class Menu {
         this.myThief = new Thief();
         this.myCharacter = null;
         this.myCharacterData = new CollectionOfCharacters();
-        myCharacterData.openFunc("characterData");
+        myCharacterData.openFunc();
+        myCharacterData.saveFunc();
         this.validName = false;
         this.myAdventure = null;
 
@@ -78,6 +79,7 @@ public class Menu {
                     "\n\t\t\t\t\t\t" +
                     "\n\t\t[1]Create Character" +
                     "\n\t\t[2]Load Character" +
+                    "\n\t\t[3]Delete Character" +
                     "\n\t\t[0]Exit" +
                     "\n\t\t\t\t\t\t" +
                     "\n\t\t\t\t\t\t");
@@ -106,7 +108,7 @@ public class Menu {
                 // Option 2 as follows
 
                 case "2":
-                    // Load character from file?
+                    // Load character from file
                     menuFirstPhase = false;
                     menuSecondPhase = true;
                     clearWindow();
@@ -119,10 +121,26 @@ public class Menu {
                     secondMenuLoading();
                     break;
 
+                // Option 3 as follows
+
+                case "3":
+                    // Delete character from file
+                    menuFirstPhase = false;
+                    menuSecondPhase = true;
+                    clearWindow();
+                    secondMenuDeletion();
+                    break;
+                case "DELETE":
+                    menuFirstPhase = false;
+                    menuSecondPhase = true;
+                    clearWindow();
+                    secondMenuDeletion();
+                    break;
+
                 // Last exit option for total system shutdown
 
                 case "0":
-                    myCharacterData.saveFunc("characterData");
+                    myCharacterData.saveFunc();
                     clearWindow();
                     System.out.println("\n\nSaving and exiting.");
                     Thread.sleep(1000);
@@ -135,7 +153,7 @@ public class Menu {
                     System.exit(0);
                     break;
                 case "EXIT":
-                    myCharacterData.saveFunc("characterData");
+                    myCharacterData.saveFunc();
                     clearWindow();
                     System.out.println("\n\nSaving and exiting.");
                     Thread.sleep(1000);
@@ -234,9 +252,11 @@ public class Menu {
                 case "X":
 
                     if (first.equals("X")) {
+                        myCharacterData.openFunc();
                         myKnight.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myKnight);
                         if (myBool) {
+                            myCharacterData.saveFunc();
                             System.out.println("\n\nSAVED!");
                             Thread.sleep(2000);
                             menuFirstPhase = true;
@@ -249,10 +269,12 @@ public class Menu {
                         break;
                     }
                     if (second.equals("X")) {
+                        myCharacterData.openFunc();
                         myWizard.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myWizard);
                         if (myBool) {
-                            System.out.println("\n\nSAVED!!");
+                            myCharacterData.saveFunc();
+                            System.out.println("\n\nSAVED!");
                             Thread.sleep(2000);
                             menuFirstPhase = true;
                             menuSecondPhase = false;
@@ -264,9 +286,11 @@ public class Menu {
                         break;
                     }
                     if (third.equals("X")) {
+                        myCharacterData.openFunc();
                         myThief.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myThief);
                         if (myBool) {
+                            myCharacterData.saveFunc();
                             System.out.println("\n\nSAVED!");
                             Thread.sleep(2000);
                             menuFirstPhase = true;
@@ -285,9 +309,11 @@ public class Menu {
                 case "SUBMIT":
 
                     if (first.equals("X")) {
+                        myCharacterData.openFunc();
                         myKnight.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myKnight);
                         if (myBool) {
+                            myCharacterData.saveFunc();
                             System.out.println("\n\nSAVED!");
                             Thread.sleep(2000);
                             menuFirstPhase = true;
@@ -300,9 +326,11 @@ public class Menu {
                         break;
                     }
                     if (second.equals("X")) {
+                        myCharacterData.openFunc();
                         myWizard.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myWizard);
                         if (myBool) {
+                            myCharacterData.saveFunc();
                             System.out.println("\n\nSAVED!");
                             Thread.sleep(2000);
                             menuFirstPhase = true;
@@ -314,9 +342,11 @@ public class Menu {
                         break;
                     }
                     if (third.equals("X")) {
+                        myCharacterData.openFunc();
                         myThief.setName(nameToCheck);
                         boolean myBool = myCharacterData.addChar(myThief);
                         if (myBool) {
+                            myCharacterData.saveFunc();
                             System.out.println("\n\nSAVED!");
                             Thread.sleep(2000);
                             menuFirstPhase = true;
@@ -364,6 +394,7 @@ public class Menu {
         String nameToCheck = "Empty";
         while (menuSecondPhase) {
 
+            myCharacterData.openFunc();
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("_________________________________________________" +
@@ -371,6 +402,8 @@ public class Menu {
                     "\n|\t\tLoad Character\t\t\t|" +
                     "\n|\t\t\t\t\t\t|" +
                     "\n_________________________________________________" +
+                    "\nExisting Characters: \n\n" +
+                    ", " + myCharacterData.characterArrayList.toString() + "\n"+
                     "\n\t\t\t\t\t\t" +
                     "\n\t\t\t\t\t\t" +
                     "\n\t\tName: " + nameToCheck +
@@ -439,6 +472,92 @@ public class Menu {
 
                     clearWindow();
                     System.out.println("\n\nSubmit to confirm!");
+            }
+        }
+    }
+
+    public void secondMenuDeletion() throws IOException, InterruptedException {
+
+        clearWindow();
+        String nameToCheck = "Empty";
+        while (menuSecondPhase) {
+
+            myCharacterData.openFunc();
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("_________________________________________________" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n|\t\tDelete Character\t\t|" +
+                    "\n|\t\t\t\t\t\t|" +
+                    "\n_________________________________________________" +
+                    "\nExisting Characters: \n\n" +
+                    ", " + myCharacterData.characterArrayList.toString() + "\n"+
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\tName: " + nameToCheck +
+                    "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t\t\t\t" +
+                    "\n[0]RETURN\t\t\t\t[X]DELETE\t" +
+                    "\n\t\t\t\t\t\t");
+
+
+            String choice = scanner.nextLine().toUpperCase();
+            if (!choice.equals("") && !choice.equals("X")) {
+                nameToCheck = choice;
+            }
+            switch (choice) {
+
+                // Submit cases to try the given name to check object and break loop
+                case "X":
+                    myCharacterData.openFunc();
+                    boolean deleted = myCharacterData.deleteChar(nameToCheck);
+                    if (deleted) {
+                        myCharacterData.saveFunc();
+                        System.out.println("\n\nDELETED!");
+                        Thread.sleep(2000);
+                        menuFirstPhase = true;
+                        menuSecondPhase = false;
+                        clearWindow();
+                        runMainMenu();
+                    } else {
+                        clearWindow();
+                        System.out.println("\n\nCharacter doesn't exist!");
+                    }
+                    break;
+                case "DELETE":
+                    myCharacterData.openFunc();
+                    boolean deleted2 = myCharacterData.deleteChar(nameToCheck);
+                    if (deleted2) {
+                        myCharacterData.saveFunc();
+                        System.out.println("\n\nDELETED!");
+                        Thread.sleep(2000);
+                        menuFirstPhase = true;
+                        menuSecondPhase = false;
+                        clearWindow();
+                        runMainMenu();
+                    } else {
+                        clearWindow();
+                        System.out.println("\n\nCharacter doesn't exist!");
+                    }
+                    break;
+
+                case "0":
+                    menuFirstPhase = true;
+                    menuSecondPhase = false;
+                    clearWindow();
+                    runMainMenu();
+                    break;
+                case "RETURN":
+                    menuFirstPhase = true;
+                    menuSecondPhase = false;
+                    clearWindow();
+                    runMainMenu();
+                    break;
+
+                default:
+
+                    clearWindow();
+                    System.out.println("\n\nDelete to confirm!");
             }
         }
     }

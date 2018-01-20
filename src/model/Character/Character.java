@@ -157,22 +157,8 @@ public class Character implements Serializable,CharacterInterface{
 
     @Override
     public String toString() {
-        return "Character{" +
-                "classType='" + classType + '\'' +
-                ", name='" + name + '\'' +
-                ", initiative=" + initiative +
-                ", hp=" + hp +
-                ", attack=" + attack +
-                ", agility=" + agility +
-                ", coin=" + coin +
-                ", coinBag=" + coinBag +
-                ", goldJewelry=" + goldJewelry +
-                ", gemstone=" + gemstone +
-                ", treasureBox=" + treasureBox +
-                ", firstHit=" + firstHit +
-                '}';
+        return name + "\t\t<" + classType + ">\n";
     }
-
 
     @Override
     public String previewLogo() {

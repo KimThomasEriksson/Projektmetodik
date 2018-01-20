@@ -32,11 +32,11 @@ public class CollectionOfCharacters implements Serializable {
         return true;
     }
 
-    public boolean deleteChar(Character character){
+    public boolean deleteChar(String character){
 
         for (Character e: this.characterArrayList){
-            if (e.getName().equals(character.getName())){
-                this.characterArrayList.remove(character);
+            if (e.getName().equals(character)){
+                this.characterArrayList.remove(e);
                 return true;
             }
         }
@@ -52,24 +52,31 @@ public class CollectionOfCharacters implements Serializable {
         return null;
     }
 
-    public void openFunc(String filename){
+    public void openFunc(){
         try {
-            FileInputStream fis = new FileInputStream(filename+".ser");
+            FileInputStream fis = new FileInputStream("charData.ser");
             ObjectInputStream in = new ObjectInputStream(fis);
             characterArrayList = (ArrayList<Character>) in.readObject();
             in.close();
             fis.close();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (Exception e){
+
         }
     }
 
-    public void saveFunc(String filename) throws IOException {
-        FileOutputStream f = new FileOutputStream(filename+".ser");
-        ObjectOutputStream oos = new ObjectOutputStream(f);
-        oos.writeObject(characterArrayList);
-        oos.flush();
-        oos.close();
-        f.close();
+    public void saveFunc() throws IOException {
+        try{
+
+            FileOutputStream f = new FileOutputStream("charData.ser");
+            ObjectOutputStream oos = new ObjectOutputStream(f);
+            oos.writeObject(characterArrayList);
+            oos.flush();
+            oos.close();
+            f.close();
+        }catch (Exception e){
+
+        }
+
     }
 
     public ArrayList<Character> getCharacterArrayList() {

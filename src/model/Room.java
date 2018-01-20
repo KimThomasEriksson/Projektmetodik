@@ -5,6 +5,7 @@ import model.Monster.Monster;
 import java.util.ArrayList;
 
 public class Room {
+
     private int playerPositionX;
     private int playerPositionY;
     private String playerPosition="[P]";
@@ -14,6 +15,8 @@ public class Room {
     private int oldPlayerPositionX;
     private int oldPlayerPositionY;
 
+    // This is a "cell" we can use this concept for AI architect where we store -1,0,1
+    private int miniMaxValue;
 
     public Room(int playerPositionX, int playerPositionY, int level) {
         this.playerPositionX = playerPositionX;
