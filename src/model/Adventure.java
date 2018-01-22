@@ -73,7 +73,6 @@ public class Adventure {
 
                 case "W":
                     makeAMove("W");
-
                     break;
                 case "A":
                     makeAMove("A");
@@ -93,12 +92,7 @@ public class Adventure {
                     break;
 
             }
-
-
-
-
         }
-
     }
 
     public void flee(){

@@ -574,6 +574,9 @@ public class Menu {
         String bL = "C";
         String bR = "D";
 
+        submitDifficulty = 0;
+        startingCorner = 0;
+
 
         while (menuThirdPhase) {
 

@@ -243,8 +243,9 @@ public class Room {
 
         if(level==1){
             this.rooms = new String[4][4];
+            randomExitPositions(3,3);
             while(startPositionX == exitPositionX && startPositionY == exitPositionY){
-                randomExitPositions(4,4);
+                randomExitPositions(3,3);
             }
             this.rooms[this.exitPositionX][this.exitPositionY]=exitPosition;
             return;
@@ -252,8 +253,9 @@ public class Room {
 
         if(level==2){
             this.rooms = new String[5][5];
+            randomExitPositions(4,4);
             while(startPositionX == exitPositionX && startPositionY == exitPositionY){
-                randomExitPositions(5,5);
+                randomExitPositions(4,4);
             }
             this.rooms[this.exitPositionX][this.exitPositionY]=exitPosition;
             return;
@@ -261,8 +263,9 @@ public class Room {
 
         if(level==3){
             this.rooms = new String[8][8];
+            randomExitPositions(7,7);
             while(startPositionX == exitPositionX && startPositionY == exitPositionY){
-                randomExitPositions(8,8);
+                randomExitPositions(7,7);
             }
             this.rooms[this.exitPositionX][this.exitPositionY]=exitPosition;
             return;

@@ -22,8 +22,8 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException, LineUnavailableException, UnsupportedAudioFileException {
         // Testing execution flow from this point
 
-        Text credits = new Text();
-        credits.intro();
+//        Text credits = new Text();
+//        credits.intro();
 
         Menu mainMenu = new Menu();
         mainMenu.runMainMenu();
