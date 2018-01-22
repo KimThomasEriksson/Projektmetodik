@@ -24,6 +24,7 @@ public class Character implements Serializable,CharacterInterface{
     private int skeletonsSlain;
     private int orcSlain;
     private int trollSlain;
+    private int totalScore;
 
     //Character constructor and all get and setters.
 
@@ -129,7 +130,7 @@ public class Character implements Serializable,CharacterInterface{
                 firstHit = false;
             }
             else {
-                System.out.println(monster.getClassType() + "s hit!");
+                System.out.println(monster.getClassType() + "s attack hit!");
                 this.hp = this.hp - 1;
             }
         }
@@ -201,6 +202,52 @@ public class Character implements Serializable,CharacterInterface{
         }
     public void raiseSkeletonsSlain(){
         this.skeletonsSlain+=1;
+    }
+    public void orcSlain(){
+        this.orcSlain+=1;
+    }
+    public void trollStailn(){
+        this.trollSlain+=1;
+    }
+
+    public int getGiantSpidersSlain() {
+        return giantSpidersSlain;
+    }
+
+    public void setGiantSpidersSlain(int giantSpidersSlain) {
+        this.giantSpidersSlain = giantSpidersSlain;
+    }
+
+    public int getSkeletonsSlain() {
+        return skeletonsSlain;
+    }
+
+    public void setSkeletonsSlain(int skeletonsSlain) {
+        this.skeletonsSlain = skeletonsSlain;
+    }
+
+    public int getOrcSlain() {
+        return orcSlain;
+    }
+
+    public void setOrcSlain(int orcSlain) {
+        this.orcSlain = orcSlain;
+    }
+
+    public int getTrollSlain() {
+        return trollSlain;
+    }
+
+    public void setTrollSlain(int trollSlain) {
+        this.trollSlain = trollSlain;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
     }
 
     public void raiseCoin() {
