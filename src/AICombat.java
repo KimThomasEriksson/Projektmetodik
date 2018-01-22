@@ -123,7 +123,7 @@ public class AICombat {
                     this.currentTurn = 0;
 
                 }
-                else if(AI.getClassType().equals("Knight") && monster.getHp()>1 && AI.getHp()==1 && hitLastTurn == 0){
+                else if(AI.getClassType().equals("Knight") && monster.getHp()==2 && AI.getHp()==1 && hitLastTurn == 0){
                     AI.attackMonster(monster);
                     this.currentTurn = 0;
 
