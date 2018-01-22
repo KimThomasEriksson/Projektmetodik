@@ -5,17 +5,15 @@ import java.io.Serializable;
 public class Knight extends Character implements Serializable {
     public Knight() {
         super("Knight", "", 5, 9, 6, 4, 0, 0, 0, 0, 0);
-//        this.setClassType("Knight");
-//        this.setName("");
-//        this.setInitiative(5);
-//        this.setHp(9);
-//        this.setAttack(6);
-//        this.setAgility(4);
-//        this.setCoin(0);
-//        this.setCoinBag(0);
-//        this.setGoldJewelry(0);
-//        this.setGemstone(0);
-//        this.setTreasureBox(0);
+    }
+
+    public void resetStats(){
+
+        this.setInitiative(5);
+        this.setHp(9);
+        this.setAttack(6);
+        this.setAgility(4);
+
     }
 
     //This constructor is used when we load in a character from save file.

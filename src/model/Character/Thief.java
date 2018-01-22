@@ -5,17 +5,15 @@ import java.io.Serializable;
 public class Thief extends Character implements Serializable {
     public Thief() {
         super("Thief","",7,5,5,7,0,0,0,0,0);
-//        this.setClassType("Thief");
-//        this.setName("");
-//        this.setInitiative(7);
-//        this.setHp(5);
-//        this.setAttack(5);
-//        this.setAgility(7);
-//        this.setCoin(0);
-//        this.setCoinBag(0);
-//        this.setGoldJewelry(0);
-//        this.setGemstone(0);
-//        this.setTreasureBox(0);
+    }
+
+    public void resetStats(){
+
+        this.setInitiative(7);
+        this.setHp(5);
+        this.setAttack(5);
+        this.setAgility(7);
+
     }
     //This constructor is used when we load in a character from save file.
     public Thief(String classType, String name, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {

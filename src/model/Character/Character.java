@@ -181,6 +181,9 @@ public class Character implements Serializable,CharacterInterface{
         return null;
     }
 
+    @Override
+    public void resetStats(){}
+
     public String getName() {
         return name;
     }

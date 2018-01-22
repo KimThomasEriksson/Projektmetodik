@@ -37,6 +37,7 @@ public class Adventure {
         scanner = new Scanner(System.in);
         getStartingPositions();
         this.rooms = new Room(startPositionX,startPositionY,level);
+        myCharacter = menu.getMyCharacter();
         gameRound();
 
     }
@@ -86,6 +87,7 @@ public class Adventure {
 
                 case "0":
                     if (rooms.isPermissionToExit()){
+                        myCharacter.resetStats();
                         menu.setMenuThirdPhase(true);
                         menu.thirdMenuGameLoader();
                     }

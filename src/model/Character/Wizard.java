@@ -5,17 +5,15 @@ import java.io.Serializable;
 public class Wizard extends Character implements Serializable {
     public Wizard() {
         super("Wizard","",6,4,9,4,0,0,0,0,0);
-//        this.setClassType("Wizard");
-//        this.setName("");
-//        this.setInitiative(6);
-//        this.setHp(4);
-//        this.setAttack(9);
-//        this.setAgility(4);
-//        this.setCoin(0);
-//        this.setCoinBag(0);
-//        this.setGoldJewelry(0);
-//        this.setGemstone(0);
-//        this.setTreasureBox(0);
+    }
+
+    public void resetStats(){
+
+        this.setInitiative(6);
+        this.setHp(4);
+        this.setAttack(9);
+        this.setAgility(4);
+
     }
     //This constructor is used when we load in a character from save file.
     public Wizard(String classType, String name, int initiative, int hp, int attack, int agility, int coin, int coinBag, int goldJewelry, int gemstone, int treasureBox) {
