@@ -24,12 +24,14 @@ public class Adventure {
     public Adventure(Menu menu) {
         this.menu=menu;
         this.menu.setMyAdventure(this);
-        this.startPosition = this.menu.getStartingCorner();
-        this.level = this.menu.getSubmitDifficulty();
-        scanner = new Scanner(System.in);
+
     }
 
     public void startNewRoom() throws IOException, InterruptedException {
+
+        this.startPosition = this.menu.getStartingCorner();
+        this.level = this.menu.getSubmitDifficulty();
+        scanner = new Scanner(System.in);
         getStartingPositions();
         this.rooms = new Room(startPositionX,startPositionY,level);
         gameRound();
@@ -42,25 +44,33 @@ public class Adventure {
         String a = "A";
         String d = "D";
         String s = "S";
+        String e = "";
 
         while(true){
 
             menu.clearWindow();
             rooms.printRoom();
+            if(rooms.isPermissionToExit()){
+                e = "You found the EXIT!\t[0]EXIT";
+            }
+            if(!rooms.isPermissionToExit()){
+                e = "";
+            }
             System.out.println("Which direction do u want to go?\n\n" +
                             "[W]Go Up\n" +
                             "[A]Go Left\n" +
                             "[D]Go Right\n" +
                             "[S]Go Down\n\n\n" +
-                            "\t\t\t\t[0]EXIT");
+                            "" +e);
 
             String gameRoundInput = scanner.nextLine().toUpperCase();
-
+            boolean permissionToExit = false;
 
             switch (gameRoundInput){
 
                 case "W":
                     makeAMove("W");
+
                     break;
                 case "A":
                     makeAMove("A");
@@ -73,7 +83,10 @@ public class Adventure {
                     break;
 
                 case "0":
-                    System.exit(9);
+                    if (rooms.isPermissionToExit()){
+                        menu.setMenuThirdPhase(true);
+                        menu.thirdMenuGameLoader();
+                    }
                     break;
 
             }

@@ -403,7 +403,7 @@ public class Menu {
                     "\n|\t\t\t\t\t\t|" +
                     "\n_________________________________________________" +
                     "\nExisting Characters: \n\n" +
-                    ", " + myCharacterData.characterArrayList.toString() + "\n"+
+                    ", " + myCharacterData.characterArrayList.toString() + "\n" +
                     "\n\t\t\t\t\t\t" +
                     "\n\t\t\t\t\t\t" +
                     "\n\t\tName: " + nameToCheck +
@@ -491,7 +491,7 @@ public class Menu {
                     "\n|\t\t\t\t\t\t|" +
                     "\n_________________________________________________" +
                     "\nExisting Characters: \n\n" +
-                    ", " + myCharacterData.characterArrayList.toString() + "\n"+
+                    ", " + myCharacterData.characterArrayList.toString() + "\n" +
                     "\n\t\t\t\t\t\t" +
                     "\n\t\t\t\t\t\t" +
                     "\n\t\tName: " + nameToCheck +
@@ -572,7 +572,6 @@ public class Menu {
         String tR = "B";
         String bL = "C";
         String bR = "D";
-
 
 
         while (menuThirdPhase) {
@@ -696,6 +695,9 @@ public class Menu {
                         menuFirstPhase = false;
                         menuSecondPhase = false;
                         menuThirdPhase = false;
+                        if (myAdventure != null){
+                            myAdventure.startNewRoom();
+                        }
                         clearWindow();
                         break;
                     }
@@ -732,6 +734,9 @@ public class Menu {
                         menuFirstPhase = false;
                         menuSecondPhase = false;
                         menuThirdPhase = false;
+                        if (myAdventure != null){
+                            myAdventure.startNewRoom();
+                        }
                         clearWindow();
                         break;
 
