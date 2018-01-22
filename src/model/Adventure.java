@@ -125,7 +125,8 @@ public class Adventure {
         }
 
         boolean fleestatus=combat.getFlee();
-        if(!fleestatus){
+
+        if(fleestatus==false){
             int roomItems;
             roomItems=RandGenerator.ItemGenerator(this.menu.getMyCharacter());
 
