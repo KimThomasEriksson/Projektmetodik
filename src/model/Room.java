@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Room {
 
+
     private int playerPositionX;
     private int playerPositionY;
     private int startPositionX;

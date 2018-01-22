@@ -76,14 +76,14 @@ public class RandGenerator {
             }
 
     // Metod som genererar Items / Treasure.
-    private int ItemGenerator(Character character){
+    public static int ItemGenerator(Character character){
         Random rand = new Random();
         int randomInt = rand.nextInt(100);
         int treasureTotalWorth = 0;
 
         try {
             if (randomInt <= 40) {
-                System.out.println("Du hittade lösa slantar ");
+                System.out.println("You found a coin!");
                 character.raiseCoin();
                 Thread.sleep(500);
                 treasureTotalWorth += 2;
@@ -92,7 +92,7 @@ public class RandGenerator {
             randomInt = rand.nextInt(100);
 
             if (randomInt <= 20) {
-                System.out.println("Du hittade en pengapung ");
+                System.out.println("You found a coinbag!");
                 character.raiseCoinBag();
                 Thread.sleep(500);
                 treasureTotalWorth += 6;
@@ -101,7 +101,7 @@ public class RandGenerator {
             randomInt = rand.nextInt(100);
 
             if (randomInt <= 15) {
-                System.out.println("Du hittade guldsmycken");
+                System.out.println("You found a gold jewelry!");
                 character.raiseGoldJewelry();
                 Thread.sleep(500);
                 treasureTotalWorth += 10;
@@ -110,7 +110,7 @@ public class RandGenerator {
             randomInt = rand.nextInt(100);
 
             if (randomInt <= 10) {
-                System.out.println("Du hittade en ädelsten");
+                System.out.println("You found a gemstone!");
                 character.raiseGemstone();
                 Thread.sleep(500);
                 treasureTotalWorth += 14;
@@ -120,7 +120,7 @@ public class RandGenerator {
 
 
             if (randomInt <= 5) {
-                System.out.println("Du hittade en liten skattkista !");
+                System.out.println("You found a treasurebox!");
                 character.raiseTreasureBox();
                 Thread.sleep(500);
                 treasureTotalWorth += 20;

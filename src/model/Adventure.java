@@ -1,4 +1,5 @@
 package model;
+import controller.RandGenerator;
 import model.Character.Character;
 import model.Monster.Monster;
 import view.Combat;
@@ -12,6 +13,7 @@ public class Adventure {
 
     private int level;
     private Character myCharacter;
+    private Boolean flee;
     private int startPosition;
     private int startPositionX;
     private int startPositionY;
@@ -19,6 +21,7 @@ public class Adventure {
     private Room rooms;
     private Menu menu;
     private Scanner scanner;
+    private int totalCoins;
 
 
     public Adventure(Menu menu) {
@@ -99,6 +102,7 @@ public class Adventure {
     }
 
     public void flee(){
+        this.flee=true;
         String[][] room;
         room=rooms.getRooms();
         room[rooms.getOldPlayerPositionX()][rooms.getOldPlayerPositionY()]=rooms.getPlayerPosition();
@@ -110,11 +114,27 @@ public class Adventure {
     public void startFight() throws IOException, InterruptedException {
 
         this.monsterToFight=this.rooms.getMonstersToFight();
+
         Combat combat = new Combat();
+        combat.setFlee(false);
         for (int i = 0; i < this.monsterToFight.size(); i++){
 
             combat.combatStart(this.monsterToFight.get(i),this.menu.getMyCharacter(),this.rooms);
 
+
+        }
+
+        boolean fleestatus=combat.getFlee();
+        if(!fleestatus){
+            int roomItems;
+            roomItems=RandGenerator.ItemGenerator(this.menu.getMyCharacter());
+
+
+            totalCoins+=roomItems;
+            if(roomItems>0){
+                System.out.println("\n\nPress any key to continue...");
+                scanner.nextLine();
+            }
 
         }
 

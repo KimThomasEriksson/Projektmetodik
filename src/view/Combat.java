@@ -12,6 +12,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Combat {
 
+    private boolean flee =false;
+
     private int currentTurn;
     private int counter = 0;
 
@@ -40,6 +42,7 @@ public class Combat {
                 if (tryToFlee) {
                     System.out.println("You fled from " + monster.getClassType());
                     rooms.flee();
+                    flee=true;
                     cont = false;
                     loop = false;
                 } else {
@@ -173,5 +176,13 @@ public class Combat {
     public int hashCode() {
 
         return Objects.hash(getCurrentTurn());
+    }
+
+    public boolean getFlee() {
+        return flee;
+    }
+
+    public void setFlee(boolean flee) {
+        this.flee = flee;
     }
 }

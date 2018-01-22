@@ -1,16 +1,38 @@
 package  view;
-import java.io.IOException;
+
+
+
+
+import javax.sound.sampled.*;
+
+import java.io.*;
+import java.net.URL;
 import java.util.Scanner;
 
 public  class Text {
 
+    public void run(){
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+        String s = null;
 
-    public void intro() throws InterruptedException, IOException {
+    }
 
+
+    public void intro() throws InterruptedException, IOException, UnsupportedAudioFileException, LineUnavailableException {
+
+
+        File f = new File( "8bit.wav");
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
         boolean state =true;
         int time=0;
 
-        while(time!=2) {
+        Thread newThread =new Thread();
+
+        while(time!=3) {
+
 
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             System.out.println(Text.introOverHeadCenter());
@@ -29,7 +51,10 @@ public  class Text {
             Thread.sleep(200);
             time++;
 
+
+
         }
+        clip.stop();
         clearScreen();
 
     }
