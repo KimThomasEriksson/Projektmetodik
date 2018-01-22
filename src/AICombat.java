@@ -81,88 +81,104 @@ public class AICombat {
                 }
             }
             if(currentTurn == 1){
-                if(AI.getClassType().equals("Thief") && monster.getHp() < 2 && AI.getHp() == 1){
+                if(AI.getClassType().equals("Thief") && monster.getHp() > 2 && AI.getHp() == 1){
                     flee = AI.flee();
                     if(flee){
-                        System.out.println("you fled");
+                        if(!quickCombat) {
+                            System.out.println("you fled");
+                        }
                         break;
                     }
                     else {
-                        System.out.println("nope");
+                        if(!quickCombat) {
+                            System.out.println("You've failed your escape");
+                        }
                         currentTurn = 0;
                     }
 
 
                 }
-                else if(AI.getClassType().equals("Knight") && hitLastTurn == 1 && monster.getHp() > 1 && AI.getHp()==1){
+                else if(AI.getClassType().equals("Knight") && monster.getHp() >= 2 && AI.getHp()==1){
                     flee = AI.flee();
                     if(flee){
-                        System.out.println("you fled");
+                        if(!quickCombat) {
+                            System.out.println("you fled");
+                        }
                         break;
                     }
                     else {
-                        System.out.println("nope");
+                        if (!quickCombat) {
+                            System.out.println("You've failed your escape");
+                        }
                         currentTurn = 0;
                     }
 
                 }
+
+
+                //hade ett 1 hp , rollade högre, max hp troll
                 else if(AI.getClassType().equals("Wizard") && monster.getHp()>1 && AI.getHp()==1){
                     flee = AI.flee();
                     if(flee){
-                        System.out.println("you fled");
+                        if(!quickCombat) {
+                            System.out.println("you fled");
+                        }
                         break;
                     }
                     else {
-                        System.out.println("nope");
+                        if(!quickCombat) {
+                            System.out.println("You've failed your escape");
+                        }
                         currentTurn = 0;
                     }
 
                 }
                 else if (monster.getClassType().equals("GiantSpider")){
-                    AI.attackMonster(monster);
+                    AI.attackMonster(monster,quickCombat);
                     this.currentTurn = 0;
 
                 }
-                else if(AI.getClassType().equals("Knight") && monster.getHp()==2 && AI.getHp()==1 && hitLastTurn == 0){
-                    AI.attackMonster(monster);
+                else if(AI.getClassType().equals("Knight") && monster.getHp()<=2 && AI.getHp()==1 && hitLastTurn == 0){
+                    AI.attackMonster(monster,quickCombat);
                     this.currentTurn = 0;
 
                 }
+
                 else if(AI.getClassType().equals("Knight") && monster.getHp()==1 && AI.getHp()==1 && hitLastTurn == 1){
-                    AI.attackMonster(monster);
+                    AI.attackMonster(monster,quickCombat);
                     this.currentTurn = 0;
 
                 }
                 else if(AI.getClassType().equals("Knight") && monster.getHp()>=1 && AI.getHp()>1){
-                    AI.attackMonster(monster);
+                    AI.attackMonster(monster,quickCombat);
                     this.currentTurn = 0;
 
                 }
+
                 else if(AI.getClassType().equals("Thief") && monster.getHp() <= 2 && AI.getHp() >= 1){
-                    AI.attackMonster(monster);
+                    AI.attackMonster(monster,quickCombat);
                     this.currentTurn = 0;
 
                 }
                 else if(AI.getClassType().equals("Thief") && monster.getHp()>1 && AI.getHp()>1){
-                    AI.attackMonster(monster);
+                    AI.attackMonster(monster,quickCombat);
                     this.currentTurn = 0;
 
                 }
                 else if(AI.getClassType().equals("Wizard") && monster.getHp()==1 && AI.getHp() == 1){
-                    AI.attackMonster(monster);
+                    AI.attackMonster(monster,quickCombat);
                     this.currentTurn = 0;
 
                 }
-                else if(AI.getClassType().equals("Wizard") && monster.getHp()>1 && AI.getHp()>1){
-                    AI.attackMonster(monster);
+                else if(AI.getClassType().equals("Wizard") && monster.getHp()>=1 && AI.getHp()>1){
+                    AI.attackMonster(monster,quickCombat);
                     this.currentTurn = 0;
 
                 }
 
             }
             else if(currentTurn == 0){
-                System.out.println(monster.getClassType() + " turn");
-                AI.defendAttack(monster);
+                AI.defendAttack(monster,quickCombat);
                 hitLastTurn = 1;
                 this.currentTurn = 1;
             }

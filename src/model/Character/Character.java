@@ -58,7 +58,7 @@ public class Character implements Serializable,CharacterInterface{
         return null;
     }
 
-    public void attackMonster(Monster monster){
+    public void attackMonster(Monster monster, boolean quickCombat){
         int attackDamage = 0;
         int monsterAgility = 0;
 
@@ -73,36 +73,45 @@ public class Character implements Serializable,CharacterInterface{
         }
 
         //bara development syfte för att se rollsen
-        System.out.println("Your attack: " + attackDamage);
-        System.out.println("Monster agility: " + monsterAgility);
-        System.out.println(" ");
-
+        if(!quickCombat) {
+            System.out.println("Your attack: " + attackDamage);
+            System.out.println("Monster agility: " + monsterAgility);
+            System.out.println(" ");
+        }
         //kollar om spelarens attack är högre än monstrets agility, applicerar thiefs passive om spelaren är en
         if (attackDamage>monsterAgility){
 
             if(this.classType.equals("Thief")){
                 int critChance = ThreadLocalRandom.current().nextInt(1,4 + 1);
                 if(critChance == 1){
-                    System.out.println("You crit the " + monster.getClassType());
-                    monster.setHp(monster.getHp()- 2);
+                    if(!quickCombat) {
+                        System.out.println("You crit the " + monster.getClassType());
+                    }
+                        monster.setHp(monster.getHp() - 2);
+
                 }
                 else{
-                    System.out.println("You attack the " + monster.getClassType());
+                    if(!quickCombat) {
+                        System.out.println("You attack the " + monster.getClassType());
+                    }
                     monster.takeDamage();
                 }
             }
             else {
-
-                System.out.println("You attack the " + monster.getClassType());
+                if(!quickCombat) {
+                    System.out.println("You attack the " + monster.getClassType());
+                }
                 monster.takeDamage();
             }
         }
         else if (attackDamage < monsterAgility){
-            System.out.println("Your attack missed! ");
+            if(!quickCombat) {
+                System.out.println("Your attack missed! ");
+            }
         }
     }
     //Tar in ett monster objekt och använder dens attribut och funktioner
-    public void defendAttack(Monster monster){
+    public void defendAttack(Monster monster, boolean quickCombat){
 
         //Variabler för att komma ihåg spelarens smidighets roll och monstrets attack roll
         int monsterAttackDamage = 0;
@@ -122,15 +131,21 @@ public class Character implements Serializable,CharacterInterface{
 
         //Kollar om monstrets attack träffar eller inte, om den träffar kollar den om spelaren är en knight och om detta är första slaget
         if(monsterAttackDamage<playerAgility){
-            System.out.println(monster.getClassType() + "s attack missed!" + "\n");
+            if(!quickCombat) {
+                System.out.println(monster.getClassType() + "s attack missed!" + "\n");
+            }
         }
         else if(monsterAttackDamage>playerAgility){
             if(firstHit && this.classType.equals("Knight")){
-                System.out.println("You block " + monster.getClassType() + " attack");
+                if(!quickCombat) {
+                    System.out.println("You block " + monster.getClassType() + " attack");
+                }
                 firstHit = false;
             }
             else {
-                System.out.println(monster.getClassType() + "s attack hit!");
+                if(!quickCombat) {
+                    System.out.println(monster.getClassType() + "s attack hit!");
+                }
                 this.hp = this.hp - 1;
             }
         }

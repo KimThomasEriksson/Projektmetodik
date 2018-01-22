@@ -124,7 +124,7 @@ public class Combat {
                     String playerChoice = scan.nextLine().toUpperCase();
 
                     if (playerChoice.equals("A")) {
-                        character.attackMonster(monster);
+                        character.attackMonster(monster, false);
                         this.currentTurn = 0;
                     } else if (playerChoice.equals("F")) {
 
@@ -144,7 +144,7 @@ public class Combat {
                         System.out.println("You need to (A)ttack or try to (F)lee");
                     }
                 } else if (this.currentTurn == 0) {
-                    character.defendAttack(monster);
+                    character.defendAttack(monster,false);
                     this.currentTurn = 1;
                 }
                 this.counter++;
