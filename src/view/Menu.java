@@ -14,6 +14,7 @@ public class Menu {
      *  Inputs and outputs, while loops with switch cases for robust interaction for user
      *  were we also consider the way movement gets impacted.
      *  Graphical design concludes and will be developed as we go.*/
+
     private int submitDifficulty = 0;
     private int startingCorner = 0;
 
