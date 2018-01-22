@@ -29,6 +29,7 @@ public class Combat {
 
         while(loop) {
             System.out.println("Do you want to (A)ttack it or try to (F)lee ?  ");
+            System.out.println(character.getHp() + " hp left");
             String choice = scan.nextLine().toUpperCase();
             if (choice.equals("A")) {
                 cont = true;

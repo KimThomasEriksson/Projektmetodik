@@ -72,6 +72,7 @@ public class RandGenerator {
             else{
                 return false;
                 }
+
             }
 
     // Metod som genererar Items / Treasure.
