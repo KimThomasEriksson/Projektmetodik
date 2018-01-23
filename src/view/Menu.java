@@ -23,6 +23,8 @@ public class Menu {
     private boolean menuThirdPhase;
     private Scanner scanner;
 
+    private boolean quickCombat;
+
     // Model attributes reserved for interaction by method/function calling
     private Character myCharacter;
     private Knight myKnight;
@@ -47,6 +49,7 @@ public class Menu {
         myCharacterData.saveFunc();
         this.validName = false;
         this.myAdventure = null;
+        this.quickCombat = false;
 
     }
 
@@ -865,5 +868,29 @@ public class Menu {
 
     public void setStartingCorner(int startingCorner) {
         this.startingCorner = startingCorner;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public boolean isQuickCombat() {
+        return quickCombat;
+    }
+
+    public void setQuickCombat(boolean quickCombat) {
+        this.quickCombat = quickCombat;
+    }
+
+    public boolean isValidName() {
+        return validName;
+    }
+
+    public void setValidName(boolean validName) {
+        this.validName = validName;
     }
 }

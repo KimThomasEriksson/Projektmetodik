@@ -1,5 +1,6 @@
 package model.Character;
 
+import model.Adventure;
 import model.Monster.Monster;
 
 import java.util.Scanner;
@@ -13,6 +14,8 @@ public class AI {
     private boolean contCombat;
     private boolean quickCombat;
     private Character AI;
+    private Adventure aiAdventure;
+
 
     public AI(Character AI, boolean quickCombat){
 
@@ -22,7 +25,7 @@ public class AI {
     }
 
     public void startMoving(){
-
+        aiAdventure.gameRoundAi(aiAdventure.isKeepMoving());
     }
 
     public void startCombat(Monster monster){
@@ -76,7 +79,7 @@ public class AI {
             boolean flee;
             if (AI.getHp()==0){
                 System.out.println("You died!");
-                System.exit(0);
+
             }
             else if(monster.getHp()<=0){
                 if (!quickCombat){
@@ -195,6 +198,54 @@ public class AI {
             }
         }
 
+    }
+
+    public int getCurrentTurn() {
+        return currentTurn;
+    }
+
+    public void setCurrentTurn(int currentTurn) {
+        this.currentTurn = currentTurn;
+    }
+
+    public int getHitLastTurn() {
+        return hitLastTurn;
+    }
+
+    public void setHitLastTurn(int hitLastTurn) {
+        this.hitLastTurn = hitLastTurn;
+    }
+
+    public boolean isContCombat() {
+        return contCombat;
+    }
+
+    public void setContCombat(boolean contCombat) {
+        this.contCombat = contCombat;
+    }
+
+    public boolean isQuickCombat() {
+        return quickCombat;
+    }
+
+    public void setQuickCombat(boolean quickCombat) {
+        this.quickCombat = quickCombat;
+    }
+
+    public Character getAI() {
+        return AI;
+    }
+
+    public void setAI(Character AI) {
+        this.AI = AI;
+    }
+
+    public Adventure getAiAdventure() {
+        return aiAdventure;
+    }
+
+    public void setAiAdventure(Adventure aiAdventure) {
+        this.aiAdventure = aiAdventure;
     }
 
 }
