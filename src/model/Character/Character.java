@@ -138,7 +138,8 @@ public class Character implements Serializable,CharacterInterface{
         else if(monsterAttackDamage>playerAgility){
             if(firstHit && this.classType.equals("Knight")){
                 if(!quickCombat) {
-                    System.out.println("You block " + monster.getClassType() + " attack");
+                    System.out.println("You block the " + monster.getClassType() + " attack");
+                    System.out.println(" ");
                 }
                 firstHit = false;
             }

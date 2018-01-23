@@ -1,6 +1,5 @@
 package view;
 
-import model.Adventure;
 import model.Monster.Monster;
 import model.Character.Character;
 import model.Room;
@@ -8,7 +7,6 @@ import model.Room;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -60,16 +58,20 @@ public class Combat {
 
         while (loop) {
             String encounterString = "";
-
+            boolean printOnce = true;
             for (int i = 0; i < monster.size();i++){
                 if (i+1 == monster.size() && monster.size() != 1){
                     encounterString += "and a " + monster.get(i).getClassType() + " has appeared!";
                     break;
                 }
+                if(monster.size()==2 && printOnce){
+                    encounterString += "a " + monster.get(i).getClassType() + " ";
+                    printOnce = false;
+                }
                 if(monster.size()==1){
                     encounterString += "a " + monster.get(i).getClassType() + " has appeared";
                     break;
-                } else{
+                } else if (monster.size() != 2){
                     encounterString += monster.get(i).getClassType() + ", ";
                 }
             }
@@ -210,6 +212,9 @@ public class Combat {
                             System.out.println(monster.get(0).getClassType() + " died!");
                             monster1Alive = false;
                             monsterAlive--;
+                            if(monster2==null){
+                                break;
+                            }
                         }
                         if (monster2.getHp() <= 0 && monster2Alive) {
                             System.out.println(monster.get(1).getClassType() + " died!");
@@ -238,6 +243,10 @@ public class Combat {
                         int commandToAttack = 1;
 
                         if (playerChoice.equals("A")) {
+                            if(monster2 == null){
+                                character.attackMonster(monster1, false);
+                            }
+                            else{
                             System.out.println("Who do you want to attack? ");
                             for (int n = 0; n < monster.size(); n++) {
                                 if(monster.get(n).getHp()<=0){
@@ -253,49 +262,40 @@ public class Combat {
                                 String target = scan.nextLine();
 
                                 if (target.equals("1")) {
-                                    if(monster1Alive) {
+                                    if (monster1Alive) {
                                         character.attackMonster(monster1, false);
                                         break;
-                                    }
-                                    else{
+                                    } else {
                                         System.out.println("You cant attack a dead monster");
                                         Thread.sleep(1000);
                                     }
-                                }
-
-                                else if (target.equals("2")) {
-                                    if(monster2Alive) {
+                                } else if (target.equals("2")) {
+                                    if (monster2Alive) {
                                         character.attackMonster(monster2, false);
                                         break;
-                                    }
-                                    else{
+                                    } else {
                                         System.out.println("You cant attack a dead monster");
                                         Thread.sleep(1000);
                                     }
 
-                                }
-
-                                else if (target.equals("3")) {
-                                    if(monster3Alive) {
+                                } else if (target.equals("3")) {
+                                    if (monster3Alive) {
                                         character.attackMonster(monster3, false);
                                         break;
-                                    }
-                                    else{
+                                    } else {
                                         System.out.println("You cant attack a dead monster");
                                         Thread.sleep(1000);
                                     }
-                                }
-
-                                else if (target.equals("4")) {
-                                    if(monster4Alive){
+                                } else if (target.equals("4")) {
+                                    if (monster4Alive) {
                                         character.attackMonster(monster4, false);
                                         break;
-                                    }
-                                    else{
+                                    } else {
                                         System.out.println("You cant attack a dead monster");
                                         Thread.sleep(1000);
                                     }
                                 }
+                            }
                             }
 
                         } else if (playerChoice.equals("F")) {
