@@ -17,18 +17,28 @@ public class Adventure {
     private int level;
     private Character myCharacter;
     private Boolean flee;
+
     private int startPosition;
     private int startPositionX;
     private int startPositionY;
+
     private ArrayList<Monster> monsterToFight;
     private Room rooms;
     private Menu menu;
     private Scanner scanner;
+
     private int totalCoins;
+
     private TestRoom testRoom;
     private AI characterAi;
+
     private int[] listOfMoves;
+
+    private boolean movementBool = false;
     private boolean keepMoving = true;
+    private boolean wantToExit = false;
+    private boolean progressAfterExitDiscovery = false;
+
     private int maxIndex = 0;
     private int minIndex = 0;
 
@@ -39,8 +49,8 @@ public class Adventure {
         this.listOfMoves = new int[4];
         listOfMoves[0] = 0;
         listOfMoves[1] = 1;
-//        listOfMoves[2] = 1;
-//        listOfMoves[3] = 3;
+        listOfMoves[2] = 1;
+        listOfMoves[3] = 3;
 
     }
 
@@ -55,6 +65,8 @@ public class Adventure {
         characterAi.setAiAdventure(this);
         testRoom.setCharacterAi(characterAi);
         findNewExit();
+        progressAfterExitDiscovery = movementBool;
+        doProgressionForTest();
 
     }
 
@@ -70,14 +82,16 @@ public class Adventure {
 
 
     }
-
+    // Goal is to find EXIT and set coordinates for it for later progression function
     public void findNewExit() throws IOException, InterruptedException {
-        boolean movementBool = false;
+
 
         while (!movementBool) {
 
+            menu.clearWindow();
             testRoom.printRoom();
             int randomAiChoice = testRoom.random.nextInt(4);
+            Thread.sleep(1000);
             System.out.println(randomAiChoice);
 
             switch (randomAiChoice) {
@@ -102,6 +116,56 @@ public class Adventure {
                     testRoom.moveRight();
                     movementBool = testRoom.isFirstTimeExit();
                     menu.clearWindow();
+                    break;
+
+            }
+        }
+        testRoom.printRoom();
+    }
+
+    public void doProgressionForTest() throws IOException, InterruptedException {
+
+        boolean canIExit = false;
+
+
+        while (progressAfterExitDiscovery) {
+
+            menu.clearWindow();
+            testRoom.printRoom();
+            Thread.sleep(1000);
+            int randomAiChoice = testRoom.random.nextInt(4);
+            System.out.println(randomAiChoice);
+
+            switch (randomAiChoice) {
+
+
+                case 0:
+                    testRoom.moveDown();
+                    canIExit = testRoom.isPermissionToExit();
+                    if (canIExit && wantToExit){
+                        progressAfterExitDiscovery = false;
+                    }
+                    break;
+                case 1:
+                    testRoom.moveUp();
+                    canIExit = testRoom.isPermissionToExit();
+                    if (canIExit && wantToExit){
+                        progressAfterExitDiscovery = false;
+                    }
+                    break;
+                case 2:
+                    testRoom.moveLeft();
+                    canIExit = testRoom.isPermissionToExit();
+                    if (canIExit && wantToExit){
+                        progressAfterExitDiscovery = false;
+                    }
+                    break;
+                case 3:
+                    testRoom.moveRight();
+                    canIExit = testRoom.isPermissionToExit();
+                    if (canIExit && wantToExit){
+                        progressAfterExitDiscovery = false;
+                    }
                     break;
 
             }
@@ -364,12 +428,9 @@ public class Adventure {
 
         Combat combat = new Combat();
         combat.setFlee(false);
-        for (int i = 0; i < this.monsterToFight.size(); i++) {
 
-            combat.combatStart(this.monsterToFight.get(i), this.menu.getMyCharacter(), this.rooms);
+        combat.combatStart(this.monsterToFight, myCharacter, rooms);
 
-
-        }
 
         boolean fleestatus = combat.getFlee();
 
