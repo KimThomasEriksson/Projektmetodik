@@ -40,7 +40,9 @@ public class Adventure {
         myCharacter = menu.getMyCharacter();
         gameRound();
 
+
     }
+
 
     public void gameRound() throws IOException, InterruptedException {
 
@@ -88,6 +90,7 @@ public class Adventure {
                 case "0":
                     if (rooms.isPermissionToExit()){
                         myCharacter.resetStats();
+                        menu.getMyCharacterData().saveFunc();
                         menu.setMenuThirdPhase(true);
                         menu.thirdMenuGameLoader();
                     }
