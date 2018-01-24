@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class CollectionOfMonsters {
 
     private ArrayList<Monster> listOfMonsters;
+    private int timesFled;
 
 
 
@@ -16,6 +17,8 @@ public class CollectionOfMonsters {
 
     public CollectionOfMonsters(ArrayList<Monster> listOfMonsters) {
         this.listOfMonsters = listOfMonsters;
+        this.timesFled=0;
+
     }
 
     public void setListOfMonsters(ArrayList<Monster> listOfMonsters) {
@@ -26,4 +29,11 @@ public class CollectionOfMonsters {
         return listOfMonsters;
     }
 
+    public int getTimesFled() {
+        return timesFled;
+    }
+
+    public void setTimesFled(int timesFled) {
+        this.timesFled = timesFled;
+    }
 }

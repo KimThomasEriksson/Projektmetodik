@@ -6104,31 +6104,6 @@ public class Adventure {
             }
 
 
-
-
-
-
-
-
-
-/*        boolean fleestatus = combat.getFlee();
-
-        if (fleestatus == false) {
-            int roomItems;
-            roomItems = RandGenerator.ItemGenerator(this.menu.getMyCharacter());
-
-
-            totalCoins += roomItems;
-            if (roomItems > 0) {
-                System.out.println("\n\nPress any key to continue...");
-                scanner.nextLine();
-            }
-
-
-        }
-        */
-
-
         }
     }
 
