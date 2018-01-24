@@ -425,11 +425,19 @@ public class Adventure {
     public void startFight() throws IOException, InterruptedException {
 
         this.monsterToFight = this.rooms.getMonstersToFight();
+        System.out.println(this.monsterToFight.size());
 
         Combat combat = new Combat();
         combat.setFlee(false);
+        if(this.monsterToFight.size()>0){
+            System.out.println("If in startFIght");
+            combat.combatStart(this.rooms.getMonstersToFight(), this.menu.getMyCharacter(), this.rooms);
+        }
 
-        combat.combatStart(this.monsterToFight, myCharacter, rooms);
+
+
+
+
 
 
         boolean fleestatus = combat.getFlee();
