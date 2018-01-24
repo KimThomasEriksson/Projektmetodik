@@ -108,4 +108,31 @@ public class Monster {
                 ", commonality=" + commonality +
                 '}';
     }
+
+    public int getMaxHp() {
+        int toReturn=0;
+        if(this.getClassType()=="GiantSpider"){
+            toReturn=1;
+
+        }
+
+        if(this.getClassType()=="Orc"){
+            toReturn=3;
+
+        }
+
+        if(this.getClassType()=="Skeleton"){
+            toReturn=2;
+
+        }
+
+        if(this.getClassType()=="Troll"){
+            toReturn=4;
+
+        }
+
+        return toReturn;
+    }
+
+
 }

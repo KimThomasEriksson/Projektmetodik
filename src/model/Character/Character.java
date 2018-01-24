@@ -76,6 +76,8 @@ public class Character implements Serializable,CharacterInterface{
         if(!quickCombat) {
             System.out.println("Your attack: " + attackDamage);
             System.out.println("Monster agility: " + monsterAgility);
+            System.out.println("\n");
+          //  System.out.println(monster.getHp()+"/"+monster.getMaxHp()+" hp left");
             System.out.println(" ");
         }
         //kollar om spelarens attack är högre än monstrets agility, applicerar thiefs passive om spelaren är en
@@ -85,14 +87,14 @@ public class Character implements Serializable,CharacterInterface{
                 int critChance = ThreadLocalRandom.current().nextInt(1,4 + 1);
                 if(critChance == 1){
                     if(!quickCombat) {
-                        System.out.println("You crit the " + monster.getClassType());
+                        System.out.println("You did a critical hit on the " + monster.getClassType());
                     }
                         monster.setHp(monster.getHp() - 2);
 
                 }
                 else{
                     if(!quickCombat) {
-                        System.out.println("You attack the " + monster.getClassType());
+                        System.out.println("You attack the " + monster.getClassType()+"( "+monster.getHp()+"/"+monster.getMaxHp()+" hp left");
                     }
                     monster.takeDamage();
                 }
@@ -109,6 +111,11 @@ public class Character implements Serializable,CharacterInterface{
                 System.out.println("Your attack missed! ");
             }
         }
+        if(monster.getHp()>0){
+
+           System.out.println(monster.getHp()+"/"+monster.getMaxHp()+" hp left");
+        }
+
     }
     //Tar in ett monster objekt och använder dens attribut och funktioner
     public void defendAttack(Monster monster, boolean quickCombat){
@@ -150,6 +157,7 @@ public class Character implements Serializable,CharacterInterface{
                 this.hp = this.hp - 1;
             }
         }
+
     }
     //Returnar true om spelaren kan fly och false om inte
     public boolean flee(){
@@ -378,4 +386,29 @@ public class Character implements Serializable,CharacterInterface{
 
         return Objects.hash(getClassType(), getName(), getInitiative(), getHp(), getAttack(), getAgility(), getCoin(), getCoinBag(), getGoldJewelry(), getGemstone(), getTreasureBox(), isFirstHit());
     }
+    public int getMaxHp() {
+
+        if(this.getClassType().equals("Knight")){
+           return 9;
+
+        }
+
+        if(this.getClassType().equals("Theif")){
+
+            return 5;
+
+        }
+
+        if(this.getClassType().equals("Wizard")){
+
+            return 4;
+
+        }
+
+
+
+       return 0;
+    }
+
+
 }

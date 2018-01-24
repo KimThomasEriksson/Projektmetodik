@@ -79,7 +79,7 @@ public class Combat {
             System.out.println(encounterString);
             Thread.sleep(500);
             System.out.println("Do you want to (A)ttack or try to (F)lee ?  ");
-            System.out.println(character.getHp() + " hp left");
+            System.out.println("You have "+character.getHp()+"/"+character.getMaxHp() + " hp left");
             String choice = scan.nextLine().toUpperCase();
             if (choice.equals("A")) {
                 cont = true;
@@ -220,6 +220,7 @@ public class Combat {
                             System.out.println(monster.get(0).getClassType() + " died!");
                             monster1Alive = false;
                             monsterAlive--;
+
                             if(monster2==null){
                                 break;
                             }
@@ -227,16 +228,19 @@ public class Combat {
                         if (monster2.getHp() <= 0 && monster2Alive) {
                             System.out.println(monster.get(1).getClassType() + " died!");
                             monster2Alive = false;
+
                             monsterAlive--;
                         }
                         if (monster3.getHp() <= 0&& monster3Alive) {
                             System.out.println(monster.get(2).getClassType() + " died!");
                             monster3Alive = false;
+
                             monsterAlive--;
                         }
                         if (monster4.getHp() <= 0&&monster4Alive) {
                             System.out.println(monster.get(3).getClassType() + " died!");
                             monster4Alive = false;
+
                             monsterAlive--;
                         }
                     } catch (NullPointerException e) {
@@ -261,7 +265,7 @@ public class Combat {
                                     System.out.println(commandToAttack + ". " + monster.get(n).getClassType() + " (dead)");
                                     commandToAttack++;
                                 }   else {
-                                    System.out.println(commandToAttack + ". " + monster.get(n).getClassType());
+                                    System.out.println(commandToAttack + ". " + monster.get(n).getClassType()+" ("+monster.get(n).getHp()+"/" +monster.get(n).getMaxHp()+" hp left)");
                                     commandToAttack++;
                                 }
                             }
@@ -300,7 +304,7 @@ public class Combat {
                                         break;
                                     } else {
                                         System.out.println("You cant attack a dead monster");
-                                        Thread.sleep(1000);
+                                        Thread.sleep(500);
                                     }
                                 }
                             }
