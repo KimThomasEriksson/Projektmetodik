@@ -371,16 +371,16 @@ public class AI {
                                 if (monster.get(0).getHp() == lowestHp && monster1Alive) {
                                     AI.attackMonster(monster1, quickCombat);
 
-
+                                    whoAttacked = "player";
                                 } else if (monster.get(1).getHp() == lowestHp && monster2Alive) {
                                     AI.attackMonster(monster2, quickCombat);
-
+                                    whoAttacked = "player";
                                 } else if (monster.get(2).getHp() == lowestHp && monster3Alive) {
                                     AI.attackMonster(monster3, quickCombat);
-
+                                    whoAttacked = "player";
                                 } else if (monster.get(3).getHp() == lowestHp && monster4Alive) {
                                     AI.attackMonster(monster4, quickCombat);
-
+                                    whoAttacked = "player";
                                 }
                             } catch (IndexOutOfBoundsException e) {
 
@@ -388,7 +388,34 @@ public class AI {
 
                         } else if (AIChoice.equals("F")) {
                             if(collOfMonster.getTimesFled() == 1){
-                                AIChoice = "A";
+                                int lowestHp = Integer.MAX_VALUE;
+                                try {
+                                    for (int n = 0; n < monster.size(); n++) {
+                                        if (monster.get(n).getHp() < lowestHp && monster.get(n).getHp() != 0) {
+                                            lowestHp = monster.get(n).getHp();
+                                        }
+                                    }
+                                } catch (IndexOutOfBoundsException e) {
+
+                                }
+                                try {
+                                    if (monster.get(0).getHp() == lowestHp && monster1Alive) {
+                                        AI.attackMonster(monster1, quickCombat);
+
+                                        whoAttacked = "player";
+                                    } else if (monster.get(1).getHp() == lowestHp && monster2Alive) {
+                                        AI.attackMonster(monster2, quickCombat);
+                                        whoAttacked = "player";
+                                    } else if (monster.get(2).getHp() == lowestHp && monster3Alive) {
+                                        AI.attackMonster(monster3, quickCombat);
+                                        whoAttacked = "player";
+                                    } else if (monster.get(3).getHp() == lowestHp && monster4Alive) {
+                                        AI.attackMonster(monster4, quickCombat);
+                                        whoAttacked = "player";
+                                    }
+                                } catch (IndexOutOfBoundsException e) {
+
+                                }
                             }
                             else if(collOfMonster.getTimesFled() == 0) {
                                 flee = AI.flee();
@@ -403,12 +430,13 @@ public class AI {
 
                                 } else {
                                     System.out.println("You've failed your escape. ");
+                                    whoAttacked = "player";
 
                                 }
 
                             }
                         }
-                        whoAttacked = "player";
+
 
                     } else if (monster1Alive && monsterInitiativeRoll1 == listOfRolls.get(i) && !"monster1".equals(whoAttacked)) {
                         AI.defendAttack(monster1, quickCombat);
