@@ -94,8 +94,12 @@ public class Room {
             }
 
             if (Roomcondition.equals("[X]")){
-                this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                System.out.println(monstersToFight.toString());
+                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                    return true;
+                }else{
+                    this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+
+                }
 
                 return true;
 
@@ -135,8 +139,13 @@ public class Room {
             }
 
             if (Roomcondition.equals("[X]")){
-                this.monstersInRoom[this.startPositionX][this.startPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                System.out.println(monstersToFight.toString());
+                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                    return true;
+                }else{
+                    this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+
+                }
+
                 return true;
 
             }else{
@@ -176,8 +185,13 @@ public class Room {
             }
 
             if (Roomcondition.equals("[X]")){
-                this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                System.out.println(monstersToFight.toString());
+                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                    return true;
+                }else{
+                    this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+
+                }
+
                 return true;
 
             }else{
@@ -215,7 +229,12 @@ public class Room {
             }
 
             if (Roomcondition.equals("[X]")){
-                this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                    return true;
+                }else{
+                    this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+
+                }
                 return true;
 
             }else{
@@ -293,9 +312,7 @@ public class Room {
             }
             this.rooms[this.exitPositionX][this.exitPositionY]=exitPosition;
 
-            //Gör start och exit till tomma arraylists monsters
-            this.monstersInRoom[this.exitPositionX][this.exitPositionY].setListOfMonsters(this.emptyArray);
-            this.monstersInRoom[this.startPositionX][this.startPositionY].setListOfMonsters(this.emptyArray);
+            fillMonsterRoom();
 
             return;
         }
@@ -309,9 +326,7 @@ public class Room {
             }
             this.rooms[this.exitPositionX][this.exitPositionY]=exitPosition;
 
-            //Gör start och exit till tomma arraylists monsters
-            this.monstersInRoom[this.exitPositionX][this.exitPositionY].setListOfMonsters(this.emptyArray);
-            this.monstersInRoom[this.startPositionX][this.startPositionY].setListOfMonsters(this.emptyArray);
+            fillMonsterRoom();
 
             return;
         }

@@ -26,7 +26,7 @@ public class Combat {
     private int counter = 0;
     private int monsterAlive = 0;
 
-    public void combatStart(ArrayList<Monster> monster, Character character, Room rooms) throws IOException, InterruptedException {
+    public boolean combatStart(ArrayList<Monster> monster, Character character, Room rooms) throws IOException, InterruptedException {
         boolean cont = false;
         boolean loop = true;
         Scanner scan = new Scanner(System.in);
@@ -89,10 +89,12 @@ public class Combat {
                 tryToFlee = character.flee();
                 if (tryToFlee) {
                     System.out.println("You've fled! ");
+
                     rooms.flee();
                     flee = true;
                     cont = false;
                     loop = false;
+                    return true;
                 } else {
                     System.out.println("You've failed your escape ");
                     cont = true;
@@ -311,6 +313,7 @@ public class Combat {
                             if (flee) {
                                 System.out.println("You fled! ");
                                 rooms.flee();
+                                return true;
 
                             } else {
                                 System.out.println("You've failed your escape. ");
@@ -344,7 +347,7 @@ public class Combat {
 
             }
         }
-
+    return false;
         }
 
 

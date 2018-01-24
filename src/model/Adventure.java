@@ -423,16 +423,40 @@ public class Adventure {
     }
 
     public void startFight() throws IOException, InterruptedException {
-
+        boolean fleestatus = false;
         this.monsterToFight = this.rooms.getMonstersToFight();
         System.out.println(this.monsterToFight.size());
 
         Combat combat = new Combat();
         combat.setFlee(false);
-        if(this.monsterToFight.size()>0){
-            System.out.println("If in startFIght");
-            combat.combatStart(this.rooms.getMonstersToFight(), this.menu.getMyCharacter(), this.rooms);
+        if (this.monsterToFight.size() == 0) {
+
+            if (fleestatus == false) {
+                int roomItems;
+                roomItems = RandGenerator.ItemGenerator(this.menu.getMyCharacter());
+
+
+                totalCoins += roomItems;
+                if (roomItems > 0) {
+                    System.out.println("\n\nPress any key to continue...");
+                    scanner.nextLine();
+                }
+            }
         }
+        if (this.monsterToFight.size() > 0) {
+
+            fleestatus = combat.combatStart(this.rooms.getMonstersToFight(), this.menu.getMyCharacter(), this.rooms);
+            if (fleestatus == false) {
+                int roomItems;
+                roomItems = RandGenerator.ItemGenerator(this.menu.getMyCharacter());
+
+
+                totalCoins += roomItems;
+                if (roomItems > 0) {
+                    System.out.println("\n\nPress any key to continue...");
+                    scanner.nextLine();
+                }
+            }
 
 
 
@@ -440,7 +464,9 @@ public class Adventure {
 
 
 
-        boolean fleestatus = combat.getFlee();
+
+
+/*        boolean fleestatus = combat.getFlee();
 
         if (fleestatus == false) {
             int roomItems;
@@ -453,9 +479,12 @@ public class Adventure {
                 scanner.nextLine();
             }
 
+
         }
+        */
 
 
+        }
     }
 
     public void makeAMove(String direction) throws IOException, InterruptedException {
