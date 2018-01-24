@@ -102,11 +102,11 @@ public class TestRoom {
 
             if (Roomcondition.equals("[X]")){
                 if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                     return true;
                 }else{
                     this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                 }
                 return true;
 
@@ -150,11 +150,11 @@ public class TestRoom {
 
             if (Roomcondition.equals("[X]")){
                 if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                     return true;
                 }else{
                     this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                 }
                 return true;
 
@@ -199,11 +199,11 @@ public class TestRoom {
 
             if (Roomcondition.equals("[X]")){
                 if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                     return true;
                 }else{
                     this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                 }
                 return true;
 
@@ -246,11 +246,11 @@ public class TestRoom {
 
             if (Roomcondition.equals("[X]")){
                 if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                     return true;
                 }else{
                     this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                 }
                 return true;
             }else{
