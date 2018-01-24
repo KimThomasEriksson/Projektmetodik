@@ -201,7 +201,9 @@ public class Combat {
                 String whoAttacked = "";
 
                 if (monsterAlive == 0) {
-                    System.out.println("Every monster died ");
+                    if(monster.size()>1) {
+                        System.out.println("Every monster died ");
+                    }
                     break;
 
                 }
