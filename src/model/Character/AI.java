@@ -35,7 +35,7 @@ public class AI {
         aiAdventure.gameRoundAi(aiAdventure.isKeepMoving());
     }
 
-    public void startCombat(ArrayList<Monster> monster, boolean findExitPhase){
+    public void startCombat(ArrayList<Monster> monster ){
         boolean flee;
 
         ArrayList<Monster> listOfMonster = new ArrayList<Monster>();
@@ -121,11 +121,12 @@ public class AI {
             }
             boolean tryToFlee = false;
             boolean triedToFlee = false;
-            if (findExitPhase && monsterScore > 5 || !findExitPhase && monsterScore > 40 && AI.getHp() <= 4|| AI.getHp() == 1
-                    || AI.getHp() == 2 && monsterScore > 5 && !AI.getClassType().equals("Knight") && !findExitPhase
-                    || AI.getHp() == 2 && monsterScore > 10 && AI.getClassType().equals("Knight") && !findExitPhase) {
+            if (!aiAdventure.getTestRoom().isFirstTimeExit() && monsterScore > 5 || aiAdventure.getTestRoom().isFirstTimeExit() && monsterScore > 40 && AI.getHp() <= 4|| AI.getHp() == 1
+                    || AI.getHp() == 2 && monsterScore > 5 && !AI.getClassType().equals("Knight") && aiAdventure.getTestRoom().isFirstTimeExit()
+                    || AI.getHp() == 2 && monsterScore > 10 && AI.getClassType().equals("Knight") && aiAdventure.getTestRoom().isFirstTimeExit()) {
                 tryToFlee = AI.flee();
                 triedToFlee = true;
+                aiAdventure.setProgressAfterExitDiscovery(false);
 
             } else {
                 cont = true;
@@ -134,7 +135,7 @@ public class AI {
 
             if (tryToFlee) {
                 System.out.println("You've fled! ");
-                aiAdventure.getRooms().flee();
+                aiAdventure.getTestRoom().flee();
                 flee = true;
                 cont = false;
                 loop = false;
@@ -232,6 +233,7 @@ public class AI {
                 //kollar om spelaren dog den förra rundan
                 if (AI.getHp() <= 0) {
                     System.out.println("You died!");
+                    aiAdventure.setNavigationBool(false);
                     //sätt in våran death animation/funktion
                     break;
                 }
@@ -305,9 +307,9 @@ public class AI {
                         int commandToAttack = 1;
                         String AIChoice = "";
 
-                        if (findExitPhase && monsterScore > 5 || !findExitPhase && monsterScore > 45 && AI.getHp()<=3 || AI.getHp() == 1
-                                || AI.getHp() == 2 && monsterScore > 5 && !AI.getClassType().equals("Knight") && !findExitPhase
-                                || AI.getHp() == 2 && monsterScore > 10 && AI.getClassType().equals("Knight") && !findExitPhase) {
+                        if (!aiAdventure.getTestRoom().isFirstTimeExit() && monsterScore > 5 || aiAdventure.getTestRoom().isFirstTimeExit() && monsterScore > 45 && AI.getHp()<=3 || AI.getHp() == 1
+                                || AI.getHp() == 2 && monsterScore > 5 && !AI.getClassType().equals("Knight") && aiAdventure.getTestRoom().isFirstTimeExit()
+                                || AI.getHp() == 2 && monsterScore > 10 && AI.getClassType().equals("Knight") && aiAdventure.getTestRoom().isFirstTimeExit()) {
                             AIChoice = "F";
                         } else {
                             AIChoice = "A";
@@ -370,7 +372,8 @@ public class AI {
 
                             if (flee) {
                                 System.out.println("You fled! ");
-                                aiAdventure.getRooms().flee();
+                                aiAdventure.getTestRoom().flee();
+                                break;
 
                             } else {
                                 System.out.println("You've failed your escape. ");

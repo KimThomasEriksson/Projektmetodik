@@ -26,11 +26,11 @@ public class Main {
 //        credits.intro();
 
         Menu mainMenu = new Menu();
-        mainMenu.runMainMenu();
+//        mainMenu.runMainMenu();
 
 
         Adventure gameEngine = new Adventure(mainMenu);
-        gameEngine.startNewRoom();
+        gameEngine.startNewAiRoom();
 
 
 

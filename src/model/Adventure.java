@@ -34,6 +34,8 @@ public class Adventure {
 
     private int[] listOfMoves;
 
+    private boolean navigationBool = true;
+    private boolean navigationBoolGoToExit = false;
     private boolean movementBool = false;
     private boolean keepMoving = true;
     private boolean wantToExit = false;
@@ -41,6 +43,8 @@ public class Adventure {
 
     private int maxIndex = 0;
     private int minIndex = 0;
+    private int areaRows;
+    private int areaColumns;
 
 
     public Adventure(Menu menu) {
@@ -65,8 +69,7 @@ public class Adventure {
         characterAi.setAiAdventure(this);
         testRoom.setCharacterAi(characterAi);
         findNewExit();
-        progressAfterExitDiscovery = movementBool;
-        doProgressionForTest();
+        findLootAndFight();
 
     }
 
@@ -82,46 +85,5689 @@ public class Adventure {
 
 
     }
+
+    //
     // Goal is to find EXIT and set coordinates for it for later progression function
+    //
     public void findNewExit() throws IOException, InterruptedException {
 
 
-        while (!movementBool) {
+        while (navigationBool) {
 
             menu.clearWindow();
             testRoom.printRoom();
-            int randomAiChoice = testRoom.random.nextInt(4);
             Thread.sleep(1000);
-            System.out.println(randomAiChoice);
 
-            switch (randomAiChoice) {
+            for (int rows = 0; rows < testRoom.getRooms().length; rows++) {
+                for (int columns = 0; columns < testRoom.getRooms()[rows].length; columns++) {
+                    if (testRoom.getRooms()[rows][columns].equals("[A]")) {
+                        areaRows = rows;
+                        areaColumns = columns;
+                        try {
+                            if (testRoom.getRooms()[areaRows + 1][areaColumns].equals("[X]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows + 2][areaColumns].equals("[X]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows + 3][areaColumns].equals("[X]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows + 4][areaColumns].equals("[X]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows + 5][areaColumns].equals("[X]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows + 6][areaColumns].equals("[X]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows + 7][areaColumns].equals("[X]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows + 8][areaColumns].equals("[X]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
 
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows - 1][areaColumns].equals("[X]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows - 2][areaColumns].equals("[X]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows - 3][areaColumns].equals("[X]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows - 4][areaColumns].equals("[X]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows - 5][areaColumns].equals("[X]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows - 6][areaColumns].equals("[X]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows - 7][areaColumns].equals("[X]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows - 8][areaColumns].equals("[X]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns + 1].equals("[X]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns + 2].equals("[X]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns + 3].equals("[X]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns + 4].equals("[X]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns + 5].equals("[X]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns + 6].equals("[X]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns + 7].equals("[X]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns + 8].equals("[X]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns - 1].equals("[X]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns - 2].equals("[X]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns - 3].equals("[X]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns - 4].equals("[X]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns - 5].equals("[X]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
 
-                case 0:
-                    testRoom.moveDown();
-                    movementBool = testRoom.isFirstTimeExit();
-                    menu.clearWindow();
-                    break;
-                case 1:
-                    testRoom.moveUp();
-                    movementBool = testRoom.isFirstTimeExit();
-                    menu.clearWindow();
-                    break;
-                case 2:
-                    testRoom.moveLeft();
-                    movementBool = testRoom.isFirstTimeExit();
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns - 6].equals("[X]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns - 7].equals("[X]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (testRoom.getRooms()[areaRows][areaColumns - 8].equals("[X]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
 
-                    break;
-                case 3:
-                    testRoom.moveRight();
-                    movementBool = testRoom.isFirstTimeExit();
-                    menu.clearWindow();
-                    break;
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            try {
+                                if (testRoom.getRooms()[areaRows + 1][areaColumns].equals("[X]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (testRoom.getRooms()[areaRows + 2][areaColumns].equals("[X]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (testRoom.getRooms()[areaRows + 3][areaColumns].equals("[X]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (testRoom.getRooms()[areaRows + 4][areaColumns].equals("[X]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (testRoom.getRooms()[areaRows + 5][areaColumns].equals("[X]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (testRoom.getRooms()[areaRows + 6][areaColumns].equals("[X]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (testRoom.getRooms()[areaRows + 7][areaColumns].equals("[X]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (testRoom.getRooms()[areaRows + 8][areaColumns].equals("[X]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows - 1][areaColumns].equals("[X]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
 
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows - 2][areaColumns].equals("[X]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows - 3][areaColumns].equals("[X]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows - 4][areaColumns].equals("[X]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows - 5][areaColumns].equals("[X]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows - 6][areaColumns].equals("[X]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows - 7][areaColumns].equals("[X]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows - 8][areaColumns].equals("[X]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns + 1].equals("[X]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns + 2].equals("[X]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns + 3].equals("[X]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns + 4].equals("[X]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns + 5].equals("[X]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns + 6].equals("[X]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns + 7].equals("[X]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns + 8].equals("[X]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns - 1].equals("[X]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns - 2].equals("[X]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns - 3].equals("[X]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns - 4].equals("[X]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns - 5].equals("[X]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns - 6].equals("[X]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns - 7].equals("[X]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (testRoom.getRooms()[areaRows][areaColumns - 8].equals("[X]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+
+                        }
+                    }
+                    if (testRoom.getRooms()[rows][columns].equals("[E]")) {
+                        testRoom.setFirstTimeExit(true);
+                        testRoom.setExitPositionX(rows);
+                        testRoom.setExitPositionY(columns);
+                        navigationBool = false;
+                    }
+                }
             }
         }
-        testRoom.printRoom();
+        System.out.println("Found the EXIT!");
+        Thread.sleep(3000);
+        System.out.println("I'll MARK this EXIT, time to kill and loot before i head out of here!");
+        findLootAndFight();
+
     }
+
+    public void findLootAndFight() throws IOException, InterruptedException {
+
+        progressAfterExitDiscovery = true;
+
+        while (progressAfterExitDiscovery) {
+            menu.clearWindow();
+            testRoom.printRoom();
+            Thread.sleep(1000);
+            for (int rows = 0; rows < testRoom.getRooms().length; rows++) {
+                for (int columns = 0; columns < testRoom.getRooms()[rows].length; columns++) {
+                    if (!testRoom.getRooms()[rows][columns].equals("[A]")) {
+                        areaRows = rows;
+                        areaColumns = columns;
+                        try {
+                            if (!testRoom.getRooms()[areaRows + 1][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 2][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 3][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 4][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 5][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 6][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 7][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 8][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 1][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 2][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 3][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 4][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 5][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 6][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 7][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 8][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 1].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 2].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 3].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 4].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 5].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 6].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 7].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 8].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 1].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 2].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 3].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 4].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 5].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 6].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 7].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 8].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 1][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 2][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 3][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 4][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 5][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 6][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 7][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 8][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 1][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 2][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 3][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 4][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 5][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 6][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 7][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 8][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 1].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 2].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 3].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 4].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 5].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 6].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 7].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 8].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 1].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 2].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 3].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 4].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 5].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 6].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 7].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 8].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                        }
+                    }
+                    if (testRoom.getRooms()[rows][columns].equals("[E]")) {
+                        testRoom.setFirstTimeExit(true);
+                        testRoom.setExitPositionX(rows);
+                        testRoom.setExitPositionY(columns);
+                        if (testRoom.isPermissionToExit() && wantToExit){
+                            return;
+                        }
+                        try {
+                            if (!testRoom.getRooms()[areaRows + 1][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 2][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 3][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 4][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 5][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 6][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 7][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows + 8][areaColumns].equals("[ ]")) {
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+                                testRoom.moveDown();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("down");
+
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 1][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 2][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 3][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 4][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 5][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 6][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 7][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows - 8][areaColumns].equals("[ ]")) {
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                testRoom.moveUp();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("up");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 1].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 2].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 3].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 4].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 5].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 6].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 7].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns + 8].equals("[ ]")) {
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                testRoom.moveRight();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("right");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 1].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 2].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 3].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 4].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 5].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 6].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 7].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+                            areaRows = rows;
+                            areaColumns = columns;
+                            if (!testRoom.getRooms()[areaRows][areaColumns - 8].equals("[ ]")) {
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                testRoom.moveLeft();
+                                menu.clearWindow();
+                                testRoom.printRoom();
+                                Thread.sleep(1000);
+                                System.out.println("left");
+                                continue;
+                            }
+
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 1][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 2][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 3][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 4][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 5][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 6][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 7][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                if (!testRoom.getRooms()[areaRows + 8][areaColumns].equals("[ ]")) {
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    testRoom.moveDown();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("down");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 1][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 2][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 3][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 4][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 5][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 6][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 7][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows - 8][areaColumns].equals("[ ]")) {
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    testRoom.moveUp();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("up");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 1].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 2].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 3].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 4].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 5].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 6].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 7].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns + 8].equals("[ ]")) {
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    testRoom.moveRight();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("right");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 1].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 2].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 3].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 4].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 5].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 6].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 7].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+                            try {
+                                areaRows = rows;
+                                areaColumns = columns;
+                                if (!testRoom.getRooms()[areaRows][areaColumns - 8].equals("[ ]")) {
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    testRoom.moveLeft();
+                                    menu.clearWindow();
+                                    testRoom.printRoom();
+                                    Thread.sleep(1000);
+                                    System.out.println("left");
+                                    continue;
+                                }
+                            } catch (ArrayIndexOutOfBoundsException r) {
+
+                            }
+
+                        }
+                        System.out.println("Found the EXIT!");
+                        Thread.sleep(3000);
+                        System.out.println("I'll MARK this EXIT, time to kill and loot before i head out of here!");
+
+                    }
+                }
+            }
+        }
+    }
+
+
+
 
     public void doProgressionForTest() throws IOException, InterruptedException {
 
@@ -134,7 +5780,6 @@ public class Adventure {
             testRoom.printRoom();
             Thread.sleep(1000);
             int randomAiChoice = testRoom.random.nextInt(4);
-            System.out.println(randomAiChoice);
 
             switch (randomAiChoice) {
 
@@ -142,28 +5787,28 @@ public class Adventure {
                 case 0:
                     testRoom.moveDown();
                     canIExit = testRoom.isPermissionToExit();
-                    if (canIExit && wantToExit){
+                    if (canIExit && wantToExit) {
                         progressAfterExitDiscovery = false;
                     }
                     break;
                 case 1:
                     testRoom.moveUp();
                     canIExit = testRoom.isPermissionToExit();
-                    if (canIExit && wantToExit){
+                    if (canIExit && wantToExit) {
                         progressAfterExitDiscovery = false;
                     }
                     break;
                 case 2:
                     testRoom.moveLeft();
                     canIExit = testRoom.isPermissionToExit();
-                    if (canIExit && wantToExit){
+                    if (canIExit && wantToExit) {
                         progressAfterExitDiscovery = false;
                     }
                     break;
                 case 3:
                     testRoom.moveRight();
                     canIExit = testRoom.isPermissionToExit();
-                    if (canIExit && wantToExit){
+                    if (canIExit && wantToExit) {
                         progressAfterExitDiscovery = false;
                     }
                     break;
@@ -750,5 +6395,77 @@ public class Adventure {
 
     public void setKeepMoving(boolean keepMoving) {
         this.keepMoving = keepMoving;
+    }
+
+    public boolean isMovementBool() {
+        return movementBool;
+    }
+
+    public void setMovementBool(boolean movementBool) {
+        this.movementBool = movementBool;
+    }
+
+    public boolean isWantToExit() {
+        return wantToExit;
+    }
+
+    public void setWantToExit(boolean wantToExit) {
+        this.wantToExit = wantToExit;
+    }
+
+    public boolean isProgressAfterExitDiscovery() {
+        return progressAfterExitDiscovery;
+    }
+
+    public void setProgressAfterExitDiscovery(boolean progressAfterExitDiscovery) {
+        this.progressAfterExitDiscovery = progressAfterExitDiscovery;
+    }
+
+    public int getMaxIndex() {
+        return maxIndex;
+    }
+
+    public void setMaxIndex(int maxIndex) {
+        this.maxIndex = maxIndex;
+    }
+
+    public int getMinIndex() {
+        return minIndex;
+    }
+
+    public void setMinIndex(int minIndex) {
+        this.minIndex = minIndex;
+    }
+
+    public int getAreaRows() {
+        return areaRows;
+    }
+
+    public void setAreaRows(int areaRows) {
+        this.areaRows = areaRows;
+    }
+
+    public int getAreaColumns() {
+        return areaColumns;
+    }
+
+    public void setAreaColumns(int areaColumns) {
+        this.areaColumns = areaColumns;
+    }
+
+    public boolean isNavigationBool() {
+        return navigationBool;
+    }
+
+    public void setNavigationBool(boolean navigationBool) {
+        this.navigationBool = navigationBool;
+    }
+
+    public boolean isNavigationBoolGoToExit() {
+        return navigationBoolGoToExit;
+    }
+
+    public void setNavigationBoolGoToExit(boolean navigationBoolGoToExit) {
+        this.navigationBoolGoToExit = navigationBoolGoToExit;
     }
 }

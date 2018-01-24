@@ -17,7 +17,7 @@ public class TestRoom {
     private String playerPosition="[A]";
     private String exitPosition = "[E]";
     private boolean exitVisited = false;
-    private boolean firstTimeExit;
+    private boolean firstTimeExit = false;
     private boolean permissionToExit = false;
     private int exitPositionX;
     private int exitPositionY;
@@ -30,6 +30,8 @@ public class TestRoom {
     Random random = new Random();
     private AI characterAi;
     private boolean movementOutcome;
+    ArrayList<Monster> emptyArray=new ArrayList<>();
+
 
 
 
@@ -42,7 +44,6 @@ public class TestRoom {
         this.startPositionX = playerPositionX;
         this.startPositionY = playerPositionY;
         this.level = level;
-        this.firstTimeExit = false;
         this.movementOutcome = true;
         createGame();
         fillRoom();
@@ -100,13 +101,13 @@ public class TestRoom {
             }
 
             if (Roomcondition.equals("[X]")){
-//                this.monstersToFight = controller.RandGenerator.rollTheDice(this.level);
-//                for (Monster m : this.monstersToFight){
-//
-//                    System.out.println("after movement");
-//                    characterAi.startCombat(m);
-//                }
-
+                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    return true;
+                }else{
+                    this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                }
                 return true;
 
             }else{
@@ -119,7 +120,7 @@ public class TestRoom {
             this.playerPositionX=oldPlayerPositionX;
             this.playerPositionY=oldPlayerPositionY;
             this.movementOutcome = false;
-            System.out.println("No more down");
+//            System.out.println("No more down");
             this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
             return false;
 
@@ -148,10 +149,13 @@ public class TestRoom {
             }
 
             if (Roomcondition.equals("[X]")){
-//                this.monstersToFight=controller.RandGenerator.rollTheDice(this.level);
-//                for (Monster m : this.monstersToFight){
-//                    characterAi.startCombat(m);
-//                }
+                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    return true;
+                }else{
+                    this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                }
                 return true;
 
             }else{
@@ -163,7 +167,7 @@ public class TestRoom {
             this.playerPositionX=oldPlayerPositionX;
             this.playerPositionY=oldPlayerPositionY;
             this.movementOutcome = false;
-            System.out.println("No more up");
+//            System.out.println("No more up");
             this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
             return false;
 
@@ -194,11 +198,13 @@ public class TestRoom {
             }
 
             if (Roomcondition.equals("[X]")){
-//                this.monstersToFight=controller.RandGenerator.rollTheDice(this.level);
-//                for (Monster m : this.monstersToFight){
-//                    characterAi.startCombat(m);
-//                }
-
+                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    return true;
+                }else{
+                    this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                }
                 return true;
 
             }else{
@@ -210,7 +216,7 @@ public class TestRoom {
             this.playerPositionX=oldPlayerPositionX;
             this.playerPositionY=oldPlayerPositionY;
             this.movementOutcome = false;
-            System.out.println("No more left");
+//            System.out.println("No more left");
             this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
             return false;
 
@@ -239,13 +245,14 @@ public class TestRoom {
             }
 
             if (Roomcondition.equals("[X]")){
-//                this.monstersToFight=controller.RandGenerator.rollTheDice(this.level);
-//                for (Monster m : this.monstersToFight){
-//                    characterAi.startCombat(m);
-//                }
-
+                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                    return true;
+                }else{
+                    this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
+                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters());
+                }
                 return true;
-
             }else{
 //                this.movementOutcome = false;
                 return true;
@@ -255,7 +262,7 @@ public class TestRoom {
             this.playerPositionX=oldPlayerPositionX;
             this.playerPositionY=oldPlayerPositionY;
             this.movementOutcome = false;
-            System.out.println("No more right");
+//            System.out.println("No more right");
             this.rooms[oldPlayerPositionX][oldPlayerPositionY]=playerPosition;
             return false;
         }
@@ -273,6 +280,22 @@ public class TestRoom {
         this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
     }
 
+    public void fillMonsterRoom(){
+
+        for(int rows=0;rows<this.monstersInRoom.length;rows++) {
+            for (int columns = 0; columns < this.monstersInRoom[rows].length; columns++) {
+                System.out.println(columns);
+                ArrayList<Monster> empty = new ArrayList<>();
+                this.monstersInRoom[rows][columns]=new CollectionOfMonsters(empty);
+                //System.out.print(rooms[rows][columns] + "\t");
+            }
+        }
+        //Gör start och exit till tomma arraylists monsters
+        this.monstersInRoom[this.exitPositionX][this.exitPositionY].setListOfMonsters(this.emptyArray);
+        this.monstersInRoom[this.startPositionX][this.startPositionY].setListOfMonsters(this.emptyArray);
+
+    }
+
     /*
      *This function creates rooms based of level and sets player position to one of the rooms
      */
@@ -280,31 +303,49 @@ public class TestRoom {
 
         if(level==1){
             this.rooms = new String[4][4];
+            this.monstersInRoom= new CollectionOfMonsters[4][4];
+
+
             randomExitPositions(3,3);
             while(startPositionX == exitPositionX && startPositionY == exitPositionY){
                 randomExitPositions(3,3);
             }
             this.rooms[this.exitPositionX][this.exitPositionY]=exitPosition;
+            fillMonsterRoom();
+
+            //Gör start och exit till tomma arraylists monsters
+
+
             return;
         }
 
         if(level==2){
             this.rooms = new String[5][5];
+            this.monstersInRoom= new CollectionOfMonsters[5][5];
+
+
             randomExitPositions(4,4);
             while(startPositionX == exitPositionX && startPositionY == exitPositionY){
                 randomExitPositions(4,4);
             }
             this.rooms[this.exitPositionX][this.exitPositionY]=exitPosition;
+
+            fillMonsterRoom();
+
             return;
         }
 
         if(level==3){
             this.rooms = new String[8][8];
+            this.monstersInRoom= new CollectionOfMonsters[8][8];
             randomExitPositions(7,7);
             while(startPositionX == exitPositionX && startPositionY == exitPositionY){
                 randomExitPositions(7,7);
             }
             this.rooms[this.exitPositionX][this.exitPositionY]=exitPosition;
+
+            fillMonsterRoom();
+
             return;
         }
     }
@@ -455,6 +496,30 @@ public class TestRoom {
 
     public void setMovementOutcome(boolean movementOutcome) {
         this.movementOutcome = movementOutcome;
+    }
+
+    public CollectionOfMonsters[][] getMonstersInRoom() {
+        return monstersInRoom;
+    }
+
+    public void setMonstersInRoom(CollectionOfMonsters[][] monstersInRoom) {
+        this.monstersInRoom = monstersInRoom;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public ArrayList<Monster> getEmptyArray() {
+        return emptyArray;
+    }
+
+    public void setEmptyArray(ArrayList<Monster> emptyArray) {
+        this.emptyArray = emptyArray;
     }
 }
 
