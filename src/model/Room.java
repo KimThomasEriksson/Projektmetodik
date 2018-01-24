@@ -256,7 +256,7 @@ public class Room {
         for(int rows=0;rows<this.rooms.length;rows++) {
             for (int columns = 0; columns < this.rooms[rows].length; columns++) {
                 this.rooms[rows][columns] = "[X]";
-                //System.out.print(rooms[rows][columns] + "\t");
+
             }
         }
         this.rooms[this.playerPositionX][this.playerPositionY]=playerPosition;
@@ -266,10 +266,10 @@ public class Room {
 
         for(int rows=0;rows<this.monstersInRoom.length;rows++) {
             for (int columns = 0; columns < this.monstersInRoom[rows].length; columns++) {
-                System.out.println(columns);
+
                 ArrayList<Monster> empty = new ArrayList<>();
                 this.monstersInRoom[rows][columns]=new CollectionOfMonsters(empty);
-                //System.out.print(rooms[rows][columns] + "\t");
+
             }
         }
         //Gör start och exit till tomma arraylists monsters

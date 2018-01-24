@@ -425,7 +425,7 @@ public class Adventure {
     public void startFight() throws IOException, InterruptedException {
         boolean fleestatus = false;
         this.monsterToFight = this.rooms.getMonstersToFight();
-        System.out.println(this.monsterToFight.size());
+
 
         Combat combat = new Combat();
         combat.setFlee(false);
