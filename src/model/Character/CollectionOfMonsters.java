@@ -36,4 +36,7 @@ public class CollectionOfMonsters {
     public void setTimesFled(int timesFled) {
         this.timesFled = timesFled;
     }
+    public void incTimesFled(){
+        this.timesFled++;
+    }
 }
