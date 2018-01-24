@@ -23,6 +23,10 @@ public class AI {
     private Character AI;
     private Adventure aiAdventure;
 
+    private boolean loop;
+    private boolean cont;
+
+    private boolean fled = false;
 
     public AI(Character AI, boolean quickCombat){
 
@@ -48,8 +52,8 @@ public class AI {
         int counter = 0;
         int monsterAlive = 0;
 
-        boolean cont = false;
-        boolean loop = true;
+        cont = false;
+        loop = true;
 
         int playerInitiativeRoll = 0;
         int monsterInitiativeRoll1 = 0;
@@ -139,6 +143,7 @@ public class AI {
                 flee = true;
                 cont = false;
                 loop = false;
+                break;
             } else if (triedToFlee && !tryToFlee) {
                 System.out.println("You've failed your escape ");
                 cont = true;
@@ -218,7 +223,12 @@ public class AI {
 
             //Combat startas
             while (true) {
-
+                if(fled){
+                    loop = false;
+                    cont = false;
+                    fled = false;
+                    break;
+                }
                 if (counter == 2) {
                     try {
                         if(!quickCombat) {
@@ -372,7 +382,10 @@ public class AI {
 
                             if (flee) {
                                 System.out.println("You fled! ");
+                                fled = true;
                                 aiAdventure.getTestRoom().flee();
+                                cont = false;
+                                loop = false;
                                 break;
 
                             } else {
