@@ -39,10 +39,14 @@ public class AI {
         aiAdventure.gameRoundAi(aiAdventure.isKeepMoving());
     }
 
-    public void startCombat(ArrayList<Monster> monster ){
+    public void startCombat(CollectionOfMonsters collOfMonster ){
         boolean flee;
 
-        ArrayList<Monster> listOfMonster = new ArrayList<Monster>();
+        ArrayList<Monster> monster = new ArrayList<>();
+
+        monster = collOfMonster.getListOfMonsters();
+
+        ArrayList<Monster> listOfMonster = new ArrayList<>();
 
         boolean monster1Alive = false;
         boolean monster2Alive = false;
@@ -128,9 +132,15 @@ public class AI {
             if (!aiAdventure.getTestRoom().isFirstTimeExit() && monsterScore > 5 || aiAdventure.getTestRoom().isFirstTimeExit() && monsterScore > 40 && AI.getHp() <= 4|| AI.getHp() == 1
                     || AI.getHp() == 2 && monsterScore > 5 && !AI.getClassType().equals("Knight") && aiAdventure.getTestRoom().isFirstTimeExit()
                     || AI.getHp() == 2 && monsterScore > 10 && AI.getClassType().equals("Knight") && aiAdventure.getTestRoom().isFirstTimeExit()) {
-                tryToFlee = AI.flee();
-                triedToFlee = true;
-                aiAdventure.setProgressAfterExitDiscovery(false);
+                if(collOfMonster.getTimesFled() == 1){
+                    cont = true;
+                    loop = false;
+                }
+                else if(collOfMonster.getTimesFled() == 0) {
+                    tryToFlee = AI.flee();
+                    triedToFlee = true;
+                    collOfMonster.incTimesFled();
+                }
 
             } else {
                 cont = true;
@@ -377,23 +387,26 @@ public class AI {
                             }
 
                         } else if (AIChoice.equals("F")) {
+                            if(collOfMonster.getTimesFled() == 1){
+                                AIChoice = "A";
+                            }
+                            else if(collOfMonster.getTimesFled() == 0) {
+                                flee = AI.flee();
 
-                            flee = AI.flee();
+                                if (flee) {
+                                    System.out.println("You fled! ");
+                                    fled = true;
+                                    aiAdventure.getTestRoom().flee();
+                                    cont = false;
+                                    loop = false;
+                                    break;
 
-                            if (flee) {
-                                System.out.println("You fled! ");
-                                fled = true;
-                                aiAdventure.getTestRoom().flee();
-                                cont = false;
-                                loop = false;
-                                break;
+                                } else {
+                                    System.out.println("You've failed your escape. ");
 
-                            } else {
-                                System.out.println("You've failed your escape. ");
+                                }
 
                             }
-
-
                         }
                         whoAttacked = "player";
 
