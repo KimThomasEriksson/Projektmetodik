@@ -78,7 +78,7 @@ public class Combat {
 
             System.out.println(encounterString);
             Thread.sleep(500);
-            System.out.println("Do you want to (A)ttack it or try to (F)lee ?  ");
+            System.out.println("Do you want to (A)ttack or try to (F)lee ?  ");
             System.out.println(character.getHp() + " hp left");
             String choice = scan.nextLine().toUpperCase();
             if (choice.equals("A")) {
@@ -208,6 +208,10 @@ public class Combat {
                 for (int i = 0; i < listOfRolls.size(); i++) {
 
                     try {
+                        if (monsterAlive == 0) {
+                            break;
+
+                        }
                         if (monster1.getHp() <= 0 && monster1Alive) {
                             System.out.println(monster.get(0).getClassType() + " died!");
                             monster1Alive = false;
