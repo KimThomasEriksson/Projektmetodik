@@ -235,7 +235,7 @@ public class Combat {
                             System.out.println(monster.get(0).getClassType() + " died!");
                             monster1Alive = false;
                             monsterAlive--;
-
+                            whoDidIKill(monster1, character);
                             if(monster2==null){
                                 break;
                             }
@@ -243,19 +243,19 @@ public class Combat {
                         if (monster2.getHp() <= 0 && monster2Alive) {
                             System.out.println(monster.get(1).getClassType() + " died!");
                             monster2Alive = false;
-
+                            whoDidIKill(monster2, character);
                             monsterAlive--;
                         }
                         if (monster3.getHp() <= 0&& monster3Alive) {
                             System.out.println(monster.get(2).getClassType() + " died!");
                             monster3Alive = false;
-
+                            whoDidIKill(monster3, character);
                             monsterAlive--;
                         }
                         if (monster4.getHp() <= 0&&monster4Alive) {
                             System.out.println(monster.get(3).getClassType() + " died!");
                             monster4Alive = false;
-
+                            whoDidIKill(monster4, character);
                             monsterAlive--;
                         }
                     } catch (NullPointerException e) {
@@ -372,6 +372,21 @@ public class Combat {
 
     public void clearWindow() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
+
+    public void whoDidIKill (Monster monster, Character character ){
+        if (monster.getClassType().equals("Orc")){
+            character.raiseOrcSlain();
+        }
+        if (monster.getClassType().equals("Troll")){
+            character.raiseTrollSlain();
+        }
+        if (monster.getClassType().equals("Skeleton")){
+            character.raiseSkeletonsSlain();
+        }
+        if (monster.getClassType().equals("GiantSpider")){
+            character.raiseSpidersSlain();
+        }
     }
 
     @Override
