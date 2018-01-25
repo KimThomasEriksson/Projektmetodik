@@ -1725,7 +1725,9 @@ public class Adventure {
             Thread.sleep(3000);
             System.out.println("\nFar below is our inventory with all the loot we got away with");
             System.out.println(myCharacter.previewLogo());
+            System.out.println("\n\nPress any key to continue...");
             scanner.nextLine();
+            myCharacter.resetStats();
             menu.setMenuThirdPhase(true);
             menu.thirdMenuGameLoader();
         }
@@ -5246,6 +5248,10 @@ public class Adventure {
 
                 case "0":
                     if (rooms.isPermissionToExit()) {
+
+                        System.out.println(myCharacter.previewLogo());
+                        System.out.println("\n\nPress any key to continue...");
+                        scanner.nextLine();
                         myCharacter.resetStats();
                         menu.setMyCharacter(myCharacter);
                         menu.getMyCharacterData().saveFunc();
