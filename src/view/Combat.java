@@ -38,6 +38,7 @@ public class Combat {
         int monsterInitiativeRoll4 = 0;
         clearWindow();
         rooms.printRoom();
+        character.setHp(1);
 
         try {
             monster1 = monster.get(0);
@@ -194,6 +195,7 @@ public class Combat {
                     DeadEmote deadEmote = new DeadEmote();
                     deadEmote.startEmote();
                     //sätt in våran death animation/funktion
+
                     break;
                 }
 
@@ -221,30 +223,30 @@ public class Combat {
 
                         }
                         if (monster1.getHp() <= 0 && monster1Alive) {
-                            System.out.println(monster.get(0).getClassType() + " died!");
+                            System.out.println(monster.get(0).getClassType() + " is dead!");
                             monster1Alive = false;
                             monsterAlive--;
-
+                            whoDidIKill(monster1, character);
                             if(monster2==null){
                                 break;
                             }
                         }
                         if (monster2.getHp() <= 0 && monster2Alive) {
-                            System.out.println(monster.get(1).getClassType() + " died!");
+                            System.out.println(monster.get(1).getClassType() + " is dead!");
                             monster2Alive = false;
-
+                            whoDidIKill(monster2, character);
                             monsterAlive--;
                         }
                         if (monster3.getHp() <= 0&& monster3Alive) {
-                            System.out.println(monster.get(2).getClassType() + " died!");
+                            System.out.println(monster.get(2).getClassType() + " is dead!");
                             monster3Alive = false;
-
+                            whoDidIKill(monster3, character);
                             monsterAlive--;
                         }
                         if (monster4.getHp() <= 0&&monster4Alive) {
-                            System.out.println(monster.get(3).getClassType() + " died!");
+                            System.out.println(monster.get(3).getClassType() + " is dead!");
                             monster4Alive = false;
-
+                            whoDidIKill(monster4, character);
                             monsterAlive--;
                         }
                     } catch (NullPointerException e) {
@@ -358,6 +360,20 @@ public class Combat {
     return false;
         }
 
+    public void whoDidIKill (Monster monster, Character character ){
+        if (monster.getClassType().equals("Orc")){
+            character.raiseOrcSlain();
+        }
+        if (monster.getClassType().equals("Troll")){
+            character.raiseTrollSlain();
+        }
+        if (monster.getClassType().equals("Skeleton")){
+            character.raiseSkeletonsSlain();
+        }
+        if (monster.getClassType().equals("GiantSpider")){
+            character.raiseSpidersSlain();
+        }
+    }
 
     public void clearWindow() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

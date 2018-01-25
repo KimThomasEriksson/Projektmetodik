@@ -63,10 +63,10 @@ public class CollectionOfCharacters implements Serializable {
             in.close();
             fis.close();
         } catch (Exception e){
-            System.out.println("Run as admin!");
-            Thread.sleep(5000);
+            //System.out.println("Run as admin!");
+            //Thread.sleep(5000);
 
-            System.exit(0);
+           // System.exit(0);
 
         }
     }
@@ -81,9 +81,9 @@ public class CollectionOfCharacters implements Serializable {
             oos.close();
             f.close();
         }catch (Exception e){
-            System.out.println("Run as admin!");
-            Thread.sleep(5000);
-            System.exit(0);
+            //System.out.println("Run as admin!");
+            //Thread.sleep(5000);
+            //System.exit(0);
 
 
         }

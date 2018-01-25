@@ -157,7 +157,7 @@ public class Character implements Serializable,CharacterInterface{
             }
             else {
                 if(!quickCombat) {
-                    System.out.println(monster.getClassType() + "s attack hit!");
+                    System.out.println(monster.getClassType() + " attacked you for 1 damage!");
                 }
                 this.hp = this.hp - 1;
             }
@@ -229,16 +229,17 @@ public class Character implements Serializable,CharacterInterface{
     public int getCoin() {
         return coin;
     }
+
     public void raiseSpidersSlain() {
         this.giantSpidersSlain+=1;
         }
     public void raiseSkeletonsSlain(){
         this.skeletonsSlain+=1;
     }
-    public void orcSlain(){
+    public void raiseOrcSlain(){
         this.orcSlain+=1;
     }
-    public void trollStailn(){
+    public void raiseTrollSlain(){
         this.trollSlain+=1;
     }
 
