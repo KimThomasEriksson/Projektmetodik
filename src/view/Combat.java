@@ -38,7 +38,7 @@ public class Combat {
         int monsterInitiativeRoll4 = 0;
         clearWindow();
         rooms.printRoom();
-        character.setHp(1);
+
 
         try {
             monster1 = monster.get(0);
