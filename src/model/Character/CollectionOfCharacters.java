@@ -35,7 +35,14 @@ public class CollectionOfCharacters implements Serializable {
     public boolean deleteChar(String character){
 
         for (Character e: this.characterArrayList){
-            if (e.getName().startsWith("AI")){
+
+            if (character.equals("AI-KNIGHT")){
+                return false;
+            }
+            if (character.equals("AI-WIZARD")){
+                return false;
+            }
+            if (character.equals("AI-THIEF")){
                 return false;
             }
             if (e.getName().equals(character)){

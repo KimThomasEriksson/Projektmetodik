@@ -416,6 +416,8 @@ public class Menu {
 
         clearWindow();
         String nameToCheck = "Empty";
+        String checkForSpeedRun = "[1]SpeedRun";
+
         while (menuSecondPhase) {
 
             myCharacterData.openFunc();
@@ -433,18 +435,33 @@ public class Menu {
                     "\n\t\tName: " + nameToCheck +
                     "\n\t\t\t\t\t\t" +
                     "\n\t\t\t\t\t\t" +
+                    "\n\t\t\t" + checkForSpeedRun +
                     "\n[0]RETURN\t\t\t\t[X]SUBMIT\t" +
                     "\n\t\t\t\t\t\t");
 
 
             String choice = scanner.nextLine().toUpperCase();
-            if (!choice.equals("") && !choice.equals("X")) {
+            if (!choice.equals("") && !choice.equals("X") && !choice.equals("1") && !choice.equals("V")) {
                 nameToCheck = choice;
             }
             switch (choice) {
 
+                case "1":
+                    checkForSpeedRun = "[V]SpeedRun";
+                    break;
+
+                case "V":
+                    checkForSpeedRun = "[1]SpeedRun";
+                    break;
+
                 // Submit cases to try the given name to check object and break loop
                 case "X":
+                    if (checkForSpeedRun.equals("[V]SpeedRun")){
+                        quickCombat = true;
+                    }
+                    if (checkForSpeedRun.equals("[1]SpeedRun")){
+                        quickCombat = false;
+                    }
                     myCharacter = myCharacterData.searchCharacter(nameToCheck);
                     if (myCharacter != null) {
                         clearWindow();
@@ -462,6 +479,12 @@ public class Menu {
                     }
                     break;
                 case "SUBMIT":
+                    if (checkForSpeedRun.equals("[V]SpeedRun")){
+                        quickCombat = true;
+                    }
+                    if (checkForSpeedRun.equals("[1]SpeedRun")){
+                        quickCombat = false;
+                    }
                     myCharacter = myCharacterData.searchCharacter(nameToCheck);
                     if (myCharacter != null) {
                         clearWindow();

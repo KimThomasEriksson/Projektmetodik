@@ -325,7 +325,6 @@ public class TestRoom {
 
         for(int rows=0;rows<this.monstersInRoom.length;rows++) {
             for (int columns = 0; columns < this.monstersInRoom[rows].length; columns++) {
-                System.out.println(columns);
                 ArrayList<Monster> empty = new ArrayList<>();
                 this.monstersInRoom[rows][columns]=new CollectionOfMonsters(empty);
                 //System.out.print(rooms[rows][columns] + "\t");
