@@ -399,7 +399,7 @@ public class Character implements Serializable,CharacterInterface{
 
         }
 
-        if(this.getClassType().equals("Theif")){
+        if(this.getClassType().equals("Thief")){
 
             return 5;
 
