@@ -55,7 +55,7 @@ public class Room {
             for(int columns=0;columns <this.rooms[rows].length;columns++){
                 stringToReturn+=columns;
 
-                System.out.print(rooms[rows][columns]  );}
+                System.out.print(rooms[rows][columns]);}
             System.out.println();}
 
 

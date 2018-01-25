@@ -17,6 +17,7 @@ public class Adventure {
     private int level;
     private Character myCharacter;
     private Boolean flee;
+    private Combat combat;
 
     private int startPosition;
     private int startPositionX;
@@ -81,6 +82,7 @@ public class Adventure {
         characterAi.setAiAdventure(this);
         testRoom.setCharacterAi(characterAi);
         findNewExit(true);
+        menu.getMyCharacterData().saveFunc();
         menu.setMenuFirstPhase(true);
         menu.runMainMenu();
 
@@ -93,8 +95,10 @@ public class Adventure {
         scanner = new Scanner(System.in);
         getStartingPositions();
         this.rooms = new Room(startPositionX, startPositionY, level);
+        combat = new Combat();
+        combat.setMyAdventure(this);
         myCharacter = menu.getMyCharacter();
-        gameRound();
+        gameRound(true);
 
 
     }
@@ -5196,15 +5200,16 @@ public class Adventure {
         }
     }
 
-    public void gameRound() throws IOException, InterruptedException {
+    public void gameRound(boolean keepMoving) throws IOException, InterruptedException {
 
         String w = "W";
         String a = "A";
         String d = "D";
         String s = "S";
         String e = "";
+        this.keepMoving = keepMoving;
 
-        while (true) {
+        while (this.keepMoving) {
 
             menu.clearWindow();
             rooms.printRoom();
@@ -5242,6 +5247,7 @@ public class Adventure {
                 case "0":
                     if (rooms.isPermissionToExit()) {
                         myCharacter.resetStats();
+                        menu.setMyCharacter(myCharacter);
                         menu.getMyCharacterData().saveFunc();
                         menu.setMenuThirdPhase(true);
                         menu.thirdMenuGameLoader();
@@ -5267,7 +5273,6 @@ public class Adventure {
         this.monsterToFight = this.rooms.getMonstersToFight();
 
 
-        Combat combat = new Combat();
         combat.setFlee(false);
         if (this.monsterToFight.size() == 0) {
 

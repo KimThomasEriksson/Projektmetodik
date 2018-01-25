@@ -1,5 +1,6 @@
 package view;
 
+import model.Adventure;
 import model.Monster.Monster;
 import model.Character.Character;
 import model.Room;
@@ -27,6 +28,8 @@ public class Combat {
     private int counter = 0;
     private int monsterAlive = 0;
 
+    private Adventure myAdventure;
+
     public boolean combatStart(ArrayList<Monster> monster, Character character, Room rooms) throws IOException, InterruptedException {
         boolean cont = false;
         boolean loop = true;
@@ -38,7 +41,6 @@ public class Combat {
         int monsterInitiativeRoll4 = 0;
         clearWindow();
         rooms.printRoom();
-
 
         try {
             monster1 = monster.get(0);
@@ -194,9 +196,16 @@ public class Combat {
                     Thread.sleep(2000);
                     DeadEmote deadEmote = new DeadEmote();
                     deadEmote.startEmote();
-                    //sätt in våran death animation/funktion
 
-                    break;
+                    myAdventure.getMenu().getMyCharacterData().deleteChar(myAdventure.getMyCharacter().getName());
+                    myAdventure.getMenu().getMyCharacterData().saveFunc();
+                    myAdventure.setKeepMoving(false);
+                    myAdventure.getMenu().setMenuFirstPhase(true);
+                    myAdventure.getMenu().runMainMenu();
+
+
+                    //sätt in våran death animation/funktion
+                    return false;
                 }
 
                 //kollar om monstret dog förra rundan
@@ -223,30 +232,30 @@ public class Combat {
 
                         }
                         if (monster1.getHp() <= 0 && monster1Alive) {
-                            System.out.println(monster.get(0).getClassType() + " is dead!");
+                            System.out.println(monster.get(0).getClassType() + " died!");
                             monster1Alive = false;
                             monsterAlive--;
-                            whoDidIKill(monster1, character);
+
                             if(monster2==null){
                                 break;
                             }
                         }
                         if (monster2.getHp() <= 0 && monster2Alive) {
-                            System.out.println(monster.get(1).getClassType() + " is dead!");
+                            System.out.println(monster.get(1).getClassType() + " died!");
                             monster2Alive = false;
-                            whoDidIKill(monster2, character);
+
                             monsterAlive--;
                         }
                         if (monster3.getHp() <= 0&& monster3Alive) {
-                            System.out.println(monster.get(2).getClassType() + " is dead!");
+                            System.out.println(monster.get(2).getClassType() + " died!");
                             monster3Alive = false;
-                            whoDidIKill(monster3, character);
+
                             monsterAlive--;
                         }
                         if (monster4.getHp() <= 0&&monster4Alive) {
-                            System.out.println(monster.get(3).getClassType() + " is dead!");
+                            System.out.println(monster.get(3).getClassType() + " died!");
                             monster4Alive = false;
-                            whoDidIKill(monster4, character);
+
                             monsterAlive--;
                         }
                     } catch (NullPointerException e) {
@@ -360,20 +369,6 @@ public class Combat {
     return false;
         }
 
-    public void whoDidIKill (Monster monster, Character character ){
-        if (monster.getClassType().equals("Orc")){
-            character.raiseOrcSlain();
-        }
-        if (monster.getClassType().equals("Troll")){
-            character.raiseTrollSlain();
-        }
-        if (monster.getClassType().equals("Skeleton")){
-            character.raiseSkeletonsSlain();
-        }
-        if (monster.getClassType().equals("GiantSpider")){
-            character.raiseSpidersSlain();
-        }
-    }
 
     public void clearWindow() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -400,6 +395,98 @@ public class Combat {
 
     public void setFlee(boolean flee) {
         this.flee = flee;
+    }
+
+    public boolean isFlee() {
+        return flee;
+    }
+
+    public Monster getMonster1() {
+        return monster1;
+    }
+
+    public void setMonster1(Monster monster1) {
+        this.monster1 = monster1;
+    }
+
+    public Monster getMonster2() {
+        return monster2;
+    }
+
+    public void setMonster2(Monster monster2) {
+        this.monster2 = monster2;
+    }
+
+    public Monster getMonster3() {
+        return monster3;
+    }
+
+    public void setMonster3(Monster monster3) {
+        this.monster3 = monster3;
+    }
+
+    public Monster getMonster4() {
+        return monster4;
+    }
+
+    public void setMonster4(Monster monster4) {
+        this.monster4 = monster4;
+    }
+
+    public boolean isMonster1Alive() {
+        return monster1Alive;
+    }
+
+    public void setMonster1Alive(boolean monster1Alive) {
+        this.monster1Alive = monster1Alive;
+    }
+
+    public boolean isMonster2Alive() {
+        return monster2Alive;
+    }
+
+    public void setMonster2Alive(boolean monster2Alive) {
+        this.monster2Alive = monster2Alive;
+    }
+
+    public boolean isMonster3Alive() {
+        return monster3Alive;
+    }
+
+    public void setMonster3Alive(boolean monster3Alive) {
+        this.monster3Alive = monster3Alive;
+    }
+
+    public boolean isMonster4Alive() {
+        return monster4Alive;
+    }
+
+    public void setMonster4Alive(boolean monster4Alive) {
+        this.monster4Alive = monster4Alive;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    public int getMonsterAlive() {
+        return monsterAlive;
+    }
+
+    public void setMonsterAlive(int monsterAlive) {
+        this.monsterAlive = monsterAlive;
+    }
+
+    public Adventure getMyAdventure() {
+        return myAdventure;
+    }
+
+    public void setMyAdventure(Adventure myAdventure) {
+        this.myAdventure = myAdventure;
     }
 }
 
