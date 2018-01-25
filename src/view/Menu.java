@@ -30,6 +30,11 @@ public class Menu {
     private Knight myKnight;
     private Wizard myWizard;
     private Thief myThief;
+
+    private Knight myKnightAi;
+    private Wizard myWizardAi;
+    private Thief myThiefAi;
+
     private boolean validName;
 
     private CollectionOfCharacters myCharacterData;
@@ -43,10 +48,25 @@ public class Menu {
         this.myKnight = new Knight();
         this.myWizard = new Wizard();
         this.myThief = new Thief();
+
+        this.myKnightAi = new Knight();
+        myKnightAi.setName("AI-KNIGHT");
+        this.myWizardAi = new Wizard();
+        myWizardAi.setName("AI-WIZARD");
+        this.myThiefAi = new Thief();
+        myThiefAi.setName("AI-THIEF");
+
         this.myCharacter = null;
         this.myCharacterData = new CollectionOfCharacters();
+
         myCharacterData.openFunc();
+
+        myCharacterData.addChar(myKnightAi);
+        myCharacterData.addChar(myWizardAi);
+        myCharacterData.addChar(myThiefAi);
+
         myCharacterData.saveFunc();
+
         this.validName = false;
         this.myAdventure = null;
         this.quickCombat = false;
@@ -703,7 +723,7 @@ public class Menu {
                         menuSecondPhase = false;
                         menuThirdPhase = false;
                         if (myAdventure != null){
-                            myAdventure.startNewRoom();
+                            myAdventure.startGame();
                         }
                         clearWindow();
                         break;
@@ -742,7 +762,7 @@ public class Menu {
                         menuSecondPhase = false;
                         menuThirdPhase = false;
                         if (myAdventure != null){
-                            myAdventure.startNewRoom();
+                            myAdventure.startGame();
                         }
                         clearWindow();
                         break;

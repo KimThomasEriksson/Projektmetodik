@@ -13,6 +13,18 @@ public class Thief extends Character implements Serializable {
         this.setHp(5);
         this.setAttack(5);
         this.setAgility(7);
+        if (this.getName().startsWith("AI")){
+
+            setTreasureBox(0);
+            setCoin(0);
+            setCoinBag(0);
+            setGoldJewelry(0);
+            setGemstone(0);
+            setGiantSpidersSlain(0);
+            setSkeletonsSlain(0);
+            setOrcSlain(0);
+            setTrollSlain(0);
+        }
 
     }
     //This constructor is used when we load in a character from save file.
@@ -41,10 +53,14 @@ public class Thief extends Character implements Serializable {
                 "Agility= " + this.getAgility() + "\t\t\t      (( )_\n" +
                 "\t\t\t\t      ((__,)\n\n" +
                 "Special attack:\n" +
-                "25% chance to make double damage every attack.\n\n" +
+                "25% chance to make double damage every attack.\n\n\n" +
                 "TreasureBox: " + getTreasureBox() + "\n" +
                 "Coin: " + getCoin() + "\tCoinBag: " + getCoinBag() + "\n" +
-                "GoldJewelry: " + getGoldJewelry() + "\tGemstone: " + getGemstone();
+                "GoldJewelry: " + getGoldJewelry() + "\tGemstone: " + getGemstone() + "\n\n" +
+                "Giant Spiders Slain: " + getGiantSpidersSlain() + "\n" +
+                "Skeletons Slain: " + getSkeletonsSlain() + "\n" +
+                "Orcs Slain: " + getOrcSlain() + "\n" +
+                "Trolls Slain: " + getTrollSlain();
 
     }
 

@@ -5,6 +5,7 @@ import model.Character.CollectionOfCharacters;
 import model.Character.CollectionOfMonsters;
 import model.Monster.Monster;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -80,7 +81,7 @@ public class TestRoom {
         exitPositionY = random.nextInt(y);
     }
 
-    public boolean moveDown() {
+    public boolean moveDown() throws IOException, InterruptedException{
         this.oldPlayerPositionX=this.playerPositionX;
         this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
@@ -101,12 +102,22 @@ public class TestRoom {
             }
 
             if (Roomcondition.equals("[X]")){
-                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                if(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0 && !this.monstersInRoom[this.playerPositionX][this.playerPositionY].isTreasure() ){
                     characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                     return true;
                 }else{
                     this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
+                    if(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                        characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
+                    }
+                    else{
+                        int countTreasureToChangeBool;
+                        countTreasureToChangeBool = controller.RandGenerator.ItemGenerator(characterAi.getAI());
+                        if (countTreasureToChangeBool > 0){
+                            this.monstersInRoom[this.playerPositionX][this.playerPositionY].setTreasure(true);
+                        }
+                    }
+
                 }
                 return true;
 
@@ -128,7 +139,7 @@ public class TestRoom {
         }
     }
 
-    public boolean moveUp()  {
+    public boolean moveUp()  throws IOException, InterruptedException{
         this.oldPlayerPositionX=this.playerPositionX;
         this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
@@ -149,12 +160,22 @@ public class TestRoom {
             }
 
             if (Roomcondition.equals("[X]")){
-                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                if(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0 && !this.monstersInRoom[this.playerPositionX][this.playerPositionY].isTreasure() ){
                     characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                     return true;
                 }else{
                     this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
+                    if(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                        characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
+                    }
+                    else{
+                        int countTreasureToChangeBool;
+                        countTreasureToChangeBool = controller.RandGenerator.ItemGenerator(characterAi.getAI());
+                        if (countTreasureToChangeBool > 0){
+                            this.monstersInRoom[this.playerPositionX][this.playerPositionY].setTreasure(true);
+                        }
+                    }
+
                 }
                 return true;
 
@@ -177,7 +198,7 @@ public class TestRoom {
 
     }
 
-    public boolean moveLeft() {
+    public boolean moveLeft() throws IOException, InterruptedException{
         this.oldPlayerPositionX=this.playerPositionX;
         this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
@@ -198,12 +219,22 @@ public class TestRoom {
             }
 
             if (Roomcondition.equals("[X]")){
-                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                if(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0 && !this.monstersInRoom[this.playerPositionX][this.playerPositionY].isTreasure() ){
                     characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                     return true;
                 }else{
                     this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
+                    if(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                        characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
+                    }
+                    else{
+                        int countTreasureToChangeBool;
+                        countTreasureToChangeBool = controller.RandGenerator.ItemGenerator(characterAi.getAI());
+                        if (countTreasureToChangeBool > 0){
+                            this.monstersInRoom[this.playerPositionX][this.playerPositionY].setTreasure(true);
+                        }
+                    }
+
                 }
                 return true;
 
@@ -224,7 +255,7 @@ public class TestRoom {
 
     }
 
-    public boolean moveRight() {
+    public boolean moveRight() throws IOException, InterruptedException{
         this.oldPlayerPositionX=this.playerPositionX;
         this.oldPlayerPositionY=this.playerPositionY;
         String Roomcondition;
@@ -245,12 +276,22 @@ public class TestRoom {
             }
 
             if (Roomcondition.equals("[X]")){
-                if( this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                if(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0 && !this.monstersInRoom[this.playerPositionX][this.playerPositionY].isTreasure() ){
                     characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
                     return true;
                 }else{
                     this.monstersInRoom[this.playerPositionX][this.playerPositionY].setListOfMonsters(controller.RandGenerator.rollTheDice(this.level));
-                    characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
+                    if(this.monstersInRoom[this.playerPositionX][this.playerPositionY].getListOfMonsters().size()>0){
+                        characterAi.startCombat(this.monstersInRoom[this.playerPositionX][this.playerPositionY]);
+                    }
+                    else{
+                        int countTreasureToChangeBool;
+                        countTreasureToChangeBool = controller.RandGenerator.ItemGenerator(characterAi.getAI());
+                        if (countTreasureToChangeBool > 0){
+                            this.monstersInRoom[this.playerPositionX][this.playerPositionY].setTreasure(true);
+                        }
+                    }
+
                 }
                 return true;
             }else{

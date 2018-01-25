@@ -13,6 +13,18 @@ public class Knight extends Character implements Serializable {
         this.setHp(9);
         this.setAttack(6);
         this.setAgility(4);
+        if (this.getName().startsWith("AI")){
+
+            setTreasureBox(0);
+            setCoin(0);
+            setCoinBag(0);
+            setGoldJewelry(0);
+            setGemstone(0);
+            setGiantSpidersSlain(0);
+            setSkeletonsSlain(0);
+            setOrcSlain(0);
+            setTrollSlain(0);
+        }
 
     }
 
@@ -39,10 +51,14 @@ public class Knight extends Character implements Serializable {
                 "Attack= " + this.getAttack() + "\t\t\t     // \\\\_\n" +
                 "Agility= " + this.getAgility() + "\t\t\t    _I    /\n\n" +
                 "Special attack:\n" +
-                "Always blocks the first attack per fight.\n\n" +
+                "Always blocks the first attack per fight.\n\n\n" +
                 "TreasureBox: " + getTreasureBox() + "\n" +
                 "Coin: " + getCoin() + "\tCoinBag: " + getCoinBag() + "\n" +
-                "GoldJewelry: " + getGoldJewelry() + "\tGemstone: " + getGemstone();
+                "GoldJewelry: " + getGoldJewelry() + "\tGemstone: " + getGemstone() + "\n\n" +
+                "Giant Spiders Slain: " + getGiantSpidersSlain() + "\n" +
+                "Skeletons Slain: " + getSkeletonsSlain() + "\n" +
+                "Orcs Slain: " + getOrcSlain() + "\n" +
+                "Trolls Slain: " + getTrollSlain();
     }
 
 

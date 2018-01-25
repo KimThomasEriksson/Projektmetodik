@@ -2,7 +2,9 @@ package model.Character;
 
 import model.Adventure;
 import model.Monster.Monster;
+import view.DeadEmote;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -28,10 +30,13 @@ public class AI {
 
     private boolean fled = false;
 
+    private int initialHp;
+
     public AI(Character AI, boolean quickCombat){
 
         this.AI = AI;
         this.quickCombat = quickCombat;
+        this.initialHp = this.AI.getHp();
 
     }
 
@@ -39,7 +44,7 @@ public class AI {
         aiAdventure.gameRoundAi(aiAdventure.isKeepMoving());
     }
 
-    public void startCombat(CollectionOfMonsters collOfMonster ){
+    public void startCombat(CollectionOfMonsters collOfMonster ) throws IOException, InterruptedException {
         boolean flee;
 
         ArrayList<Monster> monster = new ArrayList<>();
@@ -132,6 +137,7 @@ public class AI {
             if (!aiAdventure.getTestRoom().isFirstTimeExit() && monsterScore > 5 || aiAdventure.getTestRoom().isFirstTimeExit() && monsterScore > 40 && AI.getHp() <= 4|| AI.getHp() == 1
                     || AI.getHp() == 2 && monsterScore > 5 && !AI.getClassType().equals("Knight") && aiAdventure.getTestRoom().isFirstTimeExit()
                     || AI.getHp() == 2 && monsterScore > 10 && AI.getClassType().equals("Knight") && aiAdventure.getTestRoom().isFirstTimeExit()) {
+
                 if(collOfMonster.getTimesFled() == 1){
                     cont = true;
                     loop = false;
@@ -153,6 +159,12 @@ public class AI {
                 flee = true;
                 cont = false;
                 loop = false;
+                System.out.println(aiAdventure.getTestRoom().isFirstTimeExit());
+                if (aiAdventure.getTestRoom().isFirstTimeExit() && AI.getHp() == 2) {
+                    System.out.println("I'am hurt, I need to head back to the EXIT.");
+                    aiAdventure.dropEverythingAndGoToEXit(true);
+                    return;
+                }
                 break;
             } else if (triedToFlee && !tryToFlee) {
                 System.out.println("You've failed your escape ");
@@ -252,10 +264,15 @@ public class AI {
                 }
                 //kollar om spelaren dog den förra rundan
                 if (AI.getHp() <= 0) {
-                    System.out.println("You died!");
+                    System.out.println("You died!" + AI.getHp());
                     aiAdventure.setNavigationBool(false);
+                    aiAdventure.setProgressAfterExitDiscovery(false);
+                    aiAdventure.setWantToExit(false);
+                    DeadEmote deadEmote = new DeadEmote();
+                    deadEmote.startEmote();
+                    aiAdventure.getMyCharacter().resetStats();
+                    return;
                     //sätt in våran death animation/funktion
-                    break;
                 }
 
                 //kollar om monstret dog förra rundan
@@ -272,6 +289,7 @@ public class AI {
                 if (monsterAlive == 0) {
                     if (!quickCombat) {
                         System.out.println("Every monster died ");
+                        controller.RandGenerator.ItemGenerator(AI);
                     }
                     break;
 
@@ -285,6 +303,19 @@ public class AI {
                             }
                             monster1Alive = false;
                             monsterAlive--;
+                            if (monster.get(0).getClassType().equals("Orc")){
+                                AI.setOrcSlain(AI.getOrcSlain() + 1);
+                            }
+                            if (monster.get(0).getClassType().equals("Troll")){
+                                AI.setTrollSlain(AI.getTrollSlain() + 1);
+                            }
+                            if (monster.get(0).getClassType().equals("Skeleton")){
+                                AI.setSkeletonsSlain(AI.getSkeletonsSlain() + 1);
+                            }
+                            if (monster.get(0).getClassType().equals("GiantSpider")){
+                                AI.setGiantSpidersSlain(AI.getGiantSpidersSlain() + 1);
+                            }
+
                         }
                         if (monster2.getHp() <= 0 && monster2Alive) {
                             if(!quickCombat) {
@@ -292,6 +323,18 @@ public class AI {
                             }
                             monster2Alive = false;
                             monsterAlive--;
+                            if (monster.get(1).getClassType().equals("Orc")){
+                                AI.setOrcSlain(AI.getOrcSlain() + 1);
+                            }
+                            if (monster.get(1).getClassType().equals("Troll")){
+                                AI.setTrollSlain(AI.getTrollSlain() + 1);
+                            }
+                            if (monster.get(1).getClassType().equals("Skeleton")){
+                                AI.setSkeletonsSlain(AI.getSkeletonsSlain() + 1);
+                            }
+                            if (monster.get(1).getClassType().equals("GiantSpider")){
+                                AI.setGiantSpidersSlain(AI.getGiantSpidersSlain() + 1);
+                            }
                         }
                         if (monster3.getHp() <= 0 && monster3Alive) {
                             if(!quickCombat) {
@@ -299,6 +342,18 @@ public class AI {
                             }
                             monster3Alive = false;
                             monsterAlive--;
+                            if (monster.get(2).getClassType().equals("Orc")){
+                                AI.setOrcSlain(AI.getOrcSlain() + 1);
+                            }
+                            if (monster.get(2).getClassType().equals("Troll")){
+                                AI.setTrollSlain(AI.getTrollSlain() + 1);
+                            }
+                            if (monster.get(2).getClassType().equals("Skeleton")){
+                                AI.setSkeletonsSlain(AI.getSkeletonsSlain() + 1);
+                            }
+                            if (monster.get(2).getClassType().equals("GiantSpider")){
+                                AI.setGiantSpidersSlain(AI.getGiantSpidersSlain() + 1);
+                            }
                         }
                         if (monster4.getHp() <= 0 && monster4Alive) {
                             if(!quickCombat) {
@@ -306,6 +361,18 @@ public class AI {
                             }
                             monster4Alive = false;
                             monsterAlive--;
+                            if (monster.get(3).getClassType().equals("Orc")){
+                                AI.setOrcSlain(AI.getOrcSlain() + 1);
+                            }
+                            if (monster.get(3).getClassType().equals("Troll")){
+                                AI.setTrollSlain(AI.getTrollSlain() + 1);
+                            }
+                            if (monster.get(3).getClassType().equals("Skeleton")){
+                                AI.setSkeletonsSlain(AI.getSkeletonsSlain() + 1);
+                            }
+                            if (monster.get(3).getClassType().equals("GiantSpider")){
+                                AI.setGiantSpidersSlain(AI.getGiantSpidersSlain() + 1);
+                            }
                         }
                         if (monsterAlive == 0) {
                             if(!quickCombat) {

@@ -8,6 +8,7 @@ public class CollectionOfMonsters {
 
     private ArrayList<Monster> listOfMonsters;
     private int timesFled;
+    private boolean treasure;
 
 
 
@@ -18,7 +19,20 @@ public class CollectionOfMonsters {
     public CollectionOfMonsters(ArrayList<Monster> listOfMonsters) {
         this.listOfMonsters = listOfMonsters;
         this.timesFled=0;
+        this.treasure = false;
 
+    }
+
+    public CollectionOfMonsters(boolean treasure) {
+        this.treasure = treasure;
+    }
+
+    public boolean isTreasure() {
+        return treasure;
+    }
+
+    public void setTreasure(boolean treasure) {
+        this.treasure = treasure;
     }
 
     public void setListOfMonsters(ArrayList<Monster> listOfMonsters) {

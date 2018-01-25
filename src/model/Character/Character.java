@@ -42,6 +42,11 @@ public class Character implements Serializable,CharacterInterface{
         this.goldJewelry = goldJewelry;
         this.gemstone = gemstone;
         this.treasureBox = treasureBox;
+        this.giantSpidersSlain = 0;
+        this.skeletonsSlain = 0;
+        this.orcSlain = 0;
+        this.trollSlain = 0;
+        this.totalScore = 0;
 
     }
 
