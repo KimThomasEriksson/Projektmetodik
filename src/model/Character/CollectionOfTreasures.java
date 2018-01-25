@@ -3,6 +3,7 @@ package model.Character;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.io.Serializable;
 
@@ -110,4 +111,6 @@ public class CollectionOfTreasures implements Serializable {
 
         return Objects.hash(getTreasuresArrayList());
     }
+
+
 }

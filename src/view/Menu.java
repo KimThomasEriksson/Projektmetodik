@@ -133,12 +133,15 @@ public class Menu {
 
                 case "2":
                     // Load character from file
+                    myCharacterData.openFunc();
                     menuFirstPhase = false;
                     menuSecondPhase = true;
                     clearWindow();
                     secondMenuLoading();
+
                     break;
                 case "LOAD":
+                    myCharacterData.openFunc();
                     menuFirstPhase = false;
                     menuSecondPhase = true;
                     clearWindow();
@@ -149,12 +152,14 @@ public class Menu {
 
                 case "3":
                     // Delete character from file
+                    myCharacterData.openFunc();
                     menuFirstPhase = false;
                     menuSecondPhase = true;
                     clearWindow();
                     secondMenuDeletion();
                     break;
                 case "DELETE":
+                    myCharacterData.openFunc();
                     menuFirstPhase = false;
                     menuSecondPhase = true;
                     clearWindow();

@@ -53,6 +53,14 @@ public class CollectionOfCharacters implements Serializable {
         return false;
     }
 
+    public void deleteCharObjekt(Character character){
+        this.characterArrayList.remove(character);
+
+
+
+    }
+
+
     public Character searchCharacter(String charName){
         for (Character e: this.characterArrayList) {
             if (e.getName().equals(charName)){

@@ -197,7 +197,7 @@ public class Combat {
                     DeadEmote deadEmote = new DeadEmote();
                     deadEmote.startEmote();
 
-                    myAdventure.getMenu().getMyCharacterData().deleteChar(myAdventure.getMyCharacter().getName());
+                    myAdventure.getMenu().getMyCharacterData().deleteCharObjekt(character);
                     myAdventure.getMenu().getMyCharacterData().saveFunc();
                     myAdventure.setKeepMoving(false);
                     myAdventure.getMenu().setMenuFirstPhase(true);
