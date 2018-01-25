@@ -5,6 +5,7 @@ import model.Character.Character;
 import model.Room;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -189,6 +190,9 @@ public class Combat {
                 //kollar om spelaren dog den förra rundan
                 if (character.getHp() <= 0) {
                     System.out.println("You died!");
+                    Thread.sleep(2000);
+                    DeadEmote deadEmote = new DeadEmote();
+                    deadEmote.startEmote();
                     //sätt in våran death animation/funktion
                     break;
                 }
