@@ -55,7 +55,7 @@ public class CollectionOfCharacters implements Serializable {
         return null;
     }
 
-    public void openFunc(){
+    public void openFunc() throws InterruptedException {
         try {
             FileInputStream fis = new FileInputStream("charData.ser");
             ObjectInputStream in = new ObjectInputStream(fis);
@@ -63,11 +63,13 @@ public class CollectionOfCharacters implements Serializable {
             in.close();
             fis.close();
         } catch (Exception e){
+            System.out.println(e+"");
+            Thread.sleep(5000);
 
         }
     }
 
-    public void saveFunc() throws IOException {
+    public void saveFunc() throws IOException, InterruptedException {
         try{
 
             FileOutputStream f = new FileOutputStream("charData.ser");
@@ -77,6 +79,8 @@ public class CollectionOfCharacters implements Serializable {
             oos.close();
             f.close();
         }catch (Exception e){
+            System.out.println(e+"");
+            Thread.sleep(5000);
 
         }
 
