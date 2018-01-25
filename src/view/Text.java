@@ -21,12 +21,6 @@ public  class Text {
     public void intro() throws InterruptedException, IOException, UnsupportedAudioFileException, LineUnavailableException {
 
 
-        File f = new File( "8bit.wav");
-        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioIn);
-        clip.start();
-        boolean state =true;
         int time=0;
 
         Thread newThread =new Thread();
@@ -54,7 +48,7 @@ public  class Text {
 
 
         }
-        clip.stop();
+
         clearScreen();
 
     }
